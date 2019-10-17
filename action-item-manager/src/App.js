@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
+
+import AccountInfo from 'apps/AccountInfo/components/AccountInfo';
+import Teams from 'apps/Teams/components/Teams';
+import ActionItems from 'apps/ActionItems/components/ActionItems';
+import MainSideBar from 'apps/MainSideBar/components/MainSideBar';
+
+const MainWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+`;
+
+const StyledSwitch = styled(Switch)`
+    width: 100%;
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload test.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <MainWrapper>
+                <MainSideBar />
+
+                <StyledSwitch>
+                    <Route path="/action-items" component={ActionItems} />
+                    <Route path="/account-info" component={AccountInfo} />
+                    <Route path="/teams" component={Teams} />
+                </StyledSwitch>
+            </MainWrapper>
+        </Router>
+    );
 }
 
 export default App;
