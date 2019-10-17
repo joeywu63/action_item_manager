@@ -2,7 +2,6 @@ import React from 'react';
 
 import ActionItemPanel from './ActionItemPanel';
 
-import PageWrapper from 'common/PageWrapper';
 import Header from 'common/Header';
 import LoadingIndicator from 'common/LoadingIndicator';
 
@@ -34,10 +33,10 @@ class ActionItemList extends React.Component {
         const { loading } = this.state;
 
         return (
-            <PageWrapper>
+            <>
                 <Header title="My Action Items" />
                 {loading ? <LoadingIndicator /> : this.renderActionItems()}
-            </PageWrapper>
+            </>
         );
     }
 }

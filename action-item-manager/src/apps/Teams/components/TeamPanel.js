@@ -12,8 +12,13 @@ const TeamName = styled.b`
 const TeamPanel = ({ team, history }) => {
     const { teamID, name, managerID, userIDList } = team;
 
+    const navigateParams = {
+        pathname: `/teams/${teamID}`,
+        state: { team }
+    };
+
     return (
-        <Panel onClick={() => history.push(`/teams/${teamID}`)}>
+        <Panel onClick={() => history.push(navigateParams)}>
             <TeamName>{name}</TeamName>
             <div>{`${userIDList.length} members`}</div>
         </Panel>

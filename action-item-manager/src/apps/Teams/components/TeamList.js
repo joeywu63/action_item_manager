@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import TeamPanel from './TeamPanel';
 
-import PageWrapper from 'common/PageWrapper';
 import Header from 'common/Header';
 import LoadingIndicator from 'common/LoadingIndicator';
 
@@ -41,10 +40,10 @@ class TeamList extends React.Component {
         const { loading } = this.state;
 
         return (
-            <PageWrapper>
+            <>
                 <Header title="My Teams" />
                 {loading ? <LoadingIndicator /> : this.renderTeams()}
-            </PageWrapper>
+            </>
         );
     }
 }

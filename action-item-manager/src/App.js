@@ -7,6 +7,8 @@ import TeamsRouter from 'apps/Teams/components/TeamsRouter';
 import ActionItemsRouter from 'apps/ActionItems/components/ActionItemsRouter';
 import MainSideBar from 'apps/MainSideBar/components/MainSideBar';
 
+import PageWrapper from 'common/PageWrapper';
+
 const MainWrapper = styled.div`
     display: flex;
     flex-direction: row;
@@ -19,11 +21,13 @@ function App() {
             <MainWrapper>
                 <MainSideBar />
 
-                <Switch>
-                    <Route path="/action-items" component={ActionItemsRouter} />
-                    <Route path="/account-info" component={AccountInfo} />
-                    <Route path="/teams" component={TeamsRouter} />
-                </Switch>
+                <PageWrapper>
+                    <Switch>
+                        <Route path="/action-items" component={ActionItemsRouter} />
+                        <Route path="/account-info" component={AccountInfo} />
+                        <Route path="/teams" component={TeamsRouter} />
+                    </Switch>
+                </PageWrapper>
             </MainWrapper>
         </Router>
     );
