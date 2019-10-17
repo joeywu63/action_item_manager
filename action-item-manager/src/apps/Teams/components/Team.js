@@ -2,10 +2,14 @@ import React from 'react';
 
 import ActionItemPanel from 'apps/ActionItems/components/ActionItemPanel';
 
+import Button from 'common/Button';
 import Header from 'common/Header';
 import LoadingIndicator from 'common/LoadingIndicator';
 
 import { getTeamActionItems } from '../repository';
+import { ACTIONS } from '../constants';
+
+import { canManageTeam } from 'utils/currentUser';
 
 class Team extends React.Component {
     async componentDidMount() {
@@ -17,7 +21,12 @@ class Team extends React.Component {
 
     state = {
         loading: true,
-        teamActionItems: []
+        teamActionItems: [],
+        page: ACTIONS.default
+    };
+
+    handleSwitchPage = page => {
+        this.setState({ page });
     };
 
     renderTeamActionItems = () => {
@@ -31,14 +40,52 @@ class Team extends React.Component {
         ));
     };
 
+    renderManagerActions = () => (
+        <>
+            <Button
+                text="Create Action Item"
+                onClick={() => this.handleSwitchPage(ACTIONS.create)}
+            />
+            <Button
+                text="Manage Team"
+                onClick={() => this.handleSwitchPage(ACTIONS.manage)}
+            />
+        </>
+    );
+
     render() {
-        const { name } = this.props.location.state.team;
-        const { loading } = this.state;
+        const { name, managerID } = this.props.location.state.team;
+        const { loading, page } = this.state;
 
         return (
             <>
                 <Header title={name} />
-                {loading ? <LoadingIndicator /> : this.renderTeamActionItems()}
+                {canManageTeam(managerID) && page === ACTIONS.default ? this.renderManagerActions() : null}
+                {loading ? (
+                    <LoadingIndicator />
+                ) : page === ACTIONS.create ? (
+                    <div>
+                        <Button
+                            text="Back"
+                            onClick={() =>
+                                this.handleSwitchPage(ACTIONS.default)
+                            }
+                        />
+                        creating
+                    </div>
+                ) : page === ACTIONS.manage ? (
+                    <div>
+                        <Button
+                            text="Back"
+                            onClick={() =>
+                                this.handleSwitchPage(ACTIONS.default)
+                            }
+                        />
+                        managing
+                    </div>
+                ) : (
+                    this.renderTeamActionItems()
+                )}
             </>
         );
     }
