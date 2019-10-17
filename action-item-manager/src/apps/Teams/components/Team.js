@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import ActionItemPanel from 'apps/ActionItems/components/ActionItemPanel';
 
@@ -44,9 +43,5 @@ class Team extends React.Component {
         );
     }
 }
-
-Team.propTypes = {
-    team: PropTypes.object.isRequired
-};
 
 export default Team;

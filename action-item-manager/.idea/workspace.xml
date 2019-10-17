@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c64668ce-556c-4e4c-8d36-a388d81ae184" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/common/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItemPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItemPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apps/Teams/components/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/Teams/components/Team.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/apps/Teams/components/Team.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+            <state relative-caret-position="15">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -57,13 +54,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/apps/ActionItems/components/ActionItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+            <state relative-caret-position="495">
+              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/common/Button.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -85,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/apps/ActionItems/components/ActionItemPanel.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="48" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="48" />
+              <caret line="7" column="31" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -158,11 +155,11 @@
         <option value="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItemList.js" />
         <option value="$PROJECT_DIR$/src/apps/Teams/components/TeamPanel.js" />
         <option value="$PROJECT_DIR$/src/apps/Teams/repository.js" />
-        <option value="$PROJECT_DIR$/src/apps/Teams/components/Team.js" />
         <option value="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItemPanel.js" />
         <option value="$PROJECT_DIR$/src/apps/Teams/components/Button.js" />
         <option value="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItem.js" />
         <option value="$PROJECT_DIR$/src/common/Button.js" />
+        <option value="$PROJECT_DIR$/src/apps/Teams/components/Team.js" />
       </list>
     </option>
   </component>
@@ -308,12 +305,12 @@
       <option name="presentableId" value="Default" />
       <updated>1571186482676</updated>
       <workItem from="1571186484038" duration="461000" />
-      <workItem from="1571253521187" duration="23250000" />
+      <workItem from="1571253521187" duration="23393000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23711000" />
+    <option name="totallyTimeSpent" value="23854000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -527,31 +524,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/apps/ActionItems/components/ActionItemPanel.js">
+    <entry file="file://$PROJECT_DIR$/src/common/Button.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="48" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/apps/Teams/components/Team.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+          <caret line="7" column="49" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/apps/ActionItems/components/ActionItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        <state relative-caret-position="495">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/Button.js">
+    <entry file="file://$PROJECT_DIR$/src/apps/ActionItems/components/ActionItemPanel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" column="49" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="49" />
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/apps/Teams/components/Team.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
