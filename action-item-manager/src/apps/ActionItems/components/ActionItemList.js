@@ -8,7 +8,7 @@ import LoadingIndicator from 'common/LoadingIndicator';
 
 import { getActionItems } from '../repository';
 
-class ActionItems extends React.Component {
+class ActionItemList extends React.Component {
     async componentDidMount() {
         const actionItems = await getActionItems();
         this.setState({ loading: false, actionItems });
@@ -42,4 +42,4 @@ class ActionItems extends React.Component {
     }
 }
 
-export default ActionItems;
+export default ActionItemList;

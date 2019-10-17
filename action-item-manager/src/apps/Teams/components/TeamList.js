@@ -14,7 +14,7 @@ const TeamsWrapper = styled.div`
     flex-direction: row;
 `;
 
-class Teams extends React.Component {
+class TeamList extends React.Component {
     async componentDidMount() {
         const teams = await getTeams();
         this.setState({ loading: false, teams });
@@ -49,4 +49,4 @@ class Teams extends React.Component {
     }
 }
 
-export default Teams;
+export default TeamList;
