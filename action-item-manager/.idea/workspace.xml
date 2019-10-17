@@ -2,31 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c64668ce-556c-4e4c-8d36-a388d81ae184" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webResources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/AccountInfo/components/AccountInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/AccountInfo/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/AccountInfo/repository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItems.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/ActionItems/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/ActionItems/repository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/Dashboard/components/Dashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/Dashboard/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/Dashboard/repository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/MainSideBar/components/MainSideBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/MainSideBar/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/MainSideBar/repository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/Teams/components/Teams.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/Teams/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/apps/Teams/repository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/RouterButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/apps/Teams/components/TeamPanel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/PageWrapper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/Panel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apps/Teams/components/Teams.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/Teams/components/Teams.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apps/Teams/repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apps/Teams/repository.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,47 +21,56 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/common/PageWrapper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/apps/Teams/components/Teams.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/apps/Teams/repository.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
+        <entry file="file://$PROJECT_DIR$/src/apps/Teams/components/TeamPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+            <state relative-caret-position="60">
+              <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/apps/MainSideBar/components/MainSideBar.js">
+        <entry file="file://$PROJECT_DIR$/src/common/Panel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+            <state relative-caret-position="330">
+              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
+        <entry file="file://$PROJECT_DIR$/src/common/Header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/RouterButton.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/apps/AccountInfo/components/AccountInfo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="8" selection-end-column="26" />
+            <state relative-caret-position="120">
+              <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -96,6 +87,10 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>common/Ro</find>
+      <find>import P</find>
+      <find>Teams</find>
+      <find>border</find>
+      <find>.children</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,7 +105,6 @@
         <option value="$PROJECT_DIR$/src/apps/AccountInfo/repository.js" />
         <option value="$PROJECT_DIR$/src/apps/ActionItems/components/ActionItems.js" />
         <option value="$PROJECT_DIR$/src/apps/AccountInfo/components/AccountInfo.js" />
-        <option value="$PROJECT_DIR$/src/apps/Teams/components/Teams.js" />
         <option value="$PROJECT_DIR$/.prettierrc.json" />
         <option value="$PROJECT_DIR$/src/common/RouterButton.js" />
         <option value="$PROJECT_DIR$/src/package.json" />
@@ -118,6 +112,12 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/apps/MainSideBar/components/MainSideBar.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/common/PageWrapper.js" />
+        <option value="$PROJECT_DIR$/src/common/Header.js" />
+        <option value="$PROJECT_DIR$/src/apps/Teams/repository.js" />
+        <option value="$PROJECT_DIR$/src/apps/Teams/components/Teams.js" />
+        <option value="$PROJECT_DIR$/src/common/Panel.js" />
+        <option value="$PROJECT_DIR$/src/apps/Teams/components/TeamPanel.js" />
       </list>
     </option>
   </component>
@@ -150,6 +150,33 @@
               <item name="action-item-manager" type="b2602c69:ProjectViewProjectNode" />
               <item name="action-item-manager" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="action-item-manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="action-item-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="action-item-manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="action-item-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="Teams" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="action-item-manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="action-item-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="Teams" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="action-item-manager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="action-item-manager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -205,12 +232,12 @@
       <option name="presentableId" value="Default" />
       <updated>1571186482676</updated>
       <workItem from="1571186484038" duration="461000" />
-      <workItem from="1571253521187" duration="8832000" />
+      <workItem from="1571253521187" duration="13607000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9293000" />
+    <option name="totallyTimeSpent" value="14068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -275,9 +302,6 @@
     <entry file="file://$PROJECT_DIR$/src/apps/Dashboard/repository.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/apps/Teams/repository.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/apps/Dashboard/components/Dashboard.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -308,13 +332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/apps/Teams/components/Teams.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/apps/AccountInfo/components/AccountInfo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -332,6 +349,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -341,8 +365,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/RouterButton.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -353,10 +377,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/common/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        <state relative-caret-position="120">
+          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/PageWrapper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/apps/Teams/components/Teams.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/apps/Teams/repository.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/Panel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/apps/Teams/components/TeamPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
         </state>
       </provider>
     </entry>
