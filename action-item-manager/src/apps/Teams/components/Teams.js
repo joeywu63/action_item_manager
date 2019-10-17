@@ -5,6 +5,7 @@ import TeamPanel from './TeamPanel';
 
 import PageWrapper from 'common/PageWrapper';
 import Header from 'common/Header';
+import LoadingIndicator from 'common/LoadingIndicator';
 
 import { getTeams } from '../repository';
 
@@ -30,13 +31,7 @@ class Teams extends React.Component {
         return (
             <TeamsWrapper>
                 {teams.map(team => (
-                    <TeamPanel
-                        key={team.teamID}
-                        teamID={team.teamID}
-                        managerID={team.managerID}
-                        userIDList={team.userIDList}
-                        name={team.name}
-                    />
+                    <TeamPanel key={team.teamID} team={team} />
                 ))}
             </TeamsWrapper>
         );
@@ -48,7 +43,7 @@ class Teams extends React.Component {
         return (
             <PageWrapper>
                 <Header title="My Teams" />
-                {loading ? <div>Loading...</div> : this.renderTeams()}
+                {loading ? <LoadingIndicator /> : this.renderTeams()}
             </PageWrapper>
         );
     }

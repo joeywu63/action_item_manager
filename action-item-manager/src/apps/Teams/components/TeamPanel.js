@@ -8,7 +8,9 @@ const TeamName = styled.b`
     font-size: 20px;
 `;
 
-const TeamPanel = ({ teamID, name, managerID, userIDList }) => {
+const TeamPanel = ({ team }) => {
+    const { teamID, name, managerID, userIDList } = team;
+
     return (
         <Panel onClick={() => console.log(`navigate to team ${teamID}`)}>
             <TeamName>{name}</TeamName>
@@ -20,10 +22,7 @@ const TeamPanel = ({ teamID, name, managerID, userIDList }) => {
 };
 
 TeamPanel.propTypes = {
-    teamID: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    managerID: PropTypes.number.isRequired,
-    userIDList: PropTypes.array.isRequired
+    team: PropTypes.object.isRequired
 };
 
 export default TeamPanel;
