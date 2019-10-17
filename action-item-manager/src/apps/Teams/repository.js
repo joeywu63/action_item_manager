@@ -39,3 +39,7 @@ export const getTeamActionItems = ({ teamID }) => {
 
     return teamActionItems[teamID];
 };
+
+export const assignActionItem = ({teamID, title, description, dueDate}) => {
+    console.log('assigning action item');
+};

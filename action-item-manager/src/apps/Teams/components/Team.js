@@ -2,6 +2,8 @@ import React from 'react';
 
 import ActionItemPanel from 'apps/ActionItems/components/ActionItemPanel';
 
+import CreateActionItem from './CreateActionItem';
+
 import Button from 'common/Button';
 import Header from 'common/Header';
 import LoadingIndicator from 'common/LoadingIndicator';
@@ -54,25 +56,24 @@ class Team extends React.Component {
     );
 
     render() {
-        const { name, managerID } = this.props.location.state.team;
+        const { name, managerID, teamID } = this.props.location.state.team;
         const { loading, page } = this.state;
 
         return (
             <>
                 <Header title={name} />
-                {canManageTeam(managerID) && page === ACTIONS.default ? this.renderManagerActions() : null}
+                {canManageTeam(managerID) && page === ACTIONS.default
+                    ? this.renderManagerActions()
+                    : null}
                 {loading ? (
                     <LoadingIndicator />
                 ) : page === ACTIONS.create ? (
-                    <div>
-                        <Button
-                            text="Back"
-                            onClick={() =>
-                                this.handleSwitchPage(ACTIONS.default)
-                            }
-                        />
-                        creating
-                    </div>
+                    <CreateActionItem
+                        teamID={teamID}
+                        handleGoBack={() =>
+                            this.handleSwitchPage(ACTIONS.default)
+                        }
+                    />
                 ) : page === ACTIONS.manage ? (
                     <div>
                         <Button
