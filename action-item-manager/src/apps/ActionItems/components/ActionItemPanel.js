@@ -7,8 +7,13 @@ import Panel from 'common/Panel';
 const ActionItemPanel = ({ actionItem, history }) => {
     const { actionItemID, title, description } = actionItem;
 
+    const navigateParams = {
+        pathname: `/action-items/${actionItemID}`,
+        state: { actionItem }
+    };
+
     return (
-        <Panel onClick={() => history.push(`/action-items/${actionItemID}`)}>
+        <Panel onClick={() => history.push(navigateParams)}>
             <b>{title}</b>
             <div>{description}</div>
         </Panel>
