@@ -3,6 +3,7 @@ import React from 'react';
 import ActionItemPanel from 'apps/ActionItems/components/ActionItemPanel';
 
 import CreateActionItem from './CreateActionItem';
+import ManageTeam from './ManageTeam';
 
 import Button from 'common/Button';
 import Header from 'common/Header';
@@ -75,15 +76,12 @@ class Team extends React.Component {
                         }
                     />
                 ) : page === ACTIONS.manage ? (
-                    <div>
-                        <Button
-                            text="Back"
-                            onClick={() =>
-                                this.handleSwitchPage(ACTIONS.default)
-                            }
-                        />
-                        managing
-                    </div>
+                    <ManageTeam
+                        handleGoBack={() =>
+                            this.handleSwitchPage(ACTIONS.default)
+                        }
+                        teamID={teamID}
+                    />
                 ) : (
                     this.renderTeamActionItems()
                 )}

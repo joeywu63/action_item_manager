@@ -40,6 +40,58 @@ export const getTeamActionItems = ({ teamID }) => {
     return teamActionItems[teamID];
 };
 
-export const assignActionItem = ({teamID, title, description, dueDate}) => {
+export const assignActionItem = ({ teamID, title, description, dueDate }) => {
     console.log('assigning action item');
+};
+
+export const getUsersNotOnTeam = ({ teamID }) => {
+    return [
+        {
+            id: 1,
+            customerID: 1,
+            firstName: 'Lucas',
+            lastName: 'G',
+            email: 'lucas.g@gmail.com'
+        },
+        {
+            id: 2,
+            customerID: 1,
+            firstName: 'Joey',
+            lastName: 'W',
+            email: 'joey.w@gmail.com'
+        },
+        {
+            id: 3,
+            customerID: 1,
+            firstName: 'Alex',
+            lastName: 'E',
+            email: 'alex.e@gmail.com'
+        },
+        {
+            id: 4,
+            customerID: 1,
+            firstName: 'Sandro',
+            lastName: 'S',
+            email: 'snadro.s@gmail.com'
+        }
+    ];
+};
+
+export const getTeamUsers = ({ teamID }) => {
+    return [
+        {
+            id: 1,
+            customerID: 1,
+            firstName: 'Lucas',
+            lastName: 'G',
+            email: 'lucas.g@gmail.com'
+        },
+        {
+            id: 2,
+            customerID: 1,
+            firstName: 'Joey',
+            lastName: 'W',
+            email: 'joey.w@gmail.com'
+        }
+    ];
 };
