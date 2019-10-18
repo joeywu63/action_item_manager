@@ -10,14 +10,14 @@ export const getTeamActionItems = ({ teamID }) => {
     return actionItem.getByTeam({ teamID });
 };
 
-export const assignActionItem = ({
+export const createActionItem = ({
     customerID,
     teamID,
     title,
     description,
     dueDate
 }) => {
-    actionItem.create({ customerID, teamID, title, description, dueDate });
+    return actionItem.create({ customerID, teamID, title, description, dueDate });
 };
 
 export const getTeamUsers = ({ teamID }) => {

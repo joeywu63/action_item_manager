@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from 'common/Button';
 
-import { assignActionItem } from '../repository';
+import { createActionItem } from '../repository';
 
 class CreateActionItem extends React.Component {
     state = {
@@ -21,10 +21,11 @@ class CreateActionItem extends React.Component {
 
     handleSubmit = async e => {
         e.preventDefault();
-        const { handleGoBack, teamID } = this.props;
+        const { handleGoBack, handleCreateActionItem, teamID } = this.props;
         const { title, description, dueDate } = this.state;
 
-        await assignActionItem({ teamID, title, description, dueDate });
+        const newActionItem = await createActionItem({ teamID, title, description, dueDate });
+        handleCreateActionItem(newActionItem);
         handleGoBack();
     };
 
@@ -71,6 +72,7 @@ class CreateActionItem extends React.Component {
 
 CreateActionItem.propTypes = {
     handleGoBack: PropTypes.func.isRequired,
+    handleCreateActionItem: PropTypes.func.isRequired,
     teamID: PropTypes.number.isRequired
 };
 

@@ -35,7 +35,7 @@ const actionItems = [
 let actionItemsCounter = 4;
 
 export const create = ({ customerID, teamID, title, description, dueDate }) => {
-    actionItems.push({
+    const newActionItem = {
         actionItemID: actionItemsCounter,
         title,
         description,
@@ -43,9 +43,12 @@ export const create = ({ customerID, teamID, title, description, dueDate }) => {
         teamID,
         dueDate,
         dateCreated: '2019-01-01'
-    });
+    };
 
+    actionItems.push(newActionItem);
     actionItemsCounter++;
+
+    return newActionItem;
 };
 
 export const getByTeam = ({ teamID }) => {

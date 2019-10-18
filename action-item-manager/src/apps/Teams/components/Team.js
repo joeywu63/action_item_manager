@@ -31,6 +31,12 @@ class Team extends React.Component {
         this.setState({ page });
     };
 
+    handleCreateActionItem = actionItem => {
+        const { teamActionItems } = this.state;
+        teamActionItems.push(actionItem);
+        this.setState({ teamActionItems });
+    };
+
     renderTeamActionItems = () => {
         const { teamActionItems } = this.state;
 
@@ -73,6 +79,7 @@ class Team extends React.Component {
                         handleGoBack={() =>
                             this.handleSwitchPage(ACTIONS.default)
                         }
+                        handleCreateActionItem={this.handleCreateActionItem}
                     />
                 ) : page === ACTIONS.manage ? (
                     <ManageTeam
