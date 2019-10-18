@@ -42,10 +42,22 @@ const users = [
 ];
 
 export const getByCustomer = ({ customerID }) => {
-    return users.filter(user => user.customerID === customerID)
+    return users.filter(user => user.customerID === customerID);
 };
 
-export const getByTeam = ({ teamID }) => {
-
+export const addToTeam = ({ userID, teamID }) => {
+    users.forEach(user => {
+        if (user.id === userID) {
+            user.teamIDList.push(teamID);
+        }
+    });
 };
 
+export const removeFromTeam = ({ userID, teamID }) => {
+    users.forEach(user => {
+        if (user.id === userID) {
+            const index = user.teamIDList.indexOf(teamID);
+            user.teamIDList.splice(index, 1);
+        }
+    });
+};

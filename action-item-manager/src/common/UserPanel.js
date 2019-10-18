@@ -5,20 +5,21 @@ import Button from 'common/Button';
 
 class UserPanel extends React.Component {
     render() {
-        const { user } = this.props;
+        const { user, handleRemoveUser } = this.props;
 
         return (
             <div>
                 {user.firstName}
                 {user.lastName}
-                <Button text="remove" onClick={() => console.log('removing user')} />
+                <Button text="remove" onClick={handleRemoveUser} />
             </div>
         );
     }
 }
 
 UserPanel.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    handleRemoveUser: PropTypes.func.isRequired
 };
 
 export default UserPanel;

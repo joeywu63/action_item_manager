@@ -6,15 +6,13 @@ const teams = [
         id: 1,
         name: 'Engineering',
         managerID: 1,
-        customerID: 1,
-        userIDList: [1, 2] // TODO: potentially change to number of people
+        customerID: 1
     },
     {
         id: 2,
         name: 'Some Sub Team',
         managerID: 2,
-        customerID: 1,
-        userIDList: [3, 4]
+        customerID: 1
     }
 ];
 
@@ -35,7 +33,3 @@ export const getUsers = ({ teamID }) => {
 
     return { onTeam, offTeam };
 };
-
-export const addUser = () => {};
-
-export const removeUser = () => {};

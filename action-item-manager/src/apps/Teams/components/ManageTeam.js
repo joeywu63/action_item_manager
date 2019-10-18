@@ -5,7 +5,7 @@ import Button from 'common/Button';
 import Dropdown from 'common/Dropdown';
 import UserPanel from 'common/UserPanel';
 
-import { getTeamUsers } from '../repository';
+import { getTeamUsers, addUserToTeam, removeUserFromTeam } from '../repository';
 
 class ManageTeam extends React.Component {
     async componentDidMount() {
@@ -38,13 +38,37 @@ class ManageTeam extends React.Component {
     state = {
         loading: true,
         selectedUser: null,
-
         offTeam: [],
         onTeam: []
     };
 
-    handleAddUser = () => {
+    handleAddUser = async () => {
+        const { teamID } = this.props;
+        const { selectedUser, offTeam, onTeam } = this.state;
 
+        if (selectedUser === null) {
+            return;
+        }
+
+        await addUserToTeam({ userID: selectedUser.id, teamID });
+
+        const index = offTeam.indexOf(selectedUser);
+        offTeam.splice(index, 1);
+        onTeam.push(selectedUser);
+
+        this.setState({ selectedUser: null, onTeam, offTeam });
+    };
+
+    handleRemoveUser = async user => {
+        const { teamID } = this.props;
+        const { offTeam, onTeam } = this.state;
+
+        removeUserFromTeam({ userID: user.id, teamID });
+
+        const index = onTeam.indexOf(user);
+        onTeam.splice(index, 1);
+        offTeam.push(user);
+        this.setState({ onTeam, offTeam });
     };
 
     handleChange = user => {
@@ -54,7 +78,13 @@ class ManageTeam extends React.Component {
     renderUsers = () => {
         const { onTeam } = this.state;
 
-        return onTeam.map(user => <UserPanel key={user.id} user={user} />);
+        return onTeam.map(user => (
+            <UserPanel
+                key={user.id}
+                user={user}
+                handleRemoveUser={() => this.handleRemoveUser(user)}
+            />
+        ));
     };
 
     render() {
@@ -70,10 +100,7 @@ class ManageTeam extends React.Component {
                     onChange={this.handleChange}
                     options={offTeam}
                 />
-                <Button
-                    text="Add User"
-                    onClick={this.handleAddUser}
-                />
+                <Button text="Add User" onClick={this.handleAddUser} />
                 {this.renderUsers()}
             </div>
         );
