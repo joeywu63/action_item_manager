@@ -5,23 +5,22 @@ import Button from 'common/Button';
 import Dropdown from 'common/Dropdown';
 import UserPanel from 'common/UserPanel';
 
-import { getUsersNotOnTeam, getTeamUsers } from '../repository';
+import { getTeamUsers } from '../repository';
 
 class ManageTeam extends React.Component {
     async componentDidMount() {
         const { teamID } = this.props;
 
-        let allUsers = await getUsersNotOnTeam({ teamID });
-        let teamUsers = await getTeamUsers({ teamID });
+        let { onTeam, offTeam } = await getTeamUsers({ teamID });
 
-        allUsers = allUsers.map(user => {
+        offTeam = offTeam.map(user => {
             return {
                 ...user,
                 value: user.id,
                 label: `${user.firstName} ${user.lastName}`
             };
         });
-        teamUsers = teamUsers.map(user => {
+        onTeam = onTeam.map(user => {
             return {
                 ...user,
                 value: user.id,
@@ -30,8 +29,8 @@ class ManageTeam extends React.Component {
         });
 
         this.setState({
-            allUsers,
-            teamUsers,
+            offTeam,
+            onTeam,
             loading: false
         });
     }
@@ -40,8 +39,8 @@ class ManageTeam extends React.Component {
         loading: true,
         selectedUser: null,
 
-        allUsers: [],
-        teamUsers: []
+        offTeam: [],
+        onTeam: []
     };
 
     handleAddUser = () => {
@@ -53,14 +52,14 @@ class ManageTeam extends React.Component {
     };
 
     renderUsers = () => {
-        const { teamUsers } = this.state;
+        const { onTeam } = this.state;
 
-        return teamUsers.map(user => <UserPanel key={user.id} user={user} />);
+        return onTeam.map(user => <UserPanel key={user.id} user={user} />);
     };
 
     render() {
         const { handleGoBack } = this.props;
-        const { selectedUser, allUsers } = this.state;
+        const { selectedUser, offTeam } = this.state;
 
         return (
             <div>
@@ -69,7 +68,7 @@ class ManageTeam extends React.Component {
                     placeholder="Select User..."
                     value={selectedUser}
                     onChange={this.handleChange}
-                    options={allUsers}
+                    options={offTeam}
                 />
                 <Button
                     text="Add User"

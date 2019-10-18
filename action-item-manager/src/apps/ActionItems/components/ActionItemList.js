@@ -5,11 +5,11 @@ import ActionItemPanel from './ActionItemPanel';
 import Header from 'common/Header';
 import LoadingIndicator from 'common/LoadingIndicator';
 
-import { getActionItems } from '../repository';
+import { getActionItemsForCurrentUser } from '../repository';
 
 class ActionItemList extends React.Component {
     async componentDidMount() {
-        const actionItems = await getActionItems();
+        const actionItems = await getActionItemsForCurrentUser();
         this.setState({ loading: false, actionItems });
     }
 

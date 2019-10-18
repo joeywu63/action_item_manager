@@ -30,7 +30,7 @@ class TeamList extends React.Component {
         return (
             <TeamsWrapper>
                 {teams.map(team => (
-                    <TeamPanel key={team.teamID} team={team} />
+                    <TeamPanel key={team.id} team={team} />
                 ))}
             </TeamsWrapper>
         );

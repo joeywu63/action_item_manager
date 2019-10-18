@@ -16,9 +16,8 @@ import { canManageTeam } from 'utils/currentUser';
 
 class Team extends React.Component {
     async componentDidMount() {
-        const { teamID } = this.props.location.state.team;
-
-        const teamActionItems = await getTeamActionItems({ teamID });
+        const { id } = this.props.location.state.team;
+        const teamActionItems = await getTeamActionItems({ teamID: id });
         this.setState({ loading: false, teamActionItems });
     }
 
@@ -57,7 +56,7 @@ class Team extends React.Component {
     );
 
     render() {
-        const { name, managerID, teamID } = this.props.location.state.team;
+        const { name, managerID, id } = this.props.location.state.team;
         const { loading, page } = this.state;
 
         return (
@@ -70,7 +69,7 @@ class Team extends React.Component {
                     <LoadingIndicator />
                 ) : page === ACTIONS.create ? (
                     <CreateActionItem
-                        teamID={teamID}
+                        teamID={id}
                         handleGoBack={() =>
                             this.handleSwitchPage(ACTIONS.default)
                         }
@@ -80,7 +79,7 @@ class Team extends React.Component {
                         handleGoBack={() =>
                             this.handleSwitchPage(ACTIONS.default)
                         }
-                        teamID={teamID}
+                        teamID={id}
                     />
                 ) : (
                     this.renderTeamActionItems()
