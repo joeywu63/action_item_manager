@@ -12,16 +12,17 @@ const SideBarWrapper = styled.div`
 
 class MainSideBar extends React.Component {
     render() {
-        console.log(this.props.location);
         const isLoginPage = this.props.location.pathname === '/';
-        return !isLoginPage && (
-            <SideBarWrapper>
-                <RouterButton link="/dashboard" title="Dashboard" />
-                <RouterButton link="/account-info" title="Account Info" />
-                <RouterButton link="/teams" title="Teams" />
-                <RouterButton link="/action-items" title="Action Items" />
-                <RouterButton link="/admin-page" title="Admin Page" />
-            </SideBarWrapper>
+        return (
+            !isLoginPage && (
+                <SideBarWrapper>
+                    <RouterButton link="/dashboard" title="Dashboard" />
+                    <RouterButton link="/account-info" title="Account Info" />
+                    <RouterButton link="/teams" title="Teams" />
+                    <RouterButton link="/action-items" title="Action Items" />
+                    <RouterButton link="/admin-page" title="Admin Page" />
+                </SideBarWrapper>
+            )
         );
     }
 }
