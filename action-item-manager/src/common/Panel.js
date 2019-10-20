@@ -11,8 +11,8 @@ const StyledDiv = styled.div`
     ${props => (props.onClick ? ':hover { cursor: pointer; }' : '')}
 `;
 
-const Panel = ({ children, onClick }) => (
-    <StyledDiv onClick={onClick}>{children}</StyledDiv>
+const Panel = ({ children, onClick, className }) => (
+    <StyledDiv className={className} onClick={onClick}>{children}</StyledDiv>
 );
 
 Panel.propTypes = {

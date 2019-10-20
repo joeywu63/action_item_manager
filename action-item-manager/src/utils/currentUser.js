@@ -1,6 +1,6 @@
 import { ROLES } from 'utils/constants';
 
-const currentUser = {
+let currentUser = {
     id: 1,
     customerID: 1,
     email: 'lucas.g@gmail.com',
@@ -10,6 +10,12 @@ const currentUser = {
     role: 0,
     dateLastLoggedIn: '2019-01-01'
 };
+
+export const setCurrentUser = (userData) => {
+    currentUser = userData;
+}
+
+export const getIsAdmin = () => currentUser.role === ROLES.admin;
 
 export const getCurrentUser = () => currentUser;
 
