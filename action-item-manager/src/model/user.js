@@ -53,18 +53,21 @@ const users = [
         teamIDList: [2],
         role: 0,
         dateLastLoggedIn: '2019-01-01'
-    },
+    }
 ];
 
-export const isUser = ({email, password}) => {
+export const isUser = ({ email, password }) => {
     let user;
     users.forEach(registeredUser => {
-        if (email === registeredUser.email && password === registeredUser.password) {
+        if (
+            email === registeredUser.email &&
+            password === registeredUser.password
+        ) {
             user = registeredUser;
         }
     });
     return user;
-}
+};
 
 export const getByCustomer = ({ customerID }) => {
     return users.filter(user => user.customerID === customerID);

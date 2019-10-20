@@ -1,40 +1,39 @@
-import React from 'react'
-import Panel from 'common/Panel'
+import React from 'react';
+import Panel from 'common/Panel';
 import styled from 'styled-components';
-import Button from 'common/Button'
-
+import Button from 'common/Button';
 
 const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #FFF;
+    background-color: #fff;
 `;
 
-const Login = styled.input `
+const Login = styled.input`
     color: #384047;
     background-color: #e8eeef;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
     padding: 10px;
     border: none;
     border-radius: 4px;
     margin-bottom: 1.2em;
-`
+`;
 
 const LoginButton = styled(Button)`
     width: 100%;
     font-weight: 400;
     text-align: center;
     font-size: 19px;
-    color: #FFF;
-    background-color: #4bc970;  
+    color: #fff;
+    background-color: #4bc970;
     width: 100%;
     border: none;
     border-radius: 4px;
     padding: 0.8em;
     margin-top: 1em;
     margin-bottom: 1em;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 `;
 
@@ -48,57 +47,67 @@ const Title = styled.h2`
 `;
 
 const StyledPanel = styled(Panel)`
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 6px;
     max-width: 400px;
-    box-shadow: 0 10px 40px -14px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
     max-height: 400px;
     border: 1px none;
 `;
 
-
-
 class LoginPanel extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
-            password: "",
-        }
-    }
-    
-    handleLogin = () => { 
-        this.props.onClick(this.state);
+            email: '',
+            password: ''
+        };
     }
 
-    handleChange = (event) => {
+    handleLogin = () => {
+        this.props.onClick(this.state);
+    };
+
+    handleChange = event => {
         const inputType = event.target.name;
         if (inputType === 'email') {
-            this.setState({'email': event.target.value});
+            this.setState({ email: event.target.value });
+        } else {
+            this.setState({ password: event.target.value });
         }
-        else {
-            this.setState({'password': event.target.value})
-        }
-    } 
+    };
 
     render() {
         return (
-                    <StyledPanel>
-                        <form>
-                        <FormContainer>
-                            <Title>Please Log in</Title>
-                            <div>
-                                <Login type="text" name="email" placeholder="email" onChange={this.handleChange}></Login>
-                            </div>
-                            <div>
-                                <Login type="password" name="password" placeholder="password" onChange={this.handleChange}></Login>
-                            </div>
-                        </FormContainer>
-                        <LoginButton  text="Log in" className={LoginButton} onClick={this.handleLogin}></LoginButton>
-                        </form>
-                    </StyledPanel>
-        )
+            <StyledPanel>
+                <form>
+                    <FormContainer>
+                        <Title>Please Log in</Title>
+                        <div>
+                            <Login
+                                type="text"
+                                name="email"
+                                placeholder="email"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <div>
+                            <Login
+                                type="password"
+                                name="password"
+                                placeholder="password"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                    </FormContainer>
+                    <LoginButton
+                        text="Log in"
+                        className={LoginButton}
+                        onClick={this.handleLogin}
+                    />
+                </form>
+            </StyledPanel>
+        );
     }
 }
 

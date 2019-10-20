@@ -1,34 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import RouterButton from 'common/RouterButton';
+import { withRouter } from 'react-router-dom';
 
 const SideBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 150px;
     border-right: 0.5px solid black;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
 `;
 
 class MainSideBar extends React.Component {
     render() {
-        return (
+        console.log(this.props.location);
+        const isLoginPage = this.props.location.pathname === '/';
+        return !isLoginPage && (
             <SideBarWrapper>
                 <RouterButton link="/dashboard" title="Dashboard" />
                 <RouterButton link="/account-info" title="Account Info" />
                 <RouterButton link="/teams" title="Teams" />
                 <RouterButton link="/action-items" title="Action Items" />
-                <RouterButton link="/admin-page" title="Admin Page" /> 
+                <RouterButton link="/admin-page" title="Admin Page" />
             </SideBarWrapper>
-            // TODO: Add actual link to admin-page
         );
     }
 }
 
-export default MainSideBar;
+export default withRouter(MainSideBar);
