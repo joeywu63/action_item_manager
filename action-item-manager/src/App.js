@@ -8,6 +8,7 @@ import TeamsRouter from 'apps/Teams/components/TeamsRouter';
 import ActionItemsRouter from 'apps/ActionItems/components/ActionItemsRouter';
 import LoginPage from 'apps/LoginPage/components/LoginPage';
 import Dashboard from 'apps/Dashboard/components/Dashboard';
+import AdminPage from 'apps/AdminPage/components/Admin';
 
 import PageWrapper from 'common/PageWrapper';
 
@@ -35,6 +36,7 @@ class App extends React.Component {
                             <Route path="/teams" component={TeamsRouter} />
                             <Route path="/dashboard" component={Dashboard} />
                             <Route path="/" exact component={LoginPage} />
+                            <Route path="/admin-page" component={AdminPage} />
                         </Switch>
                     </PageWrapper>
                 </MainWrapper>
