@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+<<<<<<< HEAD
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
 
@@ -10,6 +11,10 @@ import { setManager } from 'model/team'
 
 import { setManager, getByID, getByCustomer } from '../repository';
 
+=======
+
+import Button from 'common/Button';
+>>>>>>> admin deleting teams
 
 const TableData = styled.td`
     border: 1px solid LightGrey;
@@ -19,6 +24,7 @@ const TableData = styled.td`
 `;
 
 class TeamRow extends React.Component {
+<<<<<<< HEAD
     componentDidMount() {
         const { team } = this.props;
 
@@ -70,11 +76,16 @@ class TeamRow extends React.Component {
     render() {
         const { team, removeTeam } = this.props;
         const { manager, selectedUser, otherUsers } = this.state;
+=======
+    render() {
+        const { team, removeTeam } = this.props;
+>>>>>>> admin deleting teams
 
         return (
             <tr>
                 <TableData>{team.id}</TableData>
                 <TableData>{team.name}</TableData>
+<<<<<<< HEAD
                 <TableData>
                     <Dropdown
                         placeholder={manager}
@@ -83,6 +94,9 @@ class TeamRow extends React.Component {
                         options={otherUsers}
                     />
                 </TableData>
+=======
+                <TableData>{team.managerID}</TableData>
+>>>>>>> admin deleting teams
                 <TableData>
                     <Button text="Disband" onClick={() => removeTeam(team)} />
                 </TableData>

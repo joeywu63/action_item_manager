@@ -64,8 +64,14 @@ class MainRouter extends React.Component {
                                 component={AccountInfo}
                             />
                             <Route path="/teams" component={TeamsRouter} />
+<<<<<<< HEAD
                             <Route path="/admin-page" component={AdminPage} />
                             <Route path="/" component={Dashboard} />
+=======
+                            <Route path="/dashboard" component={Dashboard} />
+                            <Route path="/" exact component={LoginPage} />
+                            <Route path="/admin-page" component={AdminPage} />
+>>>>>>> admin deleting teams
                         </Switch>
                     </PageWrapper>
                 </MainWrapper>
