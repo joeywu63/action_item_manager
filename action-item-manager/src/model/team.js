@@ -33,3 +33,26 @@ export const getUsers = ({ teamID }) => {
 
     return { onTeam, offTeam };
 };
+
+export const getAllTeams = () => {
+    return teams;
+};
+
+export const addTeamToList = ({ teamId, teamName, managerID, customerID }) => {
+    const newTeam = {
+        id: teamId,
+        name: teamName,
+        managerID: managerID,
+        customerID: customerID
+    };
+    teams.push(newTeam);
+};
+
+export const removeTeamFromList = ({ teamId }) => {
+    for (let i = teams.length - 1; i >= 0; i--) {
+        if (teams[i].id === teamId) {
+            teams.splice(i, 1);
+        }
+    }
+    return teams;
+};
