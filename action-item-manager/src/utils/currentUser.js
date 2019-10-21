@@ -11,9 +11,9 @@ let currentUser = {
     dateLastLoggedIn: '2019-01-01'
 };
 
-export const setCurrentUser = (userData) => {
+export const setCurrentUser = userData => {
     currentUser = userData;
-}
+};
 
 export const getIsAdmin = () => currentUser.role === ROLES.admin;
 

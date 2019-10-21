@@ -9,7 +9,8 @@ const actionItems = [
         customerID: 1,
         teamID: 1,
         dueDate: '2019-12-12',
-        dateCreated: '2019-01-01'
+        dateCreated: '2019-01-01',
+        userIDList: []
     },
     {
         actionItemID: 2,
@@ -19,7 +20,8 @@ const actionItems = [
         customerID: 1,
         teamID: 1,
         dueDate: '2019-12-12',
-        dateCreated: '2019-01-01'
+        dateCreated: '2019-01-01',
+        userIDList: []
     },
     {
         actionItemID: 3,
@@ -29,7 +31,8 @@ const actionItems = [
         customerID: 1,
         teamID: 2,
         dueDate: '2019-12-12',
-        dateCreated: '2019-01-01'
+        dateCreated: '2019-01-01',
+        userIDList: []
     }
 ];
 let actionItemsCounter = 4;
@@ -58,5 +61,37 @@ export const getByTeam = ({ teamID }) => {
 export const getByCurrentUser = () => {
     const currentUser = getCurrentUser();
 
-    return actionItems.filter(actionItem => currentUser.teamIDList.includes(actionItem.teamID));
+    return actionItems.filter(actionItem =>
+        currentUser.teamIDList.includes(actionItem.teamID)
+    );
+};
+
+export const toggleActionItemComplete = ({
+    userID,
+    actionItemID,
+    isComplete
+}) => {
+    actionItems.forEach(actionItem => {
+        if (actionItem.actionItemID === actionItemID) {
+            if (isComplete) {
+                actionItem.userIDList.push(userID);
+            } else {
+                const index = actionItem.userIDList.indexOf(userID);
+                actionItem.userIDList.splice(index, 1);
+            }
+        }
+    });
+};
+
+export const didComplete = ({ userID, actionItemID }) => {
+    let completed = false;
+
+    actionItems.forEach(actionItem => {
+        if (actionItem.actionItemID === actionItemID) {
+            const index = actionItem.userIDList.indexOf(userID);
+            completed = index !== -1;
+        }
+    });
+
+    return completed;
 };

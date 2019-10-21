@@ -3,20 +3,28 @@ import React from 'react';
 import Header from 'common/Header';
 import Button from 'common/Button';
 
+import { toggleActionItemComplete, didComplete } from '../repository';
+import { getCurrentUser } from 'utils/currentUser';
+
 class ActionItem extends React.Component {
     componentDidMount() {
-        const { complete } = this.props.location.state.actionItem;
+        const { actionItemID } = this.props.location.state.actionItem;
+        const { currentUser } = this.state;
+
+        const complete = didComplete({ userID: currentUser.id, actionItemID });
         this.setState({ complete });
     }
 
     state = {
+        currentUser: getCurrentUser(),
         complete: false
     };
 
-    handleMarkAsComplete = () => {
-        const { complete } = this.state;
+    handleMarkAsComplete = async () => {
+        const { actionItemID } = this.props.location.state.actionItem;
+        const { complete, currentUser } = this.state;
 
-        console.log('marking complete');
+        await toggleActionItemComplete({ userID: currentUser.id, isComplete: !complete, actionItemID });
         this.setState({ complete: !complete });
     };
 
