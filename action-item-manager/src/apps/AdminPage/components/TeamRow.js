@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
-import { getByID, getByCustomer } from 'model/user';
-import { setManager } from 'model/team'
+import { setManager, getByID, getByCustomer } from '../repository';
 
 const TableData = styled.td`
     border: 1px solid LightGrey;
