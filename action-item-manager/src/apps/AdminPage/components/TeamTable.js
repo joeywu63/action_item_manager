@@ -44,7 +44,6 @@ class TeamTable extends React.Component {
     handleRemoveTeam = team => {
         const { removeTeam } = this.props;
         const { teams } = this.state;
-
         removeTeam({ teamId: team.id });
 
         this.setState({
@@ -59,6 +58,30 @@ class TeamTable extends React.Component {
         addTeam({
             teamName: newTeamName,
             managerID: selectedUser.id
+        });
+
+        this.setState({
+            teams: teams
+        });
+    };
+
+    handleNameChange = e => {
+        this.setState({ newTeamName: e.target.value });
+    };
+
+    handleUserChange = user => {
+        this.setState({ selectedUser: user });
+    };
+
+    handleAddTeam = () => {
+        const customerID = getCurrentUser().customerID;
+        const { addTeam } = this.props;
+        const { teams, newTeamName, selectedUser } = this.state;
+
+        addTeam({
+            teamName: newTeamName,
+            managerID: selectedUser.id,
+            customerID: customerID
         });
 
         this.setState({
