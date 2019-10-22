@@ -5,7 +5,7 @@ import TeamRow from './TeamRow';
 import AddTeamForm from './AddTeamForm';
 
 import { getCurrentUser } from 'utils/currentUser';
-import { getAllTeams, removeTeamFromList } from 'model/team';
+import { getAllTeams } from '../repository';
 
 const Table = styled.table`
     margin: 0;
@@ -31,6 +31,7 @@ const TableHeader = styled.th`
 class TeamTable extends React.Component {
     async componentDidMount() {
         const allTeams = await getAllTeams();
+        // const allTeamsClone = allTeams.slice();
         this.setState({ teams: allTeams });
     }
 
@@ -43,6 +44,7 @@ class TeamTable extends React.Component {
     handleRemoveTeam = team => {
         const { removeTeam } = this.props;
         const { teams } = this.state;
+
         removeTeam({ teamId: team.id });
 
         this.setState({
