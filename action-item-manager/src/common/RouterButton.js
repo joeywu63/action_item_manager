@@ -19,7 +19,7 @@ const StyledButton = styled.button`
 
 class RouterButton extends React.Component {
     render() {
-        const { link, title } = this.props;
+        const { link, title, onClick } = this.props;
         const shouldNotBeRendered =
             !getIsAdmin() && this.props.title.includes('Admin');
         if (shouldNotBeRendered) {
@@ -27,7 +27,7 @@ class RouterButton extends React.Component {
         } else {
             return (
                 <Link to={link}>
-                    <StyledButton title={title}>{title}</StyledButton>
+                    <StyledButton title={title} onClick={onClick}>{title}</StyledButton>
                 </Link>
             );
         }
@@ -36,7 +36,8 @@ class RouterButton extends React.Component {
 
 RouterButton.propTypes = {
     link: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    onClick: PropTypes.func
 };
 
 export default RouterButton;

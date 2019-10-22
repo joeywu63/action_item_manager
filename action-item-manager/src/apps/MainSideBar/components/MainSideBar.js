@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import RouterButton from 'common/RouterButton';
 import { withRouter } from 'react-router-dom';
+import {setCurrentUser} from 'utils/currentUser.js'
 
 const SideBarWrapper = styled.div`
     display: flex;
@@ -11,6 +12,11 @@ const SideBarWrapper = styled.div`
 `;
 
 class MainSideBar extends React.Component {
+
+    logout = () => {
+        setCurrentUser({});
+    }
+
     render() {
         const isLoginPage = this.props.location.pathname === '/';
         return (
@@ -21,6 +27,7 @@ class MainSideBar extends React.Component {
                     <RouterButton link="/teams" title="Teams" />
                     <RouterButton link="/action-items" title="Action Items" />
                     <RouterButton link="/admin-page" title="Admin Page" />
+                    <RouterButton link="/" title="Logout" onClick={this.logout}/>
                 </SideBarWrapper>
             )
         );
