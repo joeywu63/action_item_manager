@@ -97,6 +97,10 @@ export const remove = ({ userID }) => {
     });
 };
 
+export const getByID = ({ userID }) => {
+    return users.find(user => user.id === userID);
+};
+
 export const addToTeam = ({ userID, teamID }) => {
     users.forEach(user => {
         if (user.id === userID) {
