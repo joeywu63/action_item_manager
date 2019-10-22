@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
+<<<<<<< HEAD
 import { setManager, getByID, getUsers } from '../repository';
+=======
+import { getByID, getByCustomer } from 'model/user';
+import { setManager } from 'model/team'
+>>>>>>> added admin changing team manager functionality
 
 const TableData = styled.td`
     border: 1px solid LightGrey;
