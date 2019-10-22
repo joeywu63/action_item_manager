@@ -1,6 +1,8 @@
 import { getCurrentUser } from 'utils/currentUser';
 import { getByCustomer } from 'model/user';
 
+let numTeams = 2;
+
 const teams = [
     {
         id: 1,
@@ -43,21 +45,22 @@ export const getAllTeams = () => {
     return teams;
 };
 
-export const addTeamToList = ({ teamId, teamName, managerID, customerID }) => {
+export const addTeamToList = ({ teamName, managerID, customerID }) => {
     const newTeam = {
-        id: teamId,
+        id: numTeams + 1,
         name: teamName,
         managerID: managerID,
         customerID: customerID
     };
     teams.push(newTeam);
+    numTeams++;
+    return newTeam;
 };
 
 export const removeTeamFromList = ({ teamId }) => {
-    for (let i = teams.length - 1; i >= 0; i--) {
-        if (teams[i].id === teamId) {
+    return teams.forEach((team, i) => {
+        if (team.id === teamId) {
             teams.splice(i, 1);
         }
-    }
-    return teams;
+    });
 };

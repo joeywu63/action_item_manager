@@ -1,26 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
-
-import Button from 'common/Button';
 import Header from 'common/Header';
 
 import TeamTable from './TeamTable';
 
-import { getAllTeams, addTeamToList, removeTeamFromList } from 'model/team'
+import { createTeam, removeTeam } from '../repository';
 
 class Admin extends React.Component {
 
-    state = {
-        teams: getAllTeams()
-    };
-
     render() {
+
         return (
             <>
-                <Header title="Welcome, Admin"/>
-                <TeamTable teams={this.state.teams}
-                           removeTeam={removeTeamFromList}
-                           addTeam={addTeamToList}/>
+                <Header title="Welcome, Admin" />
+                <TeamTable
+                    removeTeam={removeTeam}
+                    addTeam={createTeam}
+                />
             </>
         );
     }

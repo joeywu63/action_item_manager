@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import TeamRow from './TeamRow';
+import AddTeamForm from './AddTeamForm';
+
+import { getCurrentUser } from 'utils/currentUser';
+import { getAllTeams, removeTeamFromList } from 'model/team';
 
 const Table = styled.table`
-<<<<<<< HEAD
-=======
-    width: 100%;
->>>>>>> 0b570c8ab9b323d4e576642854ab2888437c47e1
     margin: 0;
     border-spacing: 0;
     border-collapse: collapse;
@@ -16,20 +16,12 @@ const Table = styled.table`
 `;
 
 const TableHead = styled.thead`
-<<<<<<< HEAD
-=======
-    font-size: 4vh;
->>>>>>> 0b570c8ab9b323d4e576642854ab2888437c47e1
     font-weight: bold;
     text-align: left;
     padding 2;
 `;
 
 const TableHeader = styled.th`
-<<<<<<< HEAD
-=======
-    font-size: 3vh;
->>>>>>> 0b570c8ab9b323d4e576642854ab2888437c47e1
     font-weight: bold;
     border: 1px solid black
     text-align: center;
@@ -37,28 +29,54 @@ const TableHeader = styled.th`
 `;
 
 class TeamTable extends React.Component {
-    componentDidMount() {
-        const teams = this.props.teams;
-        this.setState({ teams });
+    async componentDidMount() {
+        const allTeams = await getAllTeams();
+        this.setState({ teams: allTeams });
     }
 
     state = {
-        teams: []
+        teams: [],
+        newTeamName: '',
+        selectedUser: null
     };
-
-    // todo: handle adding teams
 
     handleRemoveTeam = team => {
         const { removeTeam } = this.props;
-        const newTeams = removeTeam({ teamId: team.id });
+        const { teams } = this.state;
+        removeTeam({ teamId: team.id });
 
         this.setState({
-            teams: newTeams
+            teams: teams
         });
     };
 
+    handleAddTeam = () => {
+        const customerID = getCurrentUser().customerID;
+        const { addTeam } = this.props;
+        const { teams, newTeamName, selectedUser } = this.state;
+
+        addTeam({
+            teamName: newTeamName,
+            managerID: selectedUser.id,
+            customerID: customerID
+        });
+
+        this.setState({
+            teams: teams
+        });
+    };
+
+    handleNameChange = e => {
+        this.setState({ newTeamName: e.target.value });
+    };
+
+    handleUserChange = user => {
+        this.setState({ selectedUser: user });
+    };
+
     render() {
-        const { teams } = this.props;
+        const { teams } = this.state;
+        const customerID = getCurrentUser().customerID;
 
         let rows = [];
         teams.forEach(team => {
@@ -68,17 +86,27 @@ class TeamTable extends React.Component {
         });
 
         return (
-            <Table id="table">
-                <TableHead>
-                    <tr>
-                        <TableHeader>Team ID</TableHeader>
-                        <TableHeader>Team Name</TableHeader>
-                        <TableHeader>Team Manager</TableHeader>
-                        <TableHeader>Disband Team</TableHeader>
-                    </tr>
-                </TableHead>
-                <tbody>{rows}</tbody>
-            </Table>
+            <div>
+                <AddTeamForm
+                    customerId={customerID}
+                    newTeamName={this.state.newTeamName}
+                    selectedUser={this.state.selectedUser}
+                    addTeam={this.handleAddTeam}
+                    onChangeName={this.handleNameChange}
+                    onChangeUser={this.handleUserChange}
+                />
+                <Table>
+                    <TableHead>
+                        <tr>
+                            <TableHeader>Team ID</TableHeader>
+                            <TableHeader>Team Name</TableHeader>
+                            <TableHeader>Team Manager</TableHeader>
+                            <TableHeader>Disband Team</TableHeader>
+                        </tr>
+                    </TableHead>
+                    <tbody>{rows}</tbody>
+                </Table>
+            </div>
         );
     }
 }
