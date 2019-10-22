@@ -3,6 +3,8 @@ import { getList } from 'model/user';
 
 let numTeams = 2;
 
+let numTeams = 2;
+
 const teams = [
     {
         id: 1,
