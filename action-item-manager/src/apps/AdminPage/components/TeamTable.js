@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import TeamRow from './TeamRow';
 
 const Table = styled.table`
+<<<<<<< HEAD
+=======
+    width: 100%;
+>>>>>>> 0b570c8ab9b323d4e576642854ab2888437c47e1
     margin: 0;
     border-spacing: 0;
     border-collapse: collapse;
@@ -12,12 +16,20 @@ const Table = styled.table`
 `;
 
 const TableHead = styled.thead`
+<<<<<<< HEAD
+=======
+    font-size: 4vh;
+>>>>>>> 0b570c8ab9b323d4e576642854ab2888437c47e1
     font-weight: bold;
     text-align: left;
     padding 2;
 `;
 
 const TableHeader = styled.th`
+<<<<<<< HEAD
+=======
+    font-size: 3vh;
+>>>>>>> 0b570c8ab9b323d4e576642854ab2888437c47e1
     font-weight: bold;
     border: 1px solid black
     text-align: center;

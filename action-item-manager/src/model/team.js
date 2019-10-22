@@ -34,11 +34,14 @@ export const getUsers = ({ teamID }) => {
     return { onTeam, offTeam };
 };
 
+<<<<<<< HEAD
 export const setManager = ({ teamId, managerId }) => {
     const team = teams.find(team => team.id === teamId);
     team.managerID = managerId;
 };
 
+=======
+>>>>>>> 0b570c8ab9b323d4e576642854ab2888437c47e1
 export const getAllTeams = () => {
     return teams;
 };
