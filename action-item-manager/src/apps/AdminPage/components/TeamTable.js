@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import TeamRow from './TeamRow';
 
 const Table = styled.table`
-    width: 100%;
     margin: 0;
     border-spacing: 0;
     border-collapse: collapse;
@@ -13,14 +12,12 @@ const Table = styled.table`
 `;
 
 const TableHead = styled.thead`
-    font-size: 4vh;
     font-weight: bold;
     text-align: left;
     padding 2;
 `;
 
 const TableHeader = styled.th`
-    font-size: 3vh;
     font-weight: bold;
     border: 1px solid black
     text-align: center;
