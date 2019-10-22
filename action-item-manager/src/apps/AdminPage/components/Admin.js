@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from 'common/Button';
 import Header from 'common/Header';
 
-import UserTable from './TeamTable';
+import TeamTable from './TeamTable';
 
 import { getAllTeams, addTeamToList, removeTeamFromList } from 'model/team'
 
@@ -18,7 +18,7 @@ class Admin extends React.Component {
         return (
             <>
                 <Header title="Welcome, Admin"/>
-                <UserTable teams={this.state.teams}
+                <TeamTable teams={this.state.teams}
                            removeTeam={removeTeamFromList}
                            addTeam={addTeamToList}/>
             </>
