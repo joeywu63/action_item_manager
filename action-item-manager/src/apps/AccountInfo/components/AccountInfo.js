@@ -16,13 +16,11 @@ const Title = styled.div`
     margin-right: auto;
 `;
 
-
 class AccountInfo extends React.Component {
-
     state = {
         currentUser: getCurrentUser(),
         page: ACCTPAGES.default
-    }
+    };
 
     handleSwitchPage = page => {
         this.setState({ page });
@@ -37,20 +35,20 @@ class AccountInfo extends React.Component {
         return (
             <>
                 <SidebarWrapper />
-                <Header title="Account Info"/>
+                <Header title="Account Info" />
                 First Name: {firstName}
                 Last Name: {lastName}
                 Email: {email}
                 Role: {this.getRole(role)}
-
-                <Button 
+                <Button
                     text="Edit Password"
-                    onClick={ () => this.handleSwitchPage(ACCTPAGES.changepassword) }
+                    onClick={() =>
+                        this.handleSwitchPage(ACCTPAGES.changepassword)
+                    }
                 />
-
                 <Button
                     text="Edit Profile"
-                    onClick={ () => this.handleSwitchPage(ACCTPAGES.changeinfo) }
+                    onClick={() => this.handleSwitchPage(ACCTPAGES.changeinfo)}
                 />
             </>
         );
@@ -60,14 +58,13 @@ class AccountInfo extends React.Component {
         const { page } = this.state;
         return (
             <>
-                { page === ACCTPAGES.default ? 
-                this.renderAccountInfo() :
-                page === ACCTPAGES.changepassword ?
-                <ChangePassword /> :
-                page === ACCTPAGES.changeinfo ?
-                <ChangeInfo /> :
-                null
-                }
+                {page === ACCTPAGES.default ? (
+                    this.renderAccountInfo()
+                ) : page === ACCTPAGES.changepassword ? (
+                    <ChangePassword handleSwitchPage={this.handleSwitchPage}/>
+                ) : page === ACCTPAGES.changeinfo ? (
+                    <ChangeInfo handleSwitchPage={this.handleSwitchPage}/>
+                ) : null}
             </>
         );
     }

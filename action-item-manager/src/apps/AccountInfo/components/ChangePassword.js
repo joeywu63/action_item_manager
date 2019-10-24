@@ -1,57 +1,54 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import Button from 'common/Button';
-import Header from 'common/Header';
 import { ACCTPAGES } from '../constants';
 import AccountInfo from './AccountInfo';
 
 class ChangePassword extends React.Component {
-
     state = {
         value: ''
     };
 
-    handleSwitchPage = page => {
-        this.setState({ page });
-    };
+    renderChangePasswordButtons = () => {
+        const { handleSwitchPage } = this.props;
 
-    renderChangePasswordButtons = () => (
-        <>
-            <Button
-                text="Submit"
-                onClick={() => this.handleSwitchPage(ACCTPAGES.default)}
-            />
-            <Button
-                text="Cancel"
-                onClick={() => this.handleSwitchPage(ACCTPAGES.default)}
-            />
-        </>
-    );
+        return (
+            <>
+                <Button
+                    text="Submit"
+                    onClick={() => handleSwitchPage(ACCTPAGES.default)}
+                />
+                <Button
+                    text="Cancel"
+                    onClick={() => handleSwitchPage(ACCTPAGES.default)}
+                />
+            </>
+        );
+    };
 
     render() {
         const { page } = this.state;
 
         return (
             <>
-            <form>
-                <label>
-                    New Password:
-                    <input type="text" value={this.state.value}  />
-                </label>
-            </form>
+                <form>
+                    <label>
+                        New Password:
+                        <input type="text" value={this.state.value} />
+                    </label>
+                </form>
 
-            {this.renderChangePasswordButtons()}
+                {this.renderChangePasswordButtons()}
 
-            {page === ACCTPAGES.default
-                    ? < AccountInfo />
-            : null
-            }
+                {page === ACCTPAGES.default ? <AccountInfo /> : null}
             </>
-
-        )
+        );
     }
-
 }
+
+ChangePassword.propTypes = {
+    handleSwitchPage: PropTypes.func.isRequired
+};
 
 export default ChangePassword;
