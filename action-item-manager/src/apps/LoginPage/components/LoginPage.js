@@ -1,7 +1,10 @@
 import React from 'react';
-import LoginPanel from 'apps/LoginPage/components/LoginPanel';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { isUser } from 'model/user';
+
+import LoginPanel from 'apps/LoginPage/components/LoginPanel';
+
+import { isUser } from 'model/user'; // TODO: move to repository
 import { setCurrentUser } from 'utils/currentUser';
 
 const PanelWrapper = styled.div`
@@ -11,14 +14,13 @@ const PanelWrapper = styled.div`
 
 class LoginPage extends React.Component {
     handleLogin = loginData => {
-        // Check if user is registered
+        const { login } = this.props;
+
         const userData = isUser(loginData);
         if (userData) {
             setCurrentUser(userData);
-            this.props.history.push('/dashboard');
-        }
-        // Error message if not registered
-        else {
+            login();
+        } else {
             // TODO: Better error message mechanism
             alert('Wrong credentials. Try again');
         }
@@ -32,5 +34,9 @@ class LoginPage extends React.Component {
         );
     }
 }
+
+LoginPage.propTypes = {
+    login: PropTypes.func.isRequired
+};
 
 export default LoginPage;

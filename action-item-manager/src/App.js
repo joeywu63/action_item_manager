@@ -12,17 +12,47 @@ import AdminPage from 'apps/AdminPage/components/Admin';
 
 import PageWrapper from 'common/PageWrapper';
 
+import { getCurrentUser } from 'utils/currentUser';
+
 const MainWrapper = styled.div`
     display: flex;
     height: 100vh;
 `;
 
 class App extends React.Component {
+    state = {
+        isSignedIn: false,
+        isSigningUp: false
+    };
+
+    login = () => {
+        this.setState({ isSignedIn: true, isSignedUp: false });
+    };
+
+    logout = () => {
+        this.setState({ isSignedIn: false, isSignedUp: false });
+    };
+
+    render() {
+        const { isSignedIn, isSigningUp } = this.state;
+        const currentUser = getCurrentUser(); // we need to get current user also for security reasons
+
+        return isSignedIn && currentUser ? (
+            <MainRouter logout={this.logout}/>
+        ) : isSigningUp ? (
+            <div>Sign up</div>
+        ) : (
+            <LoginPage login={this.login} />
+        );
+    }
+}
+
+class MainRouter extends React.Component {
     render() {
         return (
             <Router>
                 <MainWrapper>
-                    <MainSideBar />
+                    <MainSideBar logout={this.props.logout}/>
                     <PageWrapper>
                         <Switch>
                             <Route
@@ -34,9 +64,8 @@ class App extends React.Component {
                                 component={AccountInfo}
                             />
                             <Route path="/teams" component={TeamsRouter} />
-                            <Route path="/dashboard" component={Dashboard} />
-                            <Route path="/" exact component={LoginPage} />
                             <Route path="/admin-page" component={AdminPage} />
+                            <Route path="/dashboard" component={Dashboard} />
                         </Switch>
                     </PageWrapper>
                 </MainWrapper>

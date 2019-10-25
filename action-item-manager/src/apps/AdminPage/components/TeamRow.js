@@ -15,15 +15,17 @@ class TeamRow extends React.Component {
     componentDidMount() {
         const { team } = this.props;
 
-        const allUsers = getByCustomer({customerID: team.customerID});
-        let regUsers = allUsers.filter(user => user.id != team.managerID).map(user => {
-            return {
-                ...user,
-                value: user.id,
-                label: `${user.firstName} ${user.lastName}`
-            };
-        });
-        let currManager = getByID({userID: team.managerID});
+        const allUsers = getByCustomer({ customerID: team.customerID });
+        let regUsers = allUsers
+            .filter(user => user.id !== team.managerID)
+            .map(user => {
+                return {
+                    ...user,
+                    value: user.id,
+                    label: `${user.firstName} ${user.lastName}`
+                };
+            });
+        let currManager = getByID({ userID: team.managerID });
 
         this.setState({
             manager: `${currManager.firstName} ${currManager.lastName}`,
@@ -41,17 +43,17 @@ class TeamRow extends React.Component {
         const { team } = this.props;
         const { otherUsers } = this.state;
 
-        const prevManager = getByID({userID: team.managerID})
-        prevManager.value = prevManager.id
-        prevManager.label = `${prevManager.firstName} ${prevManager.lastName}`
-        
+        const prevManager = getByID({ userID: team.managerID });
+        prevManager.value = prevManager.id;
+        prevManager.label = `${prevManager.firstName} ${prevManager.lastName}`;
+
         const i = otherUsers.indexOf(user);
         otherUsers.push(prevManager);
         otherUsers.splice(i, 1);
-    
-        setManager({ teamId: team.id, managerId: user.id})
 
-        this.setState({ 
+        setManager({ teamId: team.id, managerId: user.id });
+
+        this.setState({
             manager: `${user.firstName} ${user.lastName}`,
             selectedUser: user,
             otherUsers: otherUsers
