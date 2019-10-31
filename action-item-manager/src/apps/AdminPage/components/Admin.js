@@ -1,7 +1,9 @@
 import React from 'react';
-import Header from 'common/Header';
 
 import TeamTable from './TeamTable';
+import UserTable from './UserTable';
+
+import Header from 'common/Header';
 
 import { createTeam, removeTeam } from '../repository';
 
@@ -16,6 +18,7 @@ class Admin extends React.Component {
                     removeTeam={removeTeam}
                     addTeam={createTeam}
                 />
+                <UserTable />
             </>
         );
     }

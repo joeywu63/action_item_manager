@@ -6,7 +6,6 @@ const actionItems = [
         title: 'Some Title for Some Action Item',
         description:
             'The following are the steps to do something: 1. turn off your computer, 2. go home',
-        customerID: 1,
         teamID: 1,
         dueDate: '2019-12-12',
         dateCreated: '2019-01-01',
@@ -17,7 +16,6 @@ const actionItems = [
         title: 'Some Other Title for Some Other Action Item',
         description:
             'Some other description to complete some task you probably dont want to do',
-        customerID: 1,
         teamID: 1,
         dueDate: '2019-12-12',
         dateCreated: '2019-01-01',
@@ -28,7 +26,6 @@ const actionItems = [
         title: 'Action Item for Team 2',
         description:
             'Some other description to complete some task you probably dont want to do',
-        customerID: 1,
         teamID: 2,
         dueDate: '2019-12-12',
         dateCreated: '2019-01-01',
@@ -37,21 +34,48 @@ const actionItems = [
 ];
 let actionItemsCounter = 4;
 
-export const create = ({ customerID, teamID, title, description, dueDate }) => {
+export const create = ({ teamID, title, description, dueDate }) => {
     const newActionItem = {
         actionItemID: actionItemsCounter,
         title,
         description,
-        customerID,
         teamID,
         dueDate,
-        dateCreated: '2019-01-01'
+        dateCreated: '2019-01-01',
+        userIDList: []
     };
 
     actionItems.push(newActionItem);
     actionItemsCounter++;
 
     return newActionItem;
+};
+
+export const getByID = ({ id }) => {
+    const ai = actionItems.filter(a => a.actionItemID === id);
+    try {
+        return ai[0];
+    } catch (e) {
+        console.log('no action item with this id');
+    }
+};
+
+export const updateTitle = ({ id, newTitle }) => {
+    const ai = actionItems.filter(a => a.actionItemID === id);
+    try {
+        ai[0].title = newTitle;
+    } catch (e) {
+        console.log('no action item with this id');
+    }
+};
+
+export const updateDescription = ({ id, newDesc }) => {
+    const ai = actionItems.filter(a => a.actionItemID === id);
+    try {
+        ai[0].description = newDesc;
+    } catch (e) {
+        console.log('no action item with this id');
+    }
 };
 
 export const getByTeam = ({ teamID }) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
-import { setManager, getByID, getByCustomer } from '../repository';
+import { setManager, getByID, getUsers } from '../repository';
 
 const TableData = styled.td`
     border: 1px solid LightGrey;
@@ -15,15 +15,17 @@ class TeamRow extends React.Component {
     componentDidMount() {
         const { team } = this.props;
 
-        const allUsers = getByCustomer({customerID: team.customerID});
-        let regUsers = allUsers.filter(user => user.id != team.managerID).map(user => {
-            return {
-                ...user,
-                value: user.id,
-                label: `${user.firstName} ${user.lastName}`
-            };
-        });
-        let currManager = getByID({userID: team.managerID});
+        const allUsers = getUsers();
+        let regUsers = allUsers
+            .filter(user => user.id !== team.managerID)
+            .map(user => {
+                return {
+                    ...user,
+                    value: user.id,
+                    label: `${user.firstName} ${user.lastName}`
+                };
+            });
+        let currManager = getByID({ userID: team.managerID });
 
         this.setState({
             manager: `${currManager.firstName} ${currManager.lastName}`,
@@ -41,17 +43,17 @@ class TeamRow extends React.Component {
         const { team } = this.props;
         const { otherUsers } = this.state;
 
-        const prevManager = getByID({userID: team.managerID})
-        prevManager.value = prevManager.id
-        prevManager.label = `${prevManager.firstName} ${prevManager.lastName}`
-        
+        const prevManager = getByID({ userID: team.managerID });
+        prevManager.value = prevManager.id;
+        prevManager.label = `${prevManager.firstName} ${prevManager.lastName}`;
+
         const i = otherUsers.indexOf(user);
         otherUsers.push(prevManager);
         otherUsers.splice(i, 1);
-    
-        setManager({ teamId: team.id, managerId: user.id})
 
-        this.setState({ 
+        setManager({ teamId: team.id, managerId: user.id });
+
+        this.setState({
             manager: `${user.firstName} ${user.lastName}`,
             selectedUser: user,
             otherUsers: otherUsers

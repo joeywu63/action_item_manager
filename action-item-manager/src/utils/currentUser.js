@@ -1,7 +1,6 @@
 import { ROLES } from 'utils/constants';
 
-let currentUser = {
-};
+let currentUser = null;
 
 export const setCurrentUser = userData => {
     currentUser = userData;
