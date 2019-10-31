@@ -12,3 +12,7 @@ export const setManager = team.setManager;
 export const getUsers = user.getList;
 
 export const getByID = user.getByID;
+
+export const createUser = user.create;
+
+export const removeUser = user.remove;

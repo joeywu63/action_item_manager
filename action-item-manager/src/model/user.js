@@ -1,3 +1,5 @@
+let numUsers = 5;
+
 const users = [
     {
         id: 0,
@@ -68,6 +70,31 @@ export const getList = () => users;
 
 export const getByID = ({ userID }) => {
     return users.find(user => user.id === userID);
+};
+
+export const create = ({ email, firstName, lastName, role }) => {
+    const newUser = {
+        id: numUsers,
+        firstName,
+        lastName,
+        email,
+        password: 'admin',
+        teamIDList: [],
+        role,
+        dateLastLoggedIn: '2019-01-01'
+    };
+    users.push(newUser);
+
+    numUsers += 1;
+    return newUser;
+};
+
+export const remove = ({ userID }) => {
+    users.forEach((user, i) => {
+        if (user.id === userID) {
+            users.splice(i, 1);
+        }
+    });
 };
 
 export const addToTeam = ({ userID, teamID }) => {

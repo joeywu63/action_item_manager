@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import TeamRow from './TeamRow';
 import AddTeamForm from './AddTeamForm';
 
-import { getCurrentUser } from 'utils/currentUser';
+import Header from 'common/Header';
+
 import { getAllTeams } from '../repository';
 
 const Table = styled.table`
@@ -31,7 +32,6 @@ const TableHeader = styled.th`
 class TeamTable extends React.Component {
     async componentDidMount() {
         const allTeams = await getAllTeams();
-        // const allTeamsClone = allTeams.slice();
         this.setState({ teams: allTeams });
     }
 
@@ -80,12 +80,17 @@ class TeamTable extends React.Component {
         let rows = [];
         teams.forEach(team => {
             rows.push(
-                <TeamRow key={team.id} team={team} removeTeam={this.handleRemoveTeam} />
+                <TeamRow
+                    key={team.id}
+                    team={team}
+                    removeTeam={this.handleRemoveTeam}
+                />
             );
         });
 
         return (
             <div>
+                <Header title="Teams" size="medium" />
                 <AddTeamForm
                     newTeamName={this.state.newTeamName}
                     selectedUser={this.state.selectedUser}
