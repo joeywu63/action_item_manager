@@ -2,11 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
-<<<<<<< HEAD
 import { setManager, getByID, getUsers } from '../repository';
-=======
-import { setManager, getByID, getByCustomer } from '../repository';
->>>>>>> moved model imports into repository
 
 const TableData = styled.td`
     border: 1px solid LightGrey;
