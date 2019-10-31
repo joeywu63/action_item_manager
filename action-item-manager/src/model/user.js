@@ -28,7 +28,7 @@ const users = [
         lastName: 'W',
         email: 'joey.w@gmail.com',
         password: 'admin',
-        teamIDList: [1],
+        teamIDList: [1, 2],
         role: 0,
         dateLastLoggedIn: '2019-01-01'
     },

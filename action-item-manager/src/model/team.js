@@ -18,6 +18,15 @@ const teams = [
     }
 ];
 
+export const getByID = ({ teamId }) => {
+    const team = teams.filter(t => t.id === teamId);
+    try {
+        return team[0];
+    } catch (e) {
+        console.log('no team with this id');
+    }
+};
+
 export const getTeamsByCurrentUser = () => {
     const currentUser = getCurrentUser();
 

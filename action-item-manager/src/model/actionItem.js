@@ -54,6 +54,33 @@ export const create = ({ customerID, teamID, title, description, dueDate }) => {
     return newActionItem;
 };
 
+export const getByID = ({ id }) => {
+    const ai = actionItems.filter(a => a.actionItemID === id);
+    try {
+        return ai[0];
+    } catch (e) {
+        console.log('no action item with this id');
+    }
+};
+
+export const updateTitle = ({ id, newTitle }) => {
+    const ai = actionItems.filter(a => a.actionItemID === id);
+    try {
+        ai[0].title = newTitle;
+    } catch (e) {
+        console.log('no action item with this id');
+    }
+};
+
+export const updateDescription = ({ id, newDesc }) => {
+    const ai = actionItems.filter(a => a.actionItemID === id);
+    try {
+        ai[0].description = newDesc;
+    } catch (e) {
+        console.log('no action item with this id');
+    }
+};
+
 export const getByTeam = ({ teamID }) => {
     return actionItems.filter(actionItem => actionItem.teamID === teamID);
 };
