@@ -41,7 +41,8 @@ export const create = ({ teamID, title, description, dueDate }) => {
         description,
         teamID,
         dueDate,
-        dateCreated: '2019-01-01'
+        dateCreated: '2019-01-01',
+        userIDList: []
     };
 
     actionItems.push(newActionItem);
