@@ -93,3 +93,21 @@ export const removeFromTeam = ({ userID, teamID }) => {
         }
     });
 };
+
+export const changePassword = ({ userID, password }) => {
+    users.forEach(user => {
+        if (user.id === userID) {
+            user.password = password;
+        }
+    });
+};
+
+export const changeInfo = ({ userID, firstName, lastName, email }) => {
+    users.forEach(user => {
+        if (user.id === userID) {
+            user.firstName = firstName;
+            user.lastName = lastName;
+            user.email = email;
+        }
+    });
+};

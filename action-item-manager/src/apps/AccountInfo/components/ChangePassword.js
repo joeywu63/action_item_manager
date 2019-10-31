@@ -3,11 +3,25 @@ import PropTypes from 'prop-types';
 
 import Button from 'common/Button';
 import { ACCTPAGES } from '../constants';
-import AccountInfo from './AccountInfo';
+import { getCurrentUser } from 'utils/currentUser';
+import { submitPassword } from '../repository';
+
 
 class ChangePassword extends React.Component {
     state = {
-        value: ''
+        password: '',
+        userID: getCurrentUser().id
+    };
+
+    handleSubmit = () => {
+        const { userID, password } = this.state;
+        const { handleSwitchPage } = this.props;
+        submitPassword({userID, password});
+        handleSwitchPage(ACCTPAGES.default);
+    };
+
+    handleChange = event => {
+        this.setState({ password: event.target.value });
     };
 
     renderChangePasswordButtons = () => {
@@ -17,7 +31,7 @@ class ChangePassword extends React.Component {
             <>
                 <Button
                     text="Submit"
-                    onClick={() => handleSwitchPage(ACCTPAGES.default)}
+                    onClick={() => this.handleSubmit()}
                 />
                 <Button
                     text="Cancel"
@@ -35,13 +49,11 @@ class ChangePassword extends React.Component {
                 <form>
                     <label>
                         New Password:
-                        <input type="text" value={this.state.value} />
+                        <input type="text" password={this.state.password} onChange={this.handleChange}/>
                     </label>
                 </form>
 
                 {this.renderChangePasswordButtons()}
-
-                {page === ACCTPAGES.default ? <AccountInfo /> : null}
             </>
         );
     }
