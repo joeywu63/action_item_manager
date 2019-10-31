@@ -9,6 +9,6 @@ export const getAllTeams = team.getAllTeams;
 
 export const setManager = team.setManager;
 
-export const getByCustomer = user.getByCustomer;
+export const getUsers = user.getList;
 
 export const getByID = user.getByID;

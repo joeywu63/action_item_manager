@@ -53,14 +53,12 @@ class TeamTable extends React.Component {
     };
 
     handleAddTeam = () => {
-        const customerID = getCurrentUser().customerID;
         const { addTeam } = this.props;
         const { teams, newTeamName, selectedUser } = this.state;
 
         addTeam({
             teamName: newTeamName,
-            managerID: selectedUser.id,
-            customerID: customerID
+            managerID: selectedUser.id
         });
 
         this.setState({
@@ -78,19 +76,17 @@ class TeamTable extends React.Component {
 
     render() {
         const { teams } = this.state;
-        const customerID = getCurrentUser().customerID;
 
         let rows = [];
         teams.forEach(team => {
             rows.push(
-                <TeamRow team={team} removeTeam={this.handleRemoveTeam} />
+                <TeamRow key={team.id} team={team} removeTeam={this.handleRemoveTeam} />
             );
         });
 
         return (
             <div>
                 <AddTeamForm
-                    customerId={customerID}
                     newTeamName={this.state.newTeamName}
                     selectedUser={this.state.selectedUser}
                     addTeam={this.handleAddTeam}

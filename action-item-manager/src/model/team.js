@@ -1,5 +1,5 @@
 import { getCurrentUser } from 'utils/currentUser';
-import { getByCustomer } from 'model/user';
+import { getList } from 'model/user';
 
 let numTeams = 2;
 
@@ -7,14 +7,12 @@ const teams = [
     {
         id: 1,
         name: 'Engineering',
-        managerID: 1,
-        customerID: 1
+        managerID: 1
     },
     {
         id: 2,
         name: 'Some Sub Team',
-        managerID: 2,
-        customerID: 1
+        managerID: 2
     }
 ];
 
@@ -24,11 +22,9 @@ export const getTeamsByCurrentUser = () => {
     return teams.filter(team => currentUser.teamIDList.includes(team.id));
 };
 
-export const getTeamsByCustomer = () => {};
-
 export const getUsers = ({ teamID }) => {
     // return two arrays. One of users on the team specified, and one of users not on the team specified
-    const users = getByCustomer({ customerID: 1 });
+    const users = getList();
 
     const onTeam = users.filter(user => user.teamIDList.includes(teamID));
     const offTeam = users.filter(user => !user.teamIDList.includes(teamID));
@@ -45,12 +41,11 @@ export const getAllTeams = () => {
     return teams;
 };
 
-export const addTeamToList = ({ teamName, managerID, customerID }) => {
+export const addTeamToList = ({ teamName, managerID }) => {
     const newTeam = {
         id: numTeams + 1,
         name: teamName,
-        managerID: managerID,
-        customerID: customerID
+        managerID: managerID
     };
     teams.push(newTeam);
     numTeams++;

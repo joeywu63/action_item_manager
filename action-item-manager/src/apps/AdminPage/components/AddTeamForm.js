@@ -2,12 +2,11 @@ import React from 'react';
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
 
-import { getByCustomer } from '../repository';
+import { getUsers } from '../repository';
 
 class AddTeamForm extends React.Component {
     componentDidMount() {
-        const { customerId } = this.props;
-        const allUsers = getByCustomer({ customerID: customerId }).map(user => {
+        const allUsers = getUsers().map(user => {
             return {
                 ...user,
                 value: user.id,

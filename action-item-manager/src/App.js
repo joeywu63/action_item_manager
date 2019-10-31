@@ -38,7 +38,7 @@ class App extends React.Component {
         const currentUser = getCurrentUser(); // we need to get current user also for security reasons
 
         return isSignedIn && currentUser ? (
-            <MainRouter logout={this.logout}/>
+            <MainRouter logout={this.logout} />
         ) : isSigningUp ? (
             <div>Sign up</div>
         ) : (
@@ -52,7 +52,7 @@ class MainRouter extends React.Component {
         return (
             <Router>
                 <MainWrapper>
-                    <MainSideBar logout={this.props.logout}/>
+                    <MainSideBar logout={this.props.logout} />
                     <PageWrapper>
                         <Switch>
                             <Route
@@ -65,7 +65,7 @@ class MainRouter extends React.Component {
                             />
                             <Route path="/teams" component={TeamsRouter} />
                             <Route path="/admin-page" component={AdminPage} />
-                            <Route path="/dashboard" component={Dashboard} />
+                            <Route path="/" component={Dashboard} />
                         </Switch>
                     </PageWrapper>
                 </MainWrapper>

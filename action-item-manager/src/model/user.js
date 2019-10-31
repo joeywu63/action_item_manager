@@ -1,7 +1,6 @@
 const users = [
     {
         id: 0,
-        customerID: 1,
         firstName: 'admin',
         lastName: '',
         email: 'admin',
@@ -12,7 +11,6 @@ const users = [
     },
     {
         id: 1,
-        customerID: 1,
         firstName: 'Lucas',
         lastName: 'G',
         email: 'lucas.g@gmail.com',
@@ -23,7 +21,6 @@ const users = [
     },
     {
         id: 2,
-        customerID: 1,
         firstName: 'Joey',
         lastName: 'W',
         email: 'joey.w@gmail.com',
@@ -34,7 +31,6 @@ const users = [
     },
     {
         id: 3,
-        customerID: 1,
         firstName: 'Alex',
         lastName: 'E',
         email: 'alex.e@gmail.com',
@@ -45,7 +41,6 @@ const users = [
     },
     {
         id: 4,
-        customerID: 1,
         firstName: 'Sandro',
         lastName: 'S',
         email: 'snadro.s@gmail.com',
@@ -69,9 +64,7 @@ export const isUser = ({ email, password }) => {
     return user;
 };
 
-export const getByCustomer = ({ customerID }) => {
-    return users.filter(user => user.customerID === customerID);
-};
+export const getList = () => users;
 
 export const getByID = ({ userID }) => {
     return users.find(user => user.id === userID);

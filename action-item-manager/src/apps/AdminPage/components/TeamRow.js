@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
-import { setManager, getByID, getByCustomer } from '../repository';
+import { setManager, getByID, getUsers } from '../repository';
 
 const TableData = styled.td`
     border: 1px solid LightGrey;
@@ -15,7 +15,7 @@ class TeamRow extends React.Component {
     componentDidMount() {
         const { team } = this.props;
 
-        const allUsers = getByCustomer({ customerID: team.customerID });
+        const allUsers = getUsers();
         let regUsers = allUsers
             .filter(user => user.id !== team.managerID)
             .map(user => {
