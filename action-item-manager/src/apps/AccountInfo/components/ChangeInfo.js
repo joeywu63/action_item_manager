@@ -4,9 +4,15 @@ import PropTypes from 'prop-types';
 import Button from 'common/Button';
 import { ACCTPAGES } from '../constants';
 import { getCurrentUser } from 'utils/currentUser';
-import { submitPassword, submitInfo } from '../repository';
+import { submitInfo } from '../repository';
 
 class ChangeInfo extends React.Component {
+    componentDidMount() {
+        const { firstName, lastName, email } = this.props.currentUser;
+
+        this.setState({ firstName, lastName, email });
+    }
+
     state = {
         firstName: '',
         lastName: '',
@@ -17,68 +23,66 @@ class ChangeInfo extends React.Component {
     handleSubmit = () => {
         const { firstName, lastName, email, userID } = this.state;
         const { handleSwitchPage } = this.props;
-        submitInfo({userID, firstName, lastName, email});
+
+        submitInfo({ userID, firstName, lastName, email });
         handleSwitchPage(ACCTPAGES.default);
     };
 
-    handleChange = event => {
-        const inputType = event.target.name;
-        if (inputType === 'firstName') {
-            this.setState({ firstName: event.target.value });
-        } else if (inputType === 'lastName') {
-            this.setState({ lastName: event.target.value });
-        } else {
-            this.setState({ email: event.target.value });
-        }
+    handleChange = e => {
+        const key = e.target.getAttribute('name');
+        this.setState({
+            [key]: e.target.value
+        });
     };
-    
-    renderChangeInfoButtons = () => {
+
+    render() {
         const { handleSwitchPage } = this.props;
+        const { firstName, lastName, email } = this.state;
 
         return (
             <>
-                <Button
-                    text="Submit"
-                    onClick={() => this.handleSubmit()}
-                />
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        First Name:
+                        <input
+                            type="text"
+                            name="firstName"
+                            value={firstName}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <label>
+                        Last Name:
+                        <input
+                            type="text"
+                            name="lastName"
+                            value={lastName}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <label>
+                        Email:
+                        <input
+                            type="text"
+                            name="email"
+                            value={email}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
                 <Button
                     text="Cancel"
                     onClick={() => handleSwitchPage(ACCTPAGES.default)}
                 />
             </>
         );
-    };
-
-    render() {
-        return (
-            <>
-                <form>
-                    <label>
-                        First Name:
-                        <input type="text" name="firstName" firstName={this.state.firstName} onChange={this.handleChange} />
-                    </label>
-                </form>
-                <form>
-                    <label>
-                        Last Name:
-                        <input type="text" name="lastName" lastName={this.state.lastName} onChange={this.handleChange} />
-                    </label>
-                </form>
-                <form>
-                    <label>
-                        Email:
-                        <input type="text" name="email" email={this.state.email} onChange={this.handleChange} />
-                    </label>
-                </form>
-
-                {this.renderChangeInfoButtons()}
-            </>
-        );
     }
 }
 
 ChangeInfo.propTypes = {
-    handleSwitchPage: PropTypes.func.isRequired
+    handleSwitchPage: PropTypes.func.isRequired,
+    currentUser: PropTypes.object.isRequired
 };
 
 export default ChangeInfo;

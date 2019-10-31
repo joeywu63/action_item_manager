@@ -12,10 +12,6 @@ const SidebarWrapper = styled.div`
     margin-right: auto;
 `;
 
-const Title = styled.div`
-    margin-right: auto;
-`;
-
 class AccountInfo extends React.Component {
     state = {
         currentUser: getCurrentUser(),
@@ -24,10 +20,6 @@ class AccountInfo extends React.Component {
 
     handleSwitchPage = page => {
         this.setState({ page });
-    };
-
-    getRole = role => {
-        return ROLENAMES[role];
     };
 
     renderAccountInfo = () => {
@@ -39,7 +31,7 @@ class AccountInfo extends React.Component {
                 First Name: {firstName}
                 Last Name: {lastName}
                 Email: {email}
-                Role: {this.getRole(role)}
+                Role: {ROLENAMES[role]}
                 <Button
                     text="Edit Password"
                     onClick={() =>
@@ -55,15 +47,15 @@ class AccountInfo extends React.Component {
     };
 
     render() {
-        const { page } = this.state;
+        const { page, currentUser } = this.state;
         return (
             <>
                 {page === ACCTPAGES.default ? (
                     this.renderAccountInfo()
                 ) : page === ACCTPAGES.changepassword ? (
-                    <ChangePassword handleSwitchPage={this.handleSwitchPage}/>
+                    <ChangePassword handleSwitchPage={this.handleSwitchPage} />
                 ) : page === ACCTPAGES.changeinfo ? (
-                    <ChangeInfo handleSwitchPage={this.handleSwitchPage}/>
+                    <ChangeInfo handleSwitchPage={this.handleSwitchPage} currentUser={currentUser} />
                 ) : null}
             </>
         );

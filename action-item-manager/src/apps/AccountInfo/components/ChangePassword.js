@@ -6,7 +6,6 @@ import { ACCTPAGES } from '../constants';
 import { getCurrentUser } from 'utils/currentUser';
 import { submitPassword } from '../repository';
 
-
 class ChangePassword extends React.Component {
     state = {
         password: '',
@@ -16,7 +15,8 @@ class ChangePassword extends React.Component {
     handleSubmit = () => {
         const { userID, password } = this.state;
         const { handleSwitchPage } = this.props;
-        submitPassword({userID, password});
+
+        submitPassword({ userID, password });
         handleSwitchPage(ACCTPAGES.default);
     };
 
@@ -24,36 +24,27 @@ class ChangePassword extends React.Component {
         this.setState({ password: event.target.value });
     };
 
-    renderChangePasswordButtons = () => {
+    render() {
         const { handleSwitchPage } = this.props;
+        const { password } = this.state;
 
         return (
             <>
-                <Button
-                    text="Submit"
-                    onClick={() => this.handleSubmit()}
-                />
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        New Password:
+                        <input
+                            type="text"
+                            value={password}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
                 <Button
                     text="Cancel"
                     onClick={() => handleSwitchPage(ACCTPAGES.default)}
                 />
-            </>
-        );
-    };
-
-    render() {
-        const { page } = this.state;
-
-        return (
-            <>
-                <form>
-                    <label>
-                        New Password:
-                        <input type="text" password={this.state.password} onChange={this.handleChange}/>
-                    </label>
-                </form>
-
-                {this.renderChangePasswordButtons()}
             </>
         );
     }
