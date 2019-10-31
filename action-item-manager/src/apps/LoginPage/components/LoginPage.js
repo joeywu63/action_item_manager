@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import LoginPanel from 'apps/LoginPage/components/LoginPanel';
 
-import { isUser } from 'model/user'; // TODO: move to repository
+import { isUser } from '../repository';
+
 import { setCurrentUser } from 'utils/currentUser';
 
 const PanelWrapper = styled.div`

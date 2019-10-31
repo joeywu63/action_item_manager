@@ -1,8 +1,6 @@
 import * as actionItem from 'model/actionItem';
 
-export const getActionItemsForCurrentUser = () => {
-    return actionItem.getByCurrentUser();
-};
+export const getActionItemsForCurrentUser = actionItem.getByCurrentUser;
 
 export const toggleActionItemComplete = actionItem.toggleActionItemComplete;
 

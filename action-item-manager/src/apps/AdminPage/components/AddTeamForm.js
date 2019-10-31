@@ -1,7 +1,8 @@
 import React from 'react';
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
-import { getByCustomer } from 'model/user';
+
+import { getByCustomer } from '../repository';
 
 class AddTeamForm extends React.Component {
     componentDidMount() {

@@ -1,26 +1,14 @@
 import * as team from 'model/team';
 import * as user from 'model/user';
 
-export const createTeam = ({ teamName, managerID, customerID }) => {
-    return team.addTeamToList({ teamName, managerID, customerID });
-};
+export const createTeam = team.addTeamToList;
 
-export const removeTeam = ({ teamId }) => {
-    return team.removeTeamFromList({ teamId });
-};
+export const removeTeam = team.removeTeamFromList;
 
-export const getAllTeams = () => {
-    return team.getAllTeams();
-};
+export const getAllTeams = team.getAllTeams;
 
-export const setManager = ({ teamId, managerId }) => {
-    return team.setManager({ teamId, managerId });
-};
+export const setManager = team.setManager;
 
-export const getByCustomer = ({ customerID }) => {
-    return user.getByCustomer({ customerID });
-};
+export const getByCustomer = user.getByCustomer;
 
-export const getByID = ({ userID }) => {
-    return user.getByID({ userID });
-};
+export const getByID = user.getByID;
