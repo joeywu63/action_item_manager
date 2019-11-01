@@ -35,6 +35,19 @@ const LoginButton = styled(Button)`
     margin-bottom: 1em;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    :hover {
+        background-color: #35A556;
+        box-shadow: 0px 6px 10px rgba(0,0,0,0.3);
+        transform: translateY(-5px);
+        position: relative;
+        z-index: 1;
+    }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 `;
 
 const Title = styled.h2`
