@@ -11,17 +11,7 @@ export const getSize = ({ teamId }) => {
     return team.getSize({ teamId });
 };
 
-export const updateTitle = ({ id, newTitle }) => {
-    return actionItem.updateTitle({ id, newTitle });
-};
-
-export const updateDescription = ({ id, newDesc }) => {
-    return actionItem.updateDescription({ id, newDesc });
-};
-
-export const updateDueDate = ({ id, newDueDate }) => {
-    return actionItem.updateDueDate({ id, newDueDate });
-};
+export const update = actionItem.update;
 
 export const toggleActionItemComplete = actionItem.toggleActionItemComplete;
 

@@ -8,9 +8,7 @@ import {
     didComplete,
     getSize,
     getTeamByID,
-    updateDescription,
-    updateTitle,
-    updateDueDate
+    update
 } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
 
@@ -31,11 +29,11 @@ class ActionItem extends React.Component {
         const teamSize = getSize({ teamId: teamID })
 
         this.setState({
-            title: title,
-            description: description,
+            title,
+            description,
             newTitle: title,
             newDescription: description,
-            dueDate: dueDate,
+            dueDate,
             newDueDate: dueDate,
             complete,
             canEdit,
@@ -70,10 +68,10 @@ class ActionItem extends React.Component {
             actionItemID
         });
 
-        if (complete){
+        if (complete) {
             this.setState({ complete: !complete, completedBy: completedBy - 1 });
         } else {
-            this.setState({ complete: !complete, completedBy: completedBy + 1});
+            this.setState({ complete: !complete, completedBy: completedBy + 1 });
         }
     };
 
@@ -82,9 +80,7 @@ class ActionItem extends React.Component {
         const { editing, newTitle, newDescription, newDueDate } = this.state;
 
         if (editing) {
-            updateTitle({ id: actionItemID, newTitle: newTitle });
-            updateDescription({ id: actionItemID, newDesc: newDescription });
-            updateDueDate({ id: actionItemID, newDueDate: newDueDate });
+            update({ id: actionItemID, newTitle: newTitle, newDesc: newDescription, newDueDate: newDueDate });
             this.setState({
                 editing: !editing,
                 title: newTitle,
@@ -96,16 +92,9 @@ class ActionItem extends React.Component {
         }
     };
 
-    handleTitleChange = async e => {
-        this.setState({ newTitle: e.target.value });
-    };
-
-    handleDescChange = async e => {
-        this.setState({ newDescription: e.target.value });
-    };
-
-    handleDueDateChange = async e => {
-        this.setState({ newDueDate: e.target.value });
+    handleChange = async e => {
+        const key = e.target.getAttribute('name');
+        this.setState({ [key]: e.target.value });
     };
 
     renderEditButton = () => {
@@ -143,7 +132,7 @@ class ActionItem extends React.Component {
                         <input
                             type="text"
                             value={newTitle}
-                            onChange={e => this.handleTitleChange(e)}
+                            onChange={e => this.handleChange(e)}
                         />
                     </h4>
 
@@ -152,7 +141,7 @@ class ActionItem extends React.Component {
                         <input
                             type="text"
                             value={newDescription}
-                            onChange={e => this.handleDescChange(e)}
+                            onChange={e => this.handleChange(e)}
                         />
                     </h4>
 
@@ -161,7 +150,7 @@ class ActionItem extends React.Component {
                         <input
                             type="date"
                             value={newDueDate}
-                            onChange={e => this.handleDueDateChange(e)}
+                            onChange={e => this.handleChange(e)}
                         />
                     </h4>
                 </>
