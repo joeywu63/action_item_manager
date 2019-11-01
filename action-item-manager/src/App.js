@@ -13,10 +13,12 @@ import AdminPage from 'apps/AdminPage/components/Admin';
 import PageWrapper from 'common/PageWrapper';
 
 import { getCurrentUser } from 'utils/currentUser';
+import { COLOURS } from 'utils/constants';
 
 const MainWrapper = styled.div`
     display: flex;
     height: 100vh;
+    background-color: ${COLOURS.background};
 `;
 
 class App extends React.Component {
