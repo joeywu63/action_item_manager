@@ -6,10 +6,11 @@ import Button from 'common/Button';
 import {
     toggleActionItemComplete,
     didComplete,
+    getSize,
     getTeamByID,
-    getActionItemByID,
     updateDescription,
-    updateTitle
+    updateTitle,
+    updateDueDate
 } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
 
@@ -18,21 +19,29 @@ class ActionItem extends React.Component {
         const {
             actionItemID,
             title,
-            description
+            description,
+            teamID,
+            dueDate,
+            userIDList
         } = this.props.location.state.actionItem;
         const { currentUser } = this.state;
 
         const complete = didComplete({ userID: currentUser.id, actionItemID });
-        const teamId = getActionItemByID({ actionItemId: actionItemID }).teamID;
-        const canEdit = currentUser.id === getTeamByID({ teamId }).managerID;
+        const canEdit = currentUser.id === getTeamByID({ teamId: teamID }).managerID;
+        const teamSize = getSize({ teamId: teamID })
+
         this.setState({
             title: title,
             description: description,
             newTitle: title,
             newDescription: description,
+            dueDate: dueDate,
+            newDueDate: dueDate,
             complete,
             canEdit,
-            editing: false
+            editing: false,
+            teamSize: teamSize,
+            completedBy: userIDList.length
         });
     }
 
@@ -42,34 +51,45 @@ class ActionItem extends React.Component {
         description: null,
         newTitle: null,
         newDescription: null,
+        dueDate: null,
+        newDueDate: null,
         complete: false,
         canEdit: false,
-        editing: false
+        editing: false,
+        teamSize: 0,
+        completedBy: 0
     };
 
     handleMarkAsComplete = async () => {
         const { actionItemID } = this.props.location.state.actionItem;
-        const { complete, currentUser } = this.state;
+        const { complete, currentUser, completedBy } = this.state;
 
         await toggleActionItemComplete({
             userID: currentUser.id,
             isComplete: !complete,
             actionItemID
         });
-        this.setState({ complete: !complete });
+
+        if (complete){
+            this.setState({ complete: !complete, completedBy: completedBy - 1 });
+        } else {
+            this.setState({ complete: !complete, completedBy: completedBy + 1});
+        }
     };
 
     handleEdit = async () => {
         const { actionItemID } = this.props.location.state.actionItem;
-        const { editing, newTitle, newDescription } = this.state;
+        const { editing, newTitle, newDescription, newDueDate } = this.state;
 
         if (editing) {
             updateTitle({ id: actionItemID, newTitle: newTitle });
             updateDescription({ id: actionItemID, newDesc: newDescription });
+            updateDueDate({ id: actionItemID, newDueDate: newDueDate });
             this.setState({
                 editing: !editing,
                 title: newTitle,
-                description: newDescription
+                description: newDescription,
+                dueDate: newDueDate
             });
         } else {
             this.setState({ editing: !editing });
@@ -82,6 +102,10 @@ class ActionItem extends React.Component {
 
     handleDescChange = async e => {
         this.setState({ newDescription: e.target.value });
+    };
+
+    handleDueDateChange = async e => {
+        this.setState({ newDueDate: e.target.value });
     };
 
     renderEditButton = () => {
@@ -97,8 +121,20 @@ class ActionItem extends React.Component {
         }
     };
 
+    renderStatus = () => {
+        const { canEdit, teamSize, completedBy } = this.state;
+
+        if (canEdit === true) {
+            return (
+                <div>
+                    Status: Completed by {completedBy}/{teamSize} members
+                </div>
+            );
+        }
+    }
+
     renderEditBar = () => {
-        const { editing, newTitle, newDescription } = this.state;
+        const { editing, newTitle, newDescription, newDueDate } = this.state;
         if (editing === true) {
             return (
                 <>
@@ -119,17 +155,28 @@ class ActionItem extends React.Component {
                             onChange={e => this.handleDescChange(e)}
                         />
                     </h4>
+
+                    <h4>
+                        Due Date:{' '}
+                        <input
+                            type="date"
+                            value={newDueDate}
+                            onChange={e => this.handleDueDateChange(e)}
+                        />
+                    </h4>
                 </>
             );
         }
     };
 
     render() {
-        const { title, description, complete } = this.state;
+        const { title, description, dueDate, complete } = this.state;
 
         return (
             <>
                 <Header title={title} />
+                <div><b>Due Date: {dueDate}</b></div>
+                {this.renderStatus()}
                 <div>{description}</div>
                 <Button
                     text={complete ? 'Mark as Incomplete' : 'Mark as Complete'}
