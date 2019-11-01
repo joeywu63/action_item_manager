@@ -25,8 +25,9 @@ class ActionItem extends React.Component {
         const { currentUser } = this.state;
 
         const complete = didComplete({ userID: currentUser.id, actionItemID });
-        const canEdit = currentUser.id === getTeamByID({ teamId: teamID }).managerID;
-        const teamSize = getSize({ teamId: teamID })
+        const canEdit =
+            currentUser.id === getTeamByID({ teamId: teamID }).managerID;
+        const teamSize = getSize({ teamId: teamID });
 
         this.setState({
             title,
@@ -69,9 +70,15 @@ class ActionItem extends React.Component {
         });
 
         if (complete) {
-            this.setState({ complete: !complete, completedBy: completedBy - 1 });
+            this.setState({
+                complete: !complete,
+                completedBy: completedBy - 1
+            });
         } else {
-            this.setState({ complete: !complete, completedBy: completedBy + 1 });
+            this.setState({
+                complete: !complete,
+                completedBy: completedBy + 1
+            });
         }
     };
 
@@ -80,7 +87,12 @@ class ActionItem extends React.Component {
         const { editing, newTitle, newDescription, newDueDate } = this.state;
 
         if (editing) {
-            update({ id: actionItemID, newTitle: newTitle, newDesc: newDescription, newDueDate: newDueDate });
+            update({
+                id: actionItemID,
+                newTitle: newTitle,
+                newDesc: newDescription,
+                newDueDate: newDueDate
+            });
             this.setState({
                 editing: !editing,
                 title: newTitle,
@@ -95,10 +107,6 @@ class ActionItem extends React.Component {
     handleChange = async e => {
         const key = e.target.getAttribute('name');
         this.setState({ [key]: e.target.value });
-    };
-
-    handleDueDateChange = async e => {
-        this.setState({ newDueDate: e.target.value });
     };
 
     renderEditButton = () => {
@@ -124,7 +132,7 @@ class ActionItem extends React.Component {
                 </div>
             );
         }
-    }
+    };
 
     renderEditBar = () => {
         const { editing, newTitle, newDescription, newDueDate } = this.state;
@@ -134,30 +142,32 @@ class ActionItem extends React.Component {
                     <h4>
                         Title:{' '}
                         <input
+                            name="newTitle"
                             type="text"
                             value={newTitle}
-                            onChange={e => this.handleChange(e)}
+                            onChange={this.handleChange}
                         />
                     </h4>
 
                     <h4>
                         Description:{' '}
                         <input
+                            name="newDescription"
                             type="text"
                             value={newDescription}
-                            onChange={e => this.handleChange(e)}
+                            onChange={this.handleChange}
                         />
                     </h4>
 
                     <h4>
                         Due Date:{' '}
                         <input
+                            name="newDueDate"
                             type="date"
                             value={newDueDate}
-                            onChange={e => this.handleChange(e)}
+                            onChange={this.handleChange}
                         />
                     </h4>
-
                 </>
             );
         }
@@ -169,7 +179,9 @@ class ActionItem extends React.Component {
         return (
             <>
                 <Header title={title} />
-                <div><b>Due Date: {dueDate}</b></div>
+                <div>
+                    <b>Due Date: {dueDate}</b>
+                </div>
                 {this.renderStatus()}
                 <div>{description}</div>
                 <Button

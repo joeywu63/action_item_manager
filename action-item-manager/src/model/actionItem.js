@@ -60,7 +60,7 @@ export const getByID = ({ id }) => {
     }
 };
 
-export const update = ({ id, newTitle, newDesc, newDuedate }) => {
+export const update = ({ id, newTitle, newDesc, newDueDate }) => {
     const ai = actionItems.filter(a => a.actionItemID === id);
     try {
         ai[0].title = newTitle;

@@ -13,10 +13,6 @@ export const getSize = ({ teamId }) => {
 
 export const update = actionItem.update;
 
-export const updateDueDate = ({ id, newDueDate }) => {
-    return actionItem.updateDueDate({ id, newDueDate });
-};
-
 export const toggleActionItemComplete = actionItem.toggleActionItemComplete;
 
 export const didComplete = actionItem.didComplete;
