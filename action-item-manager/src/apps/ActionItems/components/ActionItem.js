@@ -6,10 +6,9 @@ import Button from 'common/Button';
 import {
     toggleActionItemComplete,
     didComplete,
+    getSize,
     getTeamByID,
-    getActionItemByID,
-    updateDescription,
-    updateTitle
+    update
 } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
 
@@ -18,21 +17,30 @@ class ActionItem extends React.Component {
         const {
             actionItemID,
             title,
-            description
+            description,
+            teamID,
+            dueDate,
+            userIDList
         } = this.props.location.state.actionItem;
         const { currentUser } = this.state;
 
         const complete = didComplete({ userID: currentUser.id, actionItemID });
-        const teamId = getActionItemByID({ actionItemId: actionItemID }).teamID;
-        const canEdit = currentUser.id === getTeamByID({ teamId }).managerID;
+        const canEdit =
+            currentUser.id === getTeamByID({ teamId: teamID }).managerID;
+        const teamSize = getSize({ teamId: teamID });
+
         this.setState({
-            title: title,
-            description: description,
+            title,
+            description,
             newTitle: title,
             newDescription: description,
+            dueDate,
+            newDueDate: dueDate,
             complete,
             canEdit,
-            editing: false
+            editing: false,
+            teamSize: teamSize,
+            completedBy: userIDList.length
         });
     }
 
@@ -42,46 +50,63 @@ class ActionItem extends React.Component {
         description: null,
         newTitle: null,
         newDescription: null,
+        dueDate: null,
+        newDueDate: null,
         complete: false,
         canEdit: false,
-        editing: false
+        editing: false,
+        teamSize: 0,
+        completedBy: 0
     };
 
     handleMarkAsComplete = async () => {
         const { actionItemID } = this.props.location.state.actionItem;
-        const { complete, currentUser } = this.state;
+        const { complete, currentUser, completedBy } = this.state;
 
         await toggleActionItemComplete({
             userID: currentUser.id,
             isComplete: !complete,
             actionItemID
         });
-        this.setState({ complete: !complete });
+
+        if (complete) {
+            this.setState({
+                complete: !complete,
+                completedBy: completedBy - 1
+            });
+        } else {
+            this.setState({
+                complete: !complete,
+                completedBy: completedBy + 1
+            });
+        }
     };
 
     handleEdit = async () => {
         const { actionItemID } = this.props.location.state.actionItem;
-        const { editing, newTitle, newDescription } = this.state;
+        const { editing, newTitle, newDescription, newDueDate } = this.state;
 
         if (editing) {
-            updateTitle({ id: actionItemID, newTitle: newTitle });
-            updateDescription({ id: actionItemID, newDesc: newDescription });
+            update({
+                id: actionItemID,
+                newTitle: newTitle,
+                newDesc: newDescription,
+                newDueDate: newDueDate
+            });
             this.setState({
                 editing: !editing,
                 title: newTitle,
-                description: newDescription
+                description: newDescription,
+                dueDate: newDueDate
             });
         } else {
             this.setState({ editing: !editing });
         }
     };
 
-    handleTitleChange = async e => {
-        this.setState({ newTitle: e.target.value });
-    };
-
-    handleDescChange = async e => {
-        this.setState({ newDescription: e.target.value });
+    handleChange = async e => {
+        const key = e.target.getAttribute('name');
+        this.setState({ [key]: e.target.value });
     };
 
     renderEditButton = () => {
@@ -97,26 +122,50 @@ class ActionItem extends React.Component {
         }
     };
 
+    renderStatus = () => {
+        const { canEdit, teamSize, completedBy } = this.state;
+
+        if (canEdit === true) {
+            return (
+                <div>
+                    Status: Completed by {completedBy}/{teamSize} members
+                </div>
+            );
+        }
+    };
+
     renderEditBar = () => {
-        const { editing, newTitle, newDescription } = this.state;
+        const { editing, newTitle, newDescription, newDueDate } = this.state;
         if (editing === true) {
             return (
                 <>
                     <h4>
                         Title:{' '}
                         <input
+                            name="newTitle"
                             type="text"
                             value={newTitle}
-                            onChange={e => this.handleTitleChange(e)}
+                            onChange={this.handleChange}
                         />
                     </h4>
 
                     <h4>
                         Description:{' '}
                         <input
+                            name="newDescription"
                             type="text"
                             value={newDescription}
-                            onChange={e => this.handleDescChange(e)}
+                            onChange={this.handleChange}
+                        />
+                    </h4>
+
+                    <h4>
+                        Due Date:{' '}
+                        <input
+                            name="newDueDate"
+                            type="date"
+                            value={newDueDate}
+                            onChange={this.handleChange}
                         />
                     </h4>
                 </>
@@ -125,11 +174,15 @@ class ActionItem extends React.Component {
     };
 
     render() {
-        const { title, description, complete } = this.state;
+        const { title, description, dueDate, complete } = this.state;
 
         return (
             <>
                 <Header title={title} />
+                <div>
+                    <b>Due Date: {dueDate}</b>
+                </div>
+                {this.renderStatus()}
                 <div>{description}</div>
                 <Button
                     text={complete ? 'Mark as Incomplete' : 'Mark as Complete'}
