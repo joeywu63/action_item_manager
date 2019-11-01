@@ -2,8 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { COLOURS } from 'utils/constants';
+
 const StyledBold = styled.b`
     font-size: ${props => `${props.size}px`}
+    color: ${COLOURS.darkPrimary};
 `;
 
 const Header = ({ title, size }) => {

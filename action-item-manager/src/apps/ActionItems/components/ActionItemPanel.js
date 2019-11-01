@@ -5,7 +5,14 @@ import PropTypes from 'prop-types';
 import Panel from 'common/Panel';
 
 const ActionItemPanel = ({ actionItem, history }) => {
-    const { actionItemID, title, description, teamID, dueDate, userIDList } = actionItem;
+    const {
+        actionItemID,
+        title,
+        description,
+        teamID,
+        dueDate,
+        userIDList
+    } = actionItem;
 
     const navigateParams = {
         pathname: `/action-items/${actionItemID}`,

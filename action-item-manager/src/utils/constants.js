@@ -9,5 +9,8 @@ export const ROLES_STRING = {
 };
 
 export const COLOURS = {
-    background: '#f2f2f2'
-}
+    background: '#F1FAEE',
+    darkPrimary: '#2B2B2B',
+    lightPrimary: '#F1FAEE',
+    lightSecondary: '#BEC7BB'
+};

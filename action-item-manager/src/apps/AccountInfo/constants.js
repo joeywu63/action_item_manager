@@ -5,6 +5,6 @@ export const ACCTPAGES = {
 };
 
 export const ROLENAMES = {
-    0: "user",
-    1: "admin"
+    0: 'user',
+    1: 'admin'
 };

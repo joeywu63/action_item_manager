@@ -24,7 +24,12 @@ class CreateActionItem extends React.Component {
         const { handleGoBack, handleCreateActionItem, teamID } = this.props;
         const { title, description, dueDate } = this.state;
 
-        const newActionItem = await createActionItem({ teamID, title, description, dueDate });
+        const newActionItem = await createActionItem({
+            teamID,
+            title,
+            description,
+            dueDate
+        });
         handleCreateActionItem(newActionItem);
         handleGoBack();
     };

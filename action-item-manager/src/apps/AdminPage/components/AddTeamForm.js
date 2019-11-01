@@ -13,7 +13,7 @@ class AddTeamForm extends React.Component {
                 label: `${user.firstName} ${user.lastName}`
             };
         });
-    
+
         this.setState({
             users: allUsers
         });
@@ -22,10 +22,10 @@ class AddTeamForm extends React.Component {
     state = {
         users: []
     };
-    
+
     render() {
         const { addTeam, newTeamName, onChangeName, onChangeUser } = this.props;
-        const { users} = this.state;
+        const { users } = this.state;
 
         return (
             <div>
@@ -42,10 +42,7 @@ class AddTeamForm extends React.Component {
                     onChange={onChangeUser}
                     options={users}
                 />
-                <Button
-                    text="Create Team"
-                    onClick={() => addTeam()}
-                />
+                <Button text="Create Team" onClick={() => addTeam()} />
             </div>
         );
     }

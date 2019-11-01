@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { getIsAdmin } from 'utils/currentUser';
+import { COLOURS } from 'utils/constants';
 
 const StyledButton = styled.button`
     width: 100%;
@@ -11,10 +12,10 @@ const StyledButton = styled.button`
     color: white;
     text-decoration: none;
     border: none;
-    border-left: ${props => props.isActive ? '4px solid red' : 'none'} 
+    border-left: ${props => (props.isActive ? '4px solid red' : 'none')} 
     display: inline-block;
     background-color: ${props =>
-        props.isActive ? 'black' : '#2b2b2b'}; ;
+        props.isActive ? 'black' : COLOURS.darkPrimary}; ;
     :hover {
         background-color: #363636;
         border-color: #363636;
@@ -27,13 +28,7 @@ const StyledButton = styled.button`
         !getIsAdmin() && props.title.includes('Admin') ? 'hidden' : 'visible'};
 `;
 
-
 class RouterButton extends React.Component {
-    handleClick = (e) => {
-        e.preventDefault();
-        this.props.onClick(e);
-    }
-
     render() {
         const { link, title, onClick, isActive } = this.props;
         const shouldNotBeRendered =
@@ -43,7 +38,13 @@ class RouterButton extends React.Component {
         } else {
             return (
                 <Link to={link}>
-                    <StyledButton title={title} isActive={isActive} onClick={onClick}>{title}</StyledButton>
+                    <StyledButton
+                        title={title}
+                        isActive={isActive}
+                        onClick={onClick}
+                    >
+                        {title}
+                    </StyledButton>
                 </Link>
             );
         }
