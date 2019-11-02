@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Button from 'common/Button';
 import { ACCTPAGES } from '../constants';
 import { getCurrentUser } from 'utils/currentUser';
 import { submitPassword } from '../repository';
+import Input from 'common/Input';
+import Label from 'common/Label';
+import SubmitButton from 'common/SubmitButton';
+
+const StyledButton = styled(Button)`
+    margin-top: 10px;
+    margin-left: 10px;
+`;
 
 class ChangePassword extends React.Component {
     state = {
@@ -31,20 +40,19 @@ class ChangePassword extends React.Component {
         return (
             <>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        New Password:
-                        <input
+                    <Label label="New Password:">
+                        <Input
                             type="text"
                             value={password}
                             onChange={this.handleChange}
                         />
-                    </label>
-                    <input type="submit" value="Submit" />
+                    </Label>
+                    <SubmitButton value="Submit" /> 
+                    <StyledButton
+                        text="Cancel"
+                        onClick={() => handleSwitchPage(ACCTPAGES.default)}
+                    />
                 </form>
-                <Button
-                    text="Cancel"
-                    onClick={() => handleSwitchPage(ACCTPAGES.default)}
-                />
             </>
         );
     }
