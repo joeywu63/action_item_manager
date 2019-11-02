@@ -1,17 +1,19 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Panel from 'common/Panel';
+
+const StyledDate = styled.div`
+    font-size: 12px;
+`;
 
 const ActionItemPanel = ({ actionItem, history }) => {
     const {
         actionItemID,
         title,
-        description,
-        teamID,
         dueDate,
-        userIDList
     } = actionItem;
 
     const navigateParams = {
@@ -22,8 +24,7 @@ const ActionItemPanel = ({ actionItem, history }) => {
     return (
         <Panel onClick={() => history.push(navigateParams)}>
             <b>{title}</b>
-            <div>Due Date: {dueDate}</div>
-            <div>{description}</div>
+            <StyledDate>Due Date: {dueDate}</StyledDate>
         </Panel>
     );
 };

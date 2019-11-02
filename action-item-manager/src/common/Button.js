@@ -9,6 +9,10 @@ const StyledButton = styled.button`
     color: ${COLOURS.lightPrimary};
     border-color: ${COLOURS.darkPrimary};
     padding: 4px 10px;
+    :hover {
+        cursor: pointer;
+        background: ${COLOURS.darkSecondary};
+    }
 `;
 
 class Button extends React.Component {

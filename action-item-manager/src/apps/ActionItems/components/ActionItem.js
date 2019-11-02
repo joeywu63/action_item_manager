@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Header from 'common/Header';
 import Button from 'common/Button';
@@ -11,6 +12,11 @@ import {
     update
 } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
+
+const StyledButton = styled(Button)`
+    margin-top: 10px;
+    margin-bottom: 10px;
+`;
 
 class ActionItem extends React.Component {
     componentDidMount() {
@@ -183,11 +189,11 @@ class ActionItem extends React.Component {
                     <b>Due Date: {dueDate}</b>
                 </div>
                 {this.renderStatus()}
-                <div>{description}</div>
-                <Button
+                <StyledButton
                     text={complete ? 'Mark as Incomplete' : 'Mark as Complete'}
                     onClick={this.handleMarkAsComplete}
                 />
+                <div>{description}</div>
                 {this.renderEditButton()}
                 <div>{this.renderEditBar()}</div>
             </>
