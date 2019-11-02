@@ -9,6 +9,9 @@ import Header from 'common/Header';
 import { getUsers, createUser, removeUser } from '../repository';
 
 const Table = styled.table`
+    min-width:100%;
+    max-width:100%;
+    white-space:nowrap;
     margin: 0;
     border-spacing: 0;
     border-collapse: collapse;

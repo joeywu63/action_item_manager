@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Dropdown from 'common/Dropdown';
 import Button from 'common/Button';
@@ -6,6 +7,7 @@ import Input from 'common/Input';
 import SubmitButton from 'common/SubmitButton';
 
 import { getUsers } from '../repository';
+import Label from 'common/Label';
 
 class AddTeamForm extends React.Component {
     componentDidMount() {
@@ -23,32 +25,59 @@ class AddTeamForm extends React.Component {
     }
 
     state = {
-        users: []
+        users: [],
+        teamName: '',
+        selectedUser: null
+    };
+
+    handleChange = e => {
+        const key = e.target.getAttribute('name');
+        this.setState({
+            [key]: e.target.value
+        });
+    };
+
+    handleUserChange = user => {
+        this.setState({ selectedUser: user });
+    };
+
+    handleSubmit = e => {
+        e.preventDefault();
+
+        const { handleAddTeam } = this.props;
+        const { teamName, selectedUser } = this.state;
+
+        handleAddTeam(teamName, selectedUser);
     };
 
     render() {
-        const { addTeam, newTeamName, onChangeName, onChangeUser } = this.props;
-        const { users } = this.state;
+        const { users, selectedUser, teamName } = this.state;
 
         return (
-            <div>
-                <input
-                    name="Team Name"
-                    value={newTeamName}
-                    onChange={onChangeName}
+            <form onSubmit={this.handleSubmit}>
+                <Input
+                    label="Name"
                     type="text"
-                    placeholder="new team name"
+                    value={teamName}
+                    name="teamName"
+                    handleChange={this.handleChange}
                 />
-                <Dropdown
-                    placeholder="select team manager"
-                    value={this.props.selectedUser}
-                    onChange={onChangeUser}
-                    options={users}
-                />
-                <Button text="Create Team" onClick={() => addTeam()} />
-            </div>
+                <Label label="Manager">
+                    <Dropdown
+                        placeholder="Select Team Manager"
+                        value={selectedUser}
+                        onChange={this.handleUserChange}
+                        options={users}
+                    />
+                </Label>
+                <SubmitButton value="Create Team" />
+            </form>
         );
     }
 }
+
+AddTeamForm.propTypes = {
+    handleAddTeam: PropTypes.func.isRequired
+};
 
 export default AddTeamForm;
