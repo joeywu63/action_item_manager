@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { COLOURS } from 'utils/constants';
 
 const StyledLabel = styled.label`
+    margin-top: 10px;
     font-weight: bold;
     font-size: 20px;
     width: 520px;
