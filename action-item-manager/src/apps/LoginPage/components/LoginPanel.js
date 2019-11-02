@@ -1,7 +1,6 @@
 import React from 'react';
 import Panel from 'common/Panel';
 import styled from 'styled-components';
-import Button from 'common/Button';
 
 import { COLOURS } from 'utils/constants';
 
@@ -50,7 +49,7 @@ const Login = styled.input`
     margin-bottom: 1.2em;
 `;
 
-const LoginButton = styled(Button)`
+const LoginButton = styled.input`
     width: 320px;
     font-weight: 500;
     text-align: center;
@@ -80,7 +79,6 @@ const LoginButton = styled(Button)`
 `;
 
 const Title = styled.h1`
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
     font-weight: 700;
     font-size: 45px;
     color: ${COLOURS.lightPrimary};
@@ -91,7 +89,6 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h3`
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
     font-weight: 500;
     color: ${COLOURS.lightSecondary};
     text-align: center;
@@ -127,6 +124,7 @@ class LoginPanel extends React.Component {
     };
 
     handleChange = event => {
+        event.preventDefault();
         const inputType = event.target.name;
         if (inputType === 'email') {
             this.setState({ email: event.target.value });
@@ -139,7 +137,7 @@ class LoginPanel extends React.Component {
         return (
             <LoginWrapper>
                 <StyledPanel>
-                    <form>
+                    <form onSubmit={this.handleLogin}>
                         <FormContainer>
                             <Title>Welcome.</Title>
                             <Subtitle>Please sign in to continue</Subtitle>
@@ -160,11 +158,7 @@ class LoginPanel extends React.Component {
                                 />
                             </div>
                         </FormContainer>
-                        <LoginButton
-                            text="LOGIN"
-                            className={LoginButton}
-                            onClick={this.handleLogin}
-                        />
+                        <LoginButton type="submit" value="LOGIN"/>
                     </form>
                 </StyledPanel>
             </LoginWrapper>

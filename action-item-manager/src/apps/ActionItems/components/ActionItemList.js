@@ -20,8 +20,13 @@ class ActionItemList extends React.Component {
 
     renderActionItems = () => {
         const { actionItems } = this.state;
+        const sortedActionItems = actionItems.sort((a, b) => {
+            a = new Date(a.dueDate)
+            b = new Date(b.dueDate)
+            return a > b ? 1 : -1;
+        })
 
-        return actionItems.map(actionItem => (
+        return sortedActionItems.map(actionItem => (
             <ActionItemPanel
                 key={actionItem.actionItemID}
                 actionItem={actionItem}

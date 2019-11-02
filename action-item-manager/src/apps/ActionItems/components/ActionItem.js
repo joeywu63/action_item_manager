@@ -3,6 +3,9 @@ import styled from 'styled-components';
 
 import Header from 'common/Header';
 import Button from 'common/Button';
+import { ROLES } from 'utils/constants';
+import SubmitButton from 'common/SubmitButton';
+import Input from 'common/Input';
 
 import {
     toggleActionItemComplete,
@@ -16,6 +19,46 @@ import { getCurrentUser } from 'utils/currentUser';
 const StyledButton = styled(Button)`
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
+`;
+
+const TopBar = styled.div`
+    margin-top: 15px;
+    margin-bottom: 30px;
+`;
+
+const DueDate = styled.div`
+    display: inline-block;
+    border-bottom: 3px solid black;
+    margin-right: 50px;
+`;
+
+const Status = styled.div`
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 4px;
+`;
+
+const CompletedIcon = styled.div`
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+    background: green;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    margin-right: 50px;
+`;
+
+const IncompleteIcon = styled.div`
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+    background: red;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    margin-right: 50px;
 `;
 
 class ActionItem extends React.Component {
@@ -32,7 +75,8 @@ class ActionItem extends React.Component {
 
         const complete = didComplete({ userID: currentUser.id, actionItemID });
         const canEdit =
-            currentUser.id === getTeamByID({ teamId: teamID }).managerID;
+            currentUser.id === getTeamByID({ teamId: teamID }).managerID ||
+            currentUser.role === ROLES.admin;
         const teamSize = getSize({ teamId: teamID });
 
         this.setState({
@@ -112,7 +156,7 @@ class ActionItem extends React.Component {
     };
 
     handleEdit = () => {
-        const { editing } = this.state
+        const { editing } = this.state;
         this.setState({ editing: !editing });
     };
 
@@ -121,8 +165,21 @@ class ActionItem extends React.Component {
 
         if (canEdit === true) {
             return (
-                <Button text={'Edit Action Item'} onClick={this.handleEdit} />
+                <StyledButton
+                    text={'Edit Action Item'}
+                    onClick={this.handleEdit}
+                />
             );
+        }
+    };
+
+    renderComplete = () => {
+        const { complete } = this.state;
+
+        if (complete) {
+            return <CompletedIcon> Completed </CompletedIcon>;
+        } else {
+            return <IncompleteIcon> Incomplete </IncompleteIcon>;
         }
     };
 
@@ -131,49 +188,45 @@ class ActionItem extends React.Component {
 
         if (canEdit === true) {
             return (
-                <div>
-                    Status: Completed by {completedBy}/{teamSize} members
-                </div>
+                <Status>
+                    Completed by {completedBy}/{teamSize} members
+                </Status>
             );
         }
     };
 
-    renderEditBar = () => {
+    renderEditForm = () => {
         const { editing, newTitle, newDescription, newDueDate } = this.state;
         if (editing === true) {
             return (
                 <div>
+                    <Header title={'Edit Action Item'} />
                     <form onSubmit={this.handleSubmit}>
-                        <h4>
-                            Title:{' '}
-                            <input
-                                name="newTitle"
-                                type="text"
-                                value={newTitle}
-                                onChange={this.handleChange}
-                            />
-                        </h4>
+                        <Input
+                            label="Title"
+                            name="newTitle"
+                            type="text"
+                            value={newTitle}
+                            handleChange={this.handleChange}
+                        />
 
-                        <h4>
-                            Description:{' '}
-                            <input
-                                name="newDescription"
-                                type="text"
-                                value={newDescription}
-                                onChange={this.handleChange}
-                            />
-                        </h4>
+                        <Input
+                            label="Description"
+                            name="newDescription"
+                            type="text"
+                            value={newDescription}
+                            handleChange={this.handleChange}
+                        />
 
-                        <h4>
-                            Due Date:{' '}
-                            <input
-                                name="newDueDate"
-                                type="date"
-                                value={newDueDate}
-                                onChange={this.handleChange}
-                            />
-                        </h4>
-                        <input type="submit" value="Save Changes" />
+                        <Input
+                            label="Due Date"
+                            name="newDueDate"
+                            type="date"
+                            value={newDueDate}
+                            handleChange={this.handleChange}
+                        />
+
+                        <SubmitButton type="submit" value="Save Changes" />
                         <Button text="Cancel" onClick={this.handleEdit} />
                     </form>
                 </div>
@@ -186,17 +239,24 @@ class ActionItem extends React.Component {
 
         return (
             <>
+                <TopBar>
+                    {this.renderComplete()}
+                    <DueDate>
+                        <b>Deadline: {dueDate}</b>
+                    </DueDate>
+                    {this.renderStatus()}
+                </TopBar>
                 <Header title={title} />
-                <div>
-                    <b>Due Date: {dueDate}</b>
-                </div>
-                {this.renderStatus()}
-                <StyledButton
-                    text={complete ? 'Mark as Incomplete' : 'Mark as Complete'}
-                    onClick={this.handleMarkAsComplete}
-                />
                 <div>{description}</div>
-                {this.renderEditButton()}
+                <div>
+                    <StyledButton
+                        text={
+                            complete ? 'Mark as Incomplete' : 'Mark as Complete'
+                        }
+                        onClick={this.handleMarkAsComplete}
+                    />
+                    {this.renderEditButton()}
+                </div>
             </>
         );
     }
@@ -206,7 +266,7 @@ class ActionItem extends React.Component {
 
         return (
             <>
-                <div>{editing ? this.renderEditBar() : this.renderBody()}</div>
+                <div>{editing ? this.renderEditForm() : this.renderBody()}</div>
             </>
         );
     }
