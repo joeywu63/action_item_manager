@@ -3,69 +3,40 @@ import Panel from 'common/Panel';
 import styled from 'styled-components';
 import Button from 'common/Button';
 
-import { COLOURS } from 'utils/constants';
-
-const LoginWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient(
-        to bottom right,
-        ${COLOURS.darkPrimary},
-        #bcb8b1,
-        #834a75
-    );
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-`;
-
 const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: ${COLOURS.darkPrimary};
+    background-color: #fff;
 `;
 
 const Login = styled.input`
-    color: ${COLOURS.darkPrimary};
-    background-color: ${COLOURS.lightPrimary};
+    color: #384047;
+    background-color: #e8eeef;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
-    width: 300px;
     padding: 10px;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     margin-bottom: 1.2em;
 `;
 
 const LoginButton = styled(Button)`
-    width: 320px;
-    font-weight: 500;
+    width: 100%;
+    font-weight: 400;
     text-align: center;
-    font-size: 20px;
-    color: ${COLOURS.darkSecondary};
-    background-color: #f87080;
+    font-size: 19px;
+    color: #fff;
+    background-color: #4bc970;
+    width: 100%;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 0.8em;
     margin-top: 1em;
     margin-bottom: 1em;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     :hover {
-        background-color: ${COLOURS.lightSecondary};
+        background-color: #35a556;
         box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
         transform: translateY(-5px);
         position: relative;
@@ -79,38 +50,22 @@ const LoginButton = styled(Button)`
     }
 `;
 
-const Title = styled.h1`
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+const Title = styled.h2`
     font-weight: 700;
-    font-size: 45px;
-    color: ${COLOURS.lightPrimary};
+    color: #384047;
     text-align: center;
     line-height: 1.5em;
-    margin-bottom: 0.1em;
-    margin-top: 0.2em;
-`;
-
-const Subtitle = styled.h3`
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-    font-weight: 500;
-    color: ${COLOURS.lightSecondary};
-    text-align: center;
-    line-height: 1.5em;
-    margin-bottom: 2.4em;
+    margin-bottom: 1.2em;
     margin-top: 0.2em;
 `;
 
 const StyledPanel = styled(Panel)`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: ${COLOURS.darkPrimary};
+    background-color: #fff;
     border-radius: 6px;
-    width: 600px;
+    max-width: 400px;
     box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
-    height: 350px;
+    max-height: 400px;
     border: 1px none;
-    margin: 25vh;
 `;
 
 class LoginPanel extends React.Component {
@@ -137,37 +92,34 @@ class LoginPanel extends React.Component {
 
     render() {
         return (
-            <LoginWrapper>
-                <StyledPanel>
-                    <form>
-                        <FormContainer>
-                            <Title>Welcome.</Title>
-                            <Subtitle>Please sign in to continue</Subtitle>
-                            <div>
-                                <Login
-                                    type="text"
-                                    name="email"
-                                    placeholder="E-mail"
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                            <div>
-                                <Login
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </FormContainer>
-                        <LoginButton
-                            text="LOGIN"
-                            className={LoginButton}
-                            onClick={this.handleLogin}
-                        />
-                    </form>
-                </StyledPanel>
-            </LoginWrapper>
+            <StyledPanel>
+                <form>
+                    <FormContainer>
+                        <Title>Please Log in</Title>
+                        <div>
+                            <Login
+                                type="text"
+                                name="email"
+                                placeholder="email"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <div>
+                            <Login
+                                type="password"
+                                name="password"
+                                placeholder="password"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                    </FormContainer>
+                    <LoginButton
+                        text="Log in"
+                        className={LoginButton}
+                        onClick={this.handleLogin}
+                    />
+                </form>
+            </StyledPanel>
         );
     }
 }
