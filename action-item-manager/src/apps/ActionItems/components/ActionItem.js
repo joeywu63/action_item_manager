@@ -88,42 +88,40 @@ class ActionItem extends React.Component {
         }
     };
 
-    handleEdit = async () => {
+    handleSubmit = async () => {
         const { actionItemID } = this.props.location.state.actionItem;
         const { editing, newTitle, newDescription, newDueDate } = this.state;
 
-        if (editing) {
-            update({
-                id: actionItemID,
-                newTitle: newTitle,
-                newDesc: newDescription,
-                newDueDate: newDueDate
-            });
-            this.setState({
-                editing: !editing,
-                title: newTitle,
-                description: newDescription,
-                dueDate: newDueDate
-            });
-        } else {
-            this.setState({ editing: !editing });
-        }
+        update({
+            id: actionItemID,
+            newTitle: newTitle,
+            newDesc: newDescription,
+            newDueDate: newDueDate
+        });
+        this.setState({
+            editing: !editing,
+            title: newTitle,
+            description: newDescription,
+            dueDate: newDueDate
+        });
     };
 
-    handleChange = async e => {
+    handleChange = e => {
         const key = e.target.getAttribute('name');
         this.setState({ [key]: e.target.value });
     };
 
+    handleEdit = () => {
+        const { editing } = this.state
+        this.setState({ editing: !editing });
+    };
+
     renderEditButton = () => {
-        const { canEdit, editing } = this.state;
+        const { canEdit } = this.state;
 
         if (canEdit === true) {
             return (
-                <Button
-                    text={editing ? 'Save Changes' : 'Edit Action Item'}
-                    onClick={this.handleEdit}
-                />
+                <Button text={'Edit Action Item'} onClick={this.handleEdit} />
             );
         }
     };
@@ -144,42 +142,46 @@ class ActionItem extends React.Component {
         const { editing, newTitle, newDescription, newDueDate } = this.state;
         if (editing === true) {
             return (
-                <>
-                    <h4>
-                        Title:{' '}
-                        <input
-                            name="newTitle"
-                            type="text"
-                            value={newTitle}
-                            onChange={this.handleChange}
-                        />
-                    </h4>
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <h4>
+                            Title:{' '}
+                            <input
+                                name="newTitle"
+                                type="text"
+                                value={newTitle}
+                                onChange={this.handleChange}
+                            />
+                        </h4>
 
-                    <h4>
-                        Description:{' '}
-                        <input
-                            name="newDescription"
-                            type="text"
-                            value={newDescription}
-                            onChange={this.handleChange}
-                        />
-                    </h4>
+                        <h4>
+                            Description:{' '}
+                            <input
+                                name="newDescription"
+                                type="text"
+                                value={newDescription}
+                                onChange={this.handleChange}
+                            />
+                        </h4>
 
-                    <h4>
-                        Due Date:{' '}
-                        <input
-                            name="newDueDate"
-                            type="date"
-                            value={newDueDate}
-                            onChange={this.handleChange}
-                        />
-                    </h4>
-                </>
+                        <h4>
+                            Due Date:{' '}
+                            <input
+                                name="newDueDate"
+                                type="date"
+                                value={newDueDate}
+                                onChange={this.handleChange}
+                            />
+                        </h4>
+                        <input type="submit" value="Save Changes" />
+                        <Button text="Cancel" onClick={this.handleEdit} />
+                    </form>
+                </div>
             );
         }
     };
 
-    render() {
+    renderBody() {
         const { title, description, dueDate, complete } = this.state;
 
         return (
@@ -195,7 +197,16 @@ class ActionItem extends React.Component {
                 />
                 <div>{description}</div>
                 {this.renderEditButton()}
-                <div>{this.renderEditBar()}</div>
+            </>
+        );
+    }
+
+    render() {
+        const { editing } = this.state;
+
+        return (
+            <>
+                <div>{editing ? this.renderEditBar() : this.renderBody()}</div>
             </>
         );
     }
