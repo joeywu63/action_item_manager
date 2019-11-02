@@ -21,6 +21,10 @@ const StyledButton = styled(Button)`
     margin-left: 10px;
 `;
 
+const ProfileCategories = styled.text`
+    font-weight: bold;
+`;
+
 class AccountInfo extends React.Component {
     state = {
         currentUser: getCurrentUser(),
@@ -37,10 +41,10 @@ class AccountInfo extends React.Component {
             <>
                 <SidebarWrapper />
                 <Header title="Account Info" />
-                <ProfileLine>First Name: {firstName}</ProfileLine>
-                <ProfileLine>Last Name: {lastName}</ProfileLine>
-                <ProfileLine>Email: {email}</ProfileLine>
-                <ProfileLine>Role: {ROLENAMES[role]}</ProfileLine>
+                <ProfileLine><ProfileCategories>First Name:</ProfileCategories> {firstName}</ProfileLine>
+                <ProfileLine><ProfileCategories>Last Name:</ProfileCategories> {lastName}</ProfileLine>
+                <ProfileLine><ProfileCategories>Email:</ProfileCategories> {email}</ProfileLine>
+                <ProfileLine><ProfileCategories>Role:</ProfileCategories> {ROLENAMES[role]}</ProfileLine>
                 <Button
                     text="Edit Password"
                     onClick={() =>

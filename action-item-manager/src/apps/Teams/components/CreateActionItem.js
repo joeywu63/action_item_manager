@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Button from 'common/Button';
 import Input from 'common/Input';
@@ -7,6 +8,10 @@ import TextArea from 'common/TextArea';
 import SubmitButton from 'common/SubmitButton';
 
 import { createActionItem } from '../repository';
+
+const StyledButton = styled(Button)`
+    margin-top: 10px;
+`;
 
 class CreateActionItem extends React.Component {
     state = {
@@ -43,7 +48,7 @@ class CreateActionItem extends React.Component {
 
         return (
             <div>
-                <Button text="Back" onClick={handleGoBack} />
+                <StyledButton text="Back" onClick={handleGoBack} />
                 <form onSubmit={this.handleSubmit}>
                     <Input
                         label="Title"
