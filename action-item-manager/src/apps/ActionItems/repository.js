@@ -7,17 +7,11 @@ export const getTeamByID = ({ teamId }) => {
     return team.getByID({ teamId });
 };
 
-export const getActionItemByID = ({ actionItemId }) => {
-    return actionItem.getByID({ id: actionItemId });
+export const getSize = ({ teamId }) => {
+    return team.getSize({ teamId });
 };
 
-export const updateTitle = ({ id, newTitle }) => {
-    return actionItem.updateTitle({ id, newTitle });
-};
-
-export const updateDescription = ({ id, newDesc }) => {
-    return actionItem.updateDescription({ id, newDesc });
-};
+export const update = actionItem.update;
 
 export const toggleActionItemComplete = actionItem.toggleActionItemComplete;
 

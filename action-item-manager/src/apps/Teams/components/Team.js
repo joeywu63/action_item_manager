@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import ActionItemPanel from 'apps/ActionItems/components/ActionItemPanel';
 
@@ -13,6 +14,16 @@ import { getTeamActionItems } from '../repository';
 import { ACTIONS } from '../constants';
 
 import { canManageTeam } from 'utils/currentUser';
+
+const TeamWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const StyledButton = styled(Button)`
+    margin-top: 10px;
+    margin-right: 10px;
+`;
 
 class Team extends React.Component {
     async componentDidMount() {
@@ -49,16 +60,16 @@ class Team extends React.Component {
     };
 
     renderManagerActions = () => (
-        <>
-            <Button
+        <div>
+            <StyledButton
                 text="Create Action Item"
                 onClick={() => this.handleSwitchPage(ACTIONS.create)}
             />
-            <Button
+            <StyledButton
                 text="Manage Team"
                 onClick={() => this.handleSwitchPage(ACTIONS.manage)}
             />
-        </>
+        </div>
     );
 
     render() {
@@ -66,7 +77,7 @@ class Team extends React.Component {
         const { loading, page } = this.state;
 
         return (
-            <>
+            <TeamWrapper>
                 <Header title={name} />
                 {canManageTeam(managerID) && page === ACTIONS.default
                     ? this.renderManagerActions()
@@ -91,7 +102,7 @@ class Team extends React.Component {
                 ) : (
                     this.renderTeamActionItems()
                 )}
-            </>
+            </TeamWrapper>
         );
     }
 }

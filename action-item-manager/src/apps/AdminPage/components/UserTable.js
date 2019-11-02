@@ -9,6 +9,9 @@ import Header from 'common/Header';
 import { getUsers, createUser, removeUser } from '../repository';
 
 const Table = styled.table`
+    min-width:100%;
+    max-width:100%;
+    white-space:nowrap;
     margin: 0;
     border-spacing: 0;
     border-collapse: collapse;
@@ -27,6 +30,10 @@ const TableHeader = styled.th`
     border: 1px solid black
     text-align: center;
     vertical-align: middle;
+`;
+
+const Wrapper = styled.div`
+    margin-top: 20px;
 `;
 
 class UserTable extends React.Component {
@@ -75,9 +82,8 @@ class UserTable extends React.Component {
 
     render() {
         return (
-            <div>
+            <Wrapper>
                 <Header title="Users" size="medium" />
-                <AddUserForm handleCreateUser={this.handleCreateUser} />
                 <Table>
                     <TableHead>
                         <tr>
@@ -90,7 +96,8 @@ class UserTable extends React.Component {
                     </TableHead>
                     {this.renderRows()}
                 </Table>
-            </div>
+                <AddUserForm handleCreateUser={this.handleCreateUser} />
+            </Wrapper>
         );
     }
 }

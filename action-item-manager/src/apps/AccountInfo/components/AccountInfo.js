@@ -64,7 +64,10 @@ class AccountInfo extends React.Component {
                 ) : page === ACCTPAGES.changepassword ? (
                     <ChangePassword handleSwitchPage={this.handleSwitchPage} />
                 ) : page === ACCTPAGES.changeinfo ? (
-                    <ChangeInfo handleSwitchPage={this.handleSwitchPage} currentUser={currentUser} />
+                    <ChangeInfo
+                        handleSwitchPage={this.handleSwitchPage}
+                        currentUser={currentUser}
+                    />
                 ) : null}
             </>
         );

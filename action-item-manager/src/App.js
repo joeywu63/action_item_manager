@@ -7,16 +7,17 @@ import AccountInfo from 'apps/AccountInfo/components/AccountInfo';
 import TeamsRouter from 'apps/Teams/components/TeamsRouter';
 import ActionItemsRouter from 'apps/ActionItems/components/ActionItemsRouter';
 import LoginPage from 'apps/LoginPage/components/LoginPage';
-import Dashboard from 'apps/Dashboard/components/Dashboard';
 import AdminPage from 'apps/AdminPage/components/Admin';
 
 import PageWrapper from 'common/PageWrapper';
 
 import { getCurrentUser } from 'utils/currentUser';
+import { COLOURS } from 'utils/constants';
 
 const MainWrapper = styled.div`
     display: flex;
-    height: 100vh;
+    height: 100%;
+    background-color: ${COLOURS.background};
 `;
 
 class App extends React.Component {
@@ -56,16 +57,15 @@ class MainRouter extends React.Component {
                     <PageWrapper>
                         <Switch>
                             <Route
-                                path="/action-items"
-                                component={ActionItemsRouter}
-                            />
-                            <Route
                                 path="/account-info"
                                 component={AccountInfo}
                             />
                             <Route path="/teams" component={TeamsRouter} />
                             <Route path="/admin-page" component={AdminPage} />
-                            <Route path="/" component={Dashboard} />
+                            <Route
+                                path="/action-items"
+                                component={ActionItemsRouter}
+                            />
                         </Switch>
                     </PageWrapper>
                 </MainWrapper>

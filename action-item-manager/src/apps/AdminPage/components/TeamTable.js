@@ -6,9 +6,12 @@ import AddTeamForm from './AddTeamForm';
 
 import Header from 'common/Header';
 
-import { getAllTeams } from '../repository';
+import { getAllTeams, createTeam, removeTeam } from '../repository';
 
 const Table = styled.table`
+    min-width:100%;
+    max-width:100%;
+    white-space:nowrap;
     margin: 0;
     border-spacing: 0;
     border-collapse: collapse;
@@ -42,7 +45,6 @@ class TeamTable extends React.Component {
     };
 
     handleRemoveTeam = team => {
-        const { removeTeam } = this.props;
         const { teams } = this.state;
 
         removeTeam({ teamId: team.id });
@@ -52,26 +54,17 @@ class TeamTable extends React.Component {
         });
     };
 
-    handleAddTeam = () => {
-        const { addTeam } = this.props;
-        const { teams, newTeamName, selectedUser } = this.state;
+    handleAddTeam = (teamName, selectedUser) => {
+        const { teams } = this.state;
 
-        addTeam({
-            teamName: newTeamName,
+        createTeam({
+            teamName,
             managerID: selectedUser.id
         });
 
         this.setState({
             teams: teams
         });
-    };
-
-    handleNameChange = e => {
-        this.setState({ newTeamName: e.target.value });
-    };
-
-    handleUserChange = user => {
-        this.setState({ selectedUser: user });
     };
 
     render() {
@@ -91,13 +84,6 @@ class TeamTable extends React.Component {
         return (
             <div>
                 <Header title="Teams" size="medium" />
-                <AddTeamForm
-                    newTeamName={this.state.newTeamName}
-                    selectedUser={this.state.selectedUser}
-                    addTeam={this.handleAddTeam}
-                    onChangeName={this.handleNameChange}
-                    onChangeUser={this.handleUserChange}
-                />
                 <Table>
                     <TableHead>
                         <tr>
@@ -109,6 +95,7 @@ class TeamTable extends React.Component {
                     </TableHead>
                     <tbody>{rows}</tbody>
                 </Table>
+                <AddTeamForm handleAddTeam={this.handleAddTeam} />
             </div>
         );
     }

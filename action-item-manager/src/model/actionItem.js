@@ -60,19 +60,12 @@ export const getByID = ({ id }) => {
     }
 };
 
-export const updateTitle = ({ id, newTitle }) => {
+export const update = ({ id, newTitle, newDesc, newDueDate }) => {
     const ai = actionItems.filter(a => a.actionItemID === id);
     try {
         ai[0].title = newTitle;
-    } catch (e) {
-        console.log('no action item with this id');
-    }
-};
-
-export const updateDescription = ({ id, newDesc }) => {
-    const ai = actionItems.filter(a => a.actionItemID === id);
-    try {
         ai[0].description = newDesc;
+        ai[0].dueDate = newDueDate;
     } catch (e) {
         console.log('no action item with this id');
     }

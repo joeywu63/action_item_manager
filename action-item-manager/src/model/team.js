@@ -25,6 +25,19 @@ export const getByID = ({ teamId }) => {
     }
 };
 
+export const getSize = ({ teamId }) => {
+    let result = 0;
+    const users = getList();
+
+    users.forEach(u => {
+        if (u.teamIDList.includes(teamId)) {
+            result++;
+        }
+    });
+
+    return result;
+};
+
 export const getTeamsByCurrentUser = () => {
     const currentUser = getCurrentUser();
 

@@ -10,27 +10,59 @@ import { setCurrentUser } from 'utils/currentUser.js';
 const SideBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 150px;
+    width: 25vh;
     border-right: 0.5px solid black;
+    background: #2b2b2b;
 `;
 
 class MainSideBar extends React.Component {
+    state = { activeButton: 'Dashboard' };
+
     logout = () => {
         const { logout } = this.props;
 
         setCurrentUser(null);
         logout();
+        this.setState({ activeButton: 'Dashboard' });
+    };
+
+    handleClick = e => {
+        this.setState({ activeButton: e.target.innerText });
     };
 
     render() {
         return (
             <SideBarWrapper>
-                <RouterButton link="/dashboard" title="Dashboard" />
-                <RouterButton link="/account-info" title="Account Info" />
-                <RouterButton link="/teams" title="Teams" />
-                <RouterButton link="/action-items" title="Action Items" />
-                <RouterButton link="/admin-page" title="Admin Page" />
-                <RouterButton link="/" title="Logout" onClick={this.logout} />
+                <RouterButton
+                    link="/account-info"
+                    title="Account Info"
+                    onClick={this.handleClick}
+                    isActive={'Account Info' === this.state.activeButton}
+                />
+                <RouterButton
+                    link="/teams"
+                    title="Teams"
+                    onClick={this.handleClick}
+                    isActive={'Teams' === this.state.activeButton}
+                />
+                <RouterButton
+                    link="/action-items"
+                    title="Action Items"
+                    onClick={this.handleClick}
+                    isActive={'Action Items' === this.state.activeButton}
+                />
+                <RouterButton
+                    link="/admin-page"
+                    title="Admin Page"
+                    onClick={this.handleClick}
+                    isActive={'Admin Page' === this.state.activeButton}
+                />
+                <RouterButton
+                    link="/"
+                    title="Logout"
+                    onClick={this.logout}
+                    isActive={false}
+                />
             </SideBarWrapper>
         );
     }
