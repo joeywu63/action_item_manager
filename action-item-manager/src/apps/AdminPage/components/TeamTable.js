@@ -91,13 +91,6 @@ class TeamTable extends React.Component {
         return (
             <div>
                 <Header title="Teams" size="medium" />
-                <AddTeamForm
-                    newTeamName={this.state.newTeamName}
-                    selectedUser={this.state.selectedUser}
-                    addTeam={this.handleAddTeam}
-                    onChangeName={this.handleNameChange}
-                    onChangeUser={this.handleUserChange}
-                />
                 <Table>
                     <TableHead>
                         <tr>
@@ -109,6 +102,13 @@ class TeamTable extends React.Component {
                     </TableHead>
                     <tbody>{rows}</tbody>
                 </Table>
+                <AddTeamForm
+                    newTeamName={this.state.newTeamName}
+                    selectedUser={this.state.selectedUser}
+                    addTeam={this.handleAddTeam}
+                    onChangeName={this.handleNameChange}
+                    onChangeUser={this.handleUserChange}
+                />
             </div>
         );
     }

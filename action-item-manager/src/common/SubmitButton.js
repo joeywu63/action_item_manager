@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { COLOURS } from 'utils/constants';
 
 const StyledSubmit = styled.input`
+    margin-top: 10px;
     background: ${COLOURS.darkPrimary};
     color: ${COLOURS.lightPrimary};
     border-color: ${COLOURS.darkPrimary};

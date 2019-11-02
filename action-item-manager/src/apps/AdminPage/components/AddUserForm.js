@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Dropdown from 'common/Dropdown';
+import Input from 'common/Input';
+import SubmitButton from 'common/SubmitButton';
+import Label from 'common/Label';
 
 class AddUserForm extends React.Component {
     componentDidMount() {}
@@ -38,38 +41,7 @@ class AddUserForm extends React.Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Email:
-                    <input
-                        name="email"
-                        value={email}
-                        onChange={this.handleChange}
-                        type="text"
-                        placeholder="new team name"
-                    />
-                </label>
-                <label>
-                    First Name:
-                    <input
-                        name="firstName"
-                        value={firstName}
-                        onChange={this.handleChange}
-                        type="text"
-                        placeholder="first name"
-                    />
-                </label>
-                <label>
-                    Last Name:
-                    <input
-                        name="lastName"
-                        value={lastName}
-                        onChange={this.handleChange}
-                        type="text"
-                        placeholder="last name"
-                    />
-                </label>
-                <label>
-                    Role:
+                <Label label="Role">
                     <Dropdown
                         placeholder="select role"
                         value={role}
@@ -79,8 +51,29 @@ class AddUserForm extends React.Component {
                             { value: 1, label: 'Admin' }
                         ]}
                     />
-                </label>
-                <input type="submit" value="Invite User" />
+                </Label>
+                <Input
+                    label="Email"
+                    type="text"
+                    value={email}
+                    name="email"
+                    handleChange={this.handleChange}
+                />
+                <Input
+                    label="First Name"
+                    type="text"
+                    value={firstName}
+                    name="firstName"
+                    handleChange={this.handleChange}
+                />
+                <Input
+                    label="Last Name"
+                    type="text"
+                    value={lastName}
+                    name="lastName"
+                    handleChange={this.handleChange}
+                />
+                <SubmitButton value="Invite User" />
             </form>
         );
     }

@@ -16,7 +16,7 @@ import { COLOURS } from 'utils/constants';
 
 const MainWrapper = styled.div`
     display: flex;
-    height: 100vh;
+    height: 100%;
     background-color: ${COLOURS.background};
 `;
 

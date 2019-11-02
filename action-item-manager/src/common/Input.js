@@ -2,15 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { COLOURS } from 'utils/constants';
+import Label from './Label';
 
-const StyledLabel = styled.label`
-    font-weight: bold;
-    font-size: 20px;
-    width: 520px;
-    display: flex;
-    justify-content: space-between;
-`;
+import { COLOURS } from 'utils/constants';
 
 const StyledInput = styled.input`
     border-radius: 5px;
@@ -32,8 +26,7 @@ class Input extends React.Component {
         } = this.props;
 
         return (
-            <StyledLabel>
-                {label}
+            <Label label={label}>
                 <StyledInput
                     name={name}
                     value={value}
@@ -41,7 +34,7 @@ class Input extends React.Component {
                     placeholder={placeholder}
                     onChange={handleChange}
                 />
-            </StyledLabel>
+            </Label>
         );
     }
 }
@@ -52,7 +45,7 @@ Input.propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
 };
 
 Input.defaultProps = {

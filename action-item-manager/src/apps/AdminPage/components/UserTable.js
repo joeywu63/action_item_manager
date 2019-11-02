@@ -29,6 +29,10 @@ const TableHeader = styled.th`
     vertical-align: middle;
 `;
 
+const Wrapper = styled.div`
+    margin-top: 20px;
+`;
+
 class UserTable extends React.Component {
     componentDidMount() {
         const users = getUsers();
@@ -75,9 +79,8 @@ class UserTable extends React.Component {
 
     render() {
         return (
-            <div>
+            <Wrapper>
                 <Header title="Users" size="medium" />
-                <AddUserForm handleCreateUser={this.handleCreateUser} />
                 <Table>
                     <TableHead>
                         <tr>
@@ -90,7 +93,8 @@ class UserTable extends React.Component {
                     </TableHead>
                     {this.renderRows()}
                 </Table>
-            </div>
+                <AddUserForm handleCreateUser={this.handleCreateUser} />
+            </Wrapper>
         );
     }
 }

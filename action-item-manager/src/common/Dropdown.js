@@ -9,7 +9,7 @@ class Dropdown extends React.Component {
             control: styles => ({...styles, height: 35, minHeight: 35, width: 400 }),
             option: styles => ({
                 ...styles,
-                width: 400,
+                width: 403,
                 height: 35
             }),
             container: styles => ({
