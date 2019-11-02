@@ -12,6 +12,19 @@ const SidebarWrapper = styled.div`
     margin-right: auto;
 `;
 
+const ProfileLine = styled.div`
+    margin-top: 5px;
+    margin-bottom: 10px;
+`;
+
+const StyledButton = styled(Button)`
+    margin-left: 10px;
+`;
+
+const ProfileCategories = styled.text`
+    font-weight: bold;
+`;
+
 class AccountInfo extends React.Component {
     state = {
         currentUser: getCurrentUser(),
@@ -28,17 +41,17 @@ class AccountInfo extends React.Component {
             <>
                 <SidebarWrapper />
                 <Header title="Account Info" />
-                First Name: {firstName}
-                Last Name: {lastName}
-                Email: {email}
-                Role: {ROLENAMES[role]}
+                <ProfileLine><ProfileCategories>First Name:</ProfileCategories> {firstName}</ProfileLine>
+                <ProfileLine><ProfileCategories>Last Name:</ProfileCategories> {lastName}</ProfileLine>
+                <ProfileLine><ProfileCategories>Email:</ProfileCategories> {email}</ProfileLine>
+                <ProfileLine><ProfileCategories>Role:</ProfileCategories> {ROLENAMES[role]}</ProfileLine>
                 <Button
                     text="Edit Password"
                     onClick={() =>
                         this.handleSwitchPage(ACCTPAGES.changepassword)
                     }
                 />
-                <Button
+                <StyledButton
                     text="Edit Profile"
                     onClick={() => this.handleSwitchPage(ACCTPAGES.changeinfo)}
                 />

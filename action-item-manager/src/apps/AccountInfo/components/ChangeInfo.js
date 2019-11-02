@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import Button from 'common/Button';
 import { ACCTPAGES } from '../constants';
 import { getCurrentUser } from 'utils/currentUser';
 import { submitInfo } from '../repository';
+import Input from 'common/Input';
+import Label from 'common/Label';
+import Button from 'common/Button';
+import SubmitButton from 'common/SubmitButton';
+
+const StyledButton = styled(Button)`
+    margin-top: 10px;
+    margin-left: 10px;
+`;
 
 class ChangeInfo extends React.Component {
     componentDidMount() {
@@ -42,39 +51,39 @@ class ChangeInfo extends React.Component {
         return (
             <>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        First Name:
-                        <input
+                    <Label>
+                        <Input
+                            label="First Name:"
                             type="text"
                             name="firstName"
                             value={firstName}
                             onChange={this.handleChange}
                         />
-                    </label>
-                    <label>
-                        Last Name:
-                        <input
+                    </Label>
+                    <Label>
+                        <Input
+                            label="Last Name:"
                             type="text"
                             name="lastName"
                             value={lastName}
                             onChange={this.handleChange}
                         />
-                    </label>
-                    <label>
-                        Email:
-                        <input
+                    </Label>
+                    <Label>
+                        <Input
+                            label="Email:"
                             type="text"
                             name="email"
                             value={email}
                             onChange={this.handleChange}
                         />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-                <Button
+                    </Label>
+                    <SubmitButton value="Submit" />
+                    <StyledButton
                     text="Cancel"
                     onClick={() => handleSwitchPage(ACCTPAGES.default)}
-                />
+                    />
+                </form>
             </>
         );
     }
