@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from 'common/Button';
+import Input from 'common/Input';
+import TextArea from 'common/TextArea';
+import SubmitButton from 'common/SubmitButton';
 
 import { createActionItem } from '../repository';
 
@@ -42,33 +45,27 @@ class CreateActionItem extends React.Component {
             <div>
                 <Button text="Back" onClick={handleGoBack} />
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Title:
-                        <input
-                            name="title"
-                            type="text"
-                            value={title}
-                            onChange={this.handleChange}
-                        />
-                    </label>
-                    <label>
-                        Description:
-                        <textarea
-                            name="description"
-                            value={description}
-                            onChange={this.handleChange}
-                        />
-                    </label>
-                    <label>
-                        Due Date:
-                        <input
-                            name="dueDate"
-                            type="date"
-                            value={dueDate}
-                            onChange={this.handleChange}
-                        />
-                    </label>
-                    <input type="submit" value="Assign Action Item to Team" />
+                    <Input
+                        label="Title"
+                        type="text"
+                        value={title}
+                        name="title"
+                        handleChange={this.handleChange}
+                    />
+                    <TextArea
+                        label="Description"
+                        handleChange={this.handleChange}
+                        name="description"
+                        value={description}
+                    />
+                    <Input
+                        label="Due Date"
+                        type="date"
+                        value={dueDate}
+                        name="dueDate"
+                        handleChange={this.handleChange}
+                    />
+                    <SubmitButton value="Assign Action Item to Team" />
                 </form>
             </div>
         );
