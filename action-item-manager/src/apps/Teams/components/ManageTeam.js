@@ -4,8 +4,39 @@ import PropTypes from 'prop-types';
 import Button from 'common/Button';
 import Dropdown from 'common/Dropdown';
 import UserPanel from 'common/UserPanel';
+import styled from 'styled-components';
 
 import { getTeamUsers, addUserToTeam, removeUserFromTeam } from '../repository';
+
+const DropdownWrapper = styled.div`
+    display: flex;
+    direction: row;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    align-items: center;
+`;
+
+const BackButton = styled(Button)`
+    margin-top: 80px;
+    height: 50px;
+    width: 150px;
+    margin-left: 160px;
+`
+
+const AddText = styled.strong`
+    padding-right: 40px;
+`;
+
+const AddButton = styled(Button)`
+    margin-left: 40px;
+`;
+
+const UsersWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-left: 160px;
+    padding-right: 320px;
+`;
 
 class ManageTeam extends React.Component {
     async componentDidMount() {
@@ -93,15 +124,20 @@ class ManageTeam extends React.Component {
 
         return (
             <div>
-                <Button text="Back" onClick={handleGoBack} />
-                <Dropdown
-                    placeholder="Select User..."
-                    value={selectedUser}
-                    onChange={this.handleChange}
-                    options={offTeam}
-                />
-                <Button text="Add User" onClick={this.handleAddUser} />
-                {this.renderUsers()}
+                <DropdownWrapper>
+                    <AddText>Add a new user:</AddText>
+                    <Dropdown
+                        placeholder="Select User..."
+                        value={selectedUser}
+                        onChange={this.handleChange}
+                        options={offTeam} />
+                    <AddButton text="Add User" onClick={this.handleAddUser} />
+                </DropdownWrapper>
+                <UsersWrapper>
+                    <h3>Current Team Members:</h3>
+                    {this.renderUsers()}
+                </UsersWrapper>
+                <BackButton text="Go Back" onClick={handleGoBack}> </BackButton>
             </div>
         );
     }
