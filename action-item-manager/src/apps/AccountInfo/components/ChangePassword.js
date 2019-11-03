@@ -40,11 +40,13 @@ class ChangePassword extends React.Component {
         return (
             <>
                 <form onSubmit={this.handleSubmit}>
-                    <Label label="New Password:">
+                    <Label label="">
                         <Input
+                            label="New Password:"
                             type="text"
+                            name="password"
                             value={password}
-                            onChange={this.handleChange}
+                            handleChange={this.handleChange}
                         />
                     </Label>
                     <SubmitButton value="Submit" /> 
