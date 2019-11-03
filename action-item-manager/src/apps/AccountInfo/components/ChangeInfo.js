@@ -51,31 +51,31 @@ class ChangeInfo extends React.Component {
         return (
             <>
                 <form onSubmit={this.handleSubmit}>
-                    <Label>
+                    <Label label="">
                         <Input
                             label="First Name:"
                             type="text"
                             name="firstName"
                             value={firstName}
-                            onChange={this.handleChange}
+                            handleChange={this.handleChange}
                         />
                     </Label>
-                    <Label>
+                    <Label label="">
                         <Input
                             label="Last Name:"
                             type="text"
                             name="lastName"
                             value={lastName}
-                            onChange={this.handleChange}
+                            handleChange={this.handleChange}
                         />
                     </Label>
-                    <Label>
+                    <Label label="">
                         <Input
                             label="Email:"
                             type="text"
                             name="email"
                             value={email}
-                            onChange={this.handleChange}
+                            handleChange={this.handleChange}
                         />
                     </Label>
                     <SubmitButton value="Submit" />
