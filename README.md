@@ -86,10 +86,16 @@ an action item page, there is a box displaying **Completed by x/y members**, whe
 who have marked this item as complete, and y is the size of the team. 
 
 ### Creating new action items
-// TODO
+
+Team managers are able to create new action items for their teams. They can set the title, description and due date on 
+creation. To create a new Action Item, navigate to **Teams > Team Name > Create Action Item**, fill out the information and assign 
+it to the team. The new action item will default to Incomplete and can be found in the **Action Items** tab.
 
 ### Adding and removing members from the team
-// TODO
+
+Team managers are able to manage their teams in the **Teams** tab. Navigate to the desired team, and choose **Manage Team**.
+There, managers can choose to add new users to their team by using the dropdown and clicking Add User. Likewise, 
+they can view a list of current team members, and remove a memeber by clicking the remove button next to their name.
 
 ## Features for admins
 
@@ -103,7 +109,7 @@ Admins are able to view a list of all teams in the admin page, where they can re
 and create a new team by filling out the form below the **Teams** table and clicking Create Team, with the new team's manager selected through the dropdown menu.
 
 ### Selecting team managers
-
+https://www.google.com/search?client=ubuntu&channel=fs&q=ol&ie=utf-8&oe=utf-8
 Admins are able to set the manager for any team in the organization using the dropdown menu in the **Team Manager** column.
 The currently set manager for a team is shown as the default value, and is absent from the dropdown list.
 
