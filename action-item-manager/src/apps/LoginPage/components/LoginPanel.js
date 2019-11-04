@@ -145,7 +145,7 @@ class LoginPanel extends React.Component {
                                 <Login
                                     type="text"
                                     name="email"
-                                    placeholder="E-mail"
+                                    placeholder="Username"
                                     onChange={this.handleChange}
                                 />
                             </div>

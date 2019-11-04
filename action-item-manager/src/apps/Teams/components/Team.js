@@ -51,7 +51,13 @@ class Team extends React.Component {
     renderTeamActionItems = () => {
         const { teamActionItems } = this.state;
 
-        return teamActionItems.map(actionItem => (
+        const sortedActionItems = teamActionItems.sort((a, b) => {
+            a = new Date(a.dueDate)
+            b = new Date(b.dueDate)
+            return a > b ? 1 : -1;
+        })
+
+        return sortedActionItems.map(actionItem => (
             <ActionItemPanel
                 key={actionItem.actionItemID}
                 actionItem={actionItem}
