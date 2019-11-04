@@ -95,7 +95,7 @@ it to the team. The new action item will default to Incomplete and can be found 
 
 Team managers are able to manage their teams in the **Teams** tab. Navigate to the desired team, and choose **Manage Team**.
 There, managers can choose to add new users to their team by using the dropdown and clicking Add User. Likewise, 
-they can view a list of current team members, and remove a memeber by clicking the remove button next to their name.
+they can view a list of current team members, and remove a member by clicking the remove button next to their name.
 
 ## Features for admins
 
@@ -109,7 +109,6 @@ Admins are able to view a list of all teams in the admin page, where they can re
 and create a new team by filling out the form below the **Teams** table and clicking Create Team, with the new team's manager selected through the dropdown menu.
 
 ### Selecting team managers
-https://www.google.com/search?client=ubuntu&channel=fs&q=ol&ie=utf-8&oe=utf-8
 Admins are able to set the manager for any team in the organization using the dropdown menu in the **Team Manager** column.
 The currently set manager for a team is shown as the default value, and is absent from the dropdown list.
 
@@ -118,3 +117,4 @@ Admins are able to invite users to the organization using their email. Admins wi
 Invited users will then be able to login with their email and password 'admin'. Users will be able to change their password using the change password functionality described above.
 
 ## Additional Information
+All forms are not being validated. When filling out forms, please fill out all boxes.

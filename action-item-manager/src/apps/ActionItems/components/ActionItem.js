@@ -226,8 +226,8 @@ class ActionItem extends React.Component {
                             handleChange={this.handleChange}
                         />
 
+                        <StyledButton text="Cancel" onClick={this.handleEdit} />
                         <SubmitButton type="submit" value="Save Changes" />
-                        <Button text="Cancel" onClick={this.handleEdit} />
                     </form>
                 </div>
             );

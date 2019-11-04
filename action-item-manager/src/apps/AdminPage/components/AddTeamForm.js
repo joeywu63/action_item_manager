@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Dropdown from 'common/Dropdown';
-import Button from 'common/Button';
 import Input from 'common/Input';
 import SubmitButton from 'common/SubmitButton';
 
