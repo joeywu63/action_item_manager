@@ -6,6 +6,7 @@ import Input from 'common/Input';
 import SubmitButton from 'common/SubmitButton';
 
 import { getUsers } from '../repository';
+import { getCurrentUser } from 'utils/currentUser'
 import Label from 'common/Label';
 
 class AddTeamForm extends React.Component {
@@ -19,7 +20,8 @@ class AddTeamForm extends React.Component {
         });
 
         this.setState({
-            users: allUsers
+            users: allUsers,
+            selectedUser: getCurrentUser()
         });
     }
 
