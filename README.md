@@ -63,7 +63,12 @@ action items, or the list of action items for some team the user is part of. The
 across the system (on the individual item view or list views).
 
 ### Editing profile and changing password
-// TODO
+All users can view their account information in the **Account Info** tab. Their first name, last name, email and role will be displayed.
+Users can also change their password by clicking the **Edit Password** button in the Account Info page, filling a new password in the
+input box and clicking Submit. Clicking the Cancel button will redirect back to the Account Info page. Users can change their profile
+information via the **Edit Profile** button. First name, last name, and email can be changed by inputting new names and emails and clicking
+the Submit button. Leaving any field unchanged will keep the information as it currently is. The Cancel button will redirect back to
+the Account Info page.
 
 ## Features for team managers
 
