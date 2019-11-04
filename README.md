@@ -9,6 +9,7 @@ This project was written using React. To run the app, in the action-item-manager
 
 to install all required modules and libraries, then, run:
 
+### `cd action-item-manager`
 ### `npm start`
 
 to launch the app on [http://localhost:3000](http://localhost:3000) in your browser.
@@ -24,7 +25,7 @@ mark as complete or incomplete.
 ## Login credentials
 
 To log in as an `admin`, use username **admin** and password **admin**. To log in as a regular user, use
-username/password **user1**/**user1**, **user2**/**user2**, **user3**/**user3** or **user4**/**user4**. The views
+username/password **user**/**user**, **user2**/**user2**, **user3**/**user3** or **user4**/**user4**. The views
 for each user differs based on which team(s) they're part of, and whether they are the manager of said team(s).
 
 The following table illustrates the structure of teams & users hardcoded into the code as part of Phase 1.
@@ -41,7 +42,7 @@ user4 | &nbsp; | member
 ## Features for all users
 
 ### Login authentication
-// TODO
+All users will be able to login when first visiting the website using their email and preferred password. If the user was recently invited to be a user on the website, they must enter the password 'admin' and change their password once logged in.
 
 ### Viewing list of all action items
 
@@ -107,6 +108,7 @@ Admins are able to set the manager for any team in the organization using the dr
 The currently set manager for a team is shown as the default value, and is absent from the dropdown list.
 
 ### Inviting and removing users from the organization
-// TODO
+Admins are able to invite users to the organization using their email. Admins will be able to specify their role (User or Admin), and their first name and last name.
+Invited users will then be able to login with their email and password 'admin'. Users will be able to change their password using the change password functionality described above.
 
 ## Additional Information
