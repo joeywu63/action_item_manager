@@ -80,8 +80,8 @@ class ChangeInfo extends React.Component {
                     </Label>
                     <SubmitButton value="Submit" />
                     <StyledButton
-                    text="Cancel"
-                    onClick={() => handleSwitchPage(ACCTPAGES.default)}
+                        text="Cancel"
+                        onClick={() => handleSwitchPage(ACCTPAGES.default)}
                     />
                 </form>
             </>

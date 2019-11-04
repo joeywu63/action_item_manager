@@ -21,7 +21,7 @@ const BackButton = styled(Button)`
     height: 50px;
     width: 150px;
     margin-left: 160px;
-`
+`;
 
 const AddText = styled.strong`
     padding-right: 40px;
@@ -130,14 +130,17 @@ class ManageTeam extends React.Component {
                         placeholder="Select User..."
                         value={selectedUser}
                         onChange={this.handleChange}
-                        options={offTeam} />
+                        options={offTeam}
+                    />
                     <AddButton text="Add User" onClick={this.handleAddUser} />
                 </DropdownWrapper>
                 <UsersWrapper>
                     <h3>Current Team Members:</h3>
                     {this.renderUsers()}
                 </UsersWrapper>
-                <BackButton text="Go Back" onClick={handleGoBack}> </BackButton>
+                <BackButton text="Go Back" onClick={handleGoBack}>
+                    {' '}
+                </BackButton>
             </div>
         );
     }

@@ -14,10 +14,7 @@ const StyledLabel = styled.label`
 
 class Label extends React.Component {
     render() {
-        const {
-            label,
-            children
-        } = this.props;
+        const { label, children } = this.props;
 
         return (
             <StyledLabel>

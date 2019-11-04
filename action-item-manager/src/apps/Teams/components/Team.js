@@ -52,10 +52,10 @@ class Team extends React.Component {
         const { teamActionItems } = this.state;
 
         const sortedActionItems = teamActionItems.sort((a, b) => {
-            a = new Date(a.dueDate)
-            b = new Date(b.dueDate)
+            a = new Date(a.dueDate);
+            b = new Date(b.dueDate);
             return a > b ? 1 : -1;
-        })
+        });
 
         return sortedActionItems.map(actionItem => (
             <ActionItemPanel

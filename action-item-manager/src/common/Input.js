@@ -11,7 +11,7 @@ const StyledInput = styled.input`
     border-color: ${COLOURS.darkPrimary};
     border-width: 1px;
     width: 400px;
-    height: ${props => props.type === 'date' ? '22px' : '20px'};
+    height: ${props => (props.type === 'date' ? '22px' : '20px')};
 `;
 
 class Input extends React.Component {
@@ -45,7 +45,7 @@ Input.propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    placeholder: PropTypes.string,
+    placeholder: PropTypes.string
 };
 
 Input.defaultProps = {

@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect
+} from 'react-router-dom';
 import MainSideBar from 'apps/MainSideBar/components/MainSideBar';
 import styled from 'styled-components';
 
@@ -50,9 +55,7 @@ class App extends React.Component {
 }
 
 class MainRouter extends React.Component {
-    componentDidMount() {
-
-    }
+    componentDidMount() {}
 
     render() {
         return (
@@ -71,9 +74,11 @@ class MainRouter extends React.Component {
                                 path="/action-items"
                                 component={ActionItemsRouter}
                             />
-                            <Route exact path="/" render={() => (
-                                <Redirect to="/action-items"/>
-                            )}/>
+                            <Route
+                                exact
+                                path="/"
+                                render={() => <Redirect to="/action-items" />}
+                            />
                         </Switch>
                     </PageWrapper>
                 </MainWrapper>

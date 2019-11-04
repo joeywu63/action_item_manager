@@ -158,7 +158,7 @@ class LoginPanel extends React.Component {
                                 />
                             </div>
                         </FormContainer>
-                        <LoginButton type="submit" value="LOGIN"/>
+                        <LoginButton type="submit" value="LOGIN" />
                     </form>
                 </StyledPanel>
             </LoginWrapper>

@@ -6,7 +6,12 @@ class Dropdown extends React.Component {
         const { placeholder, value, onChange, options } = this.props;
 
         const customStyles = {
-            control: styles => ({...styles, height: 35, minHeight: 35, width: 400 }),
+            control: styles => ({
+                ...styles,
+                height: 35,
+                minHeight: 35,
+                width: 400
+            }),
             option: styles => ({
                 ...styles,
                 width: 403,

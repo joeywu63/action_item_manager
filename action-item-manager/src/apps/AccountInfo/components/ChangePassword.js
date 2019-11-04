@@ -49,7 +49,7 @@ class ChangePassword extends React.Component {
                             handleChange={this.handleChange}
                         />
                     </Label>
-                    <SubmitButton value="Submit" /> 
+                    <SubmitButton value="Submit" />
                     <StyledButton
                         text="Cancel"
                         onClick={() => handleSwitchPage(ACCTPAGES.default)}

@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {COLOURS} from 'utils/constants';
-
+import { COLOURS } from 'utils/constants';
 
 import Button from 'common/Button';
-  
+
 const PanelWrapper = styled.div`
     margin-top: 20px;
     display: flex;
@@ -29,7 +28,7 @@ class UserPanel extends React.Component {
         return (
             <PanelWrapper>
                 <Text>{`${user.firstName} ${user.lastName}`} </Text>
-                <SideButton  text="remove" onClick={handleRemoveUser} />
+                <SideButton text="remove" onClick={handleRemoveUser} />
             </PanelWrapper>
         );
     }

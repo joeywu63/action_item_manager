@@ -35,7 +35,7 @@ const actionItems = [
 ];
 let actionItemsCounter = 4;
 
-// server/database push call 
+// server/database push call
 export const create = ({ teamID, title, description, dueDate }) => {
     const newActionItem = {
         actionItemID: actionItemsCounter,
@@ -53,7 +53,7 @@ export const create = ({ teamID, title, description, dueDate }) => {
     return newActionItem;
 };
 
-// server/database get call 
+// server/database get call
 export const getByID = ({ id }) => {
     const ai = actionItems.filter(a => a.actionItemID === id);
     try {
@@ -63,7 +63,7 @@ export const getByID = ({ id }) => {
     }
 };
 
-// server/database update call 
+// server/database update call
 export const update = ({ id, newTitle, newDesc, newDueDate }) => {
     const ai = actionItems.filter(a => a.actionItemID === id);
     try {
@@ -75,12 +75,12 @@ export const update = ({ id, newTitle, newDesc, newDueDate }) => {
     }
 };
 
-// server/database get call 
+// server/database get call
 export const getByTeam = ({ teamID }) => {
     return actionItems.filter(actionItem => actionItem.teamID === teamID);
 };
 
-// server/database get call 
+// server/database get call
 export const getByCurrentUser = () => {
     const currentUser = getCurrentUser();
 
@@ -89,7 +89,7 @@ export const getByCurrentUser = () => {
     );
 };
 
-// server/database update call 
+// server/database update call
 export const toggleActionItemComplete = ({
     userID,
     actionItemID,
@@ -107,7 +107,7 @@ export const toggleActionItemComplete = ({
     });
 };
 
-// server/database get call 
+// server/database get call
 export const didComplete = ({ userID, actionItemID }) => {
     let completed = false;
 

@@ -23,13 +23,7 @@ const StyledTextArea = styled.textarea`
 
 class Input extends React.Component {
     render() {
-        const {
-            label,
-            handleChange,
-            name,
-            value,
-            placeholder
-        } = this.props;
+        const { label, handleChange, name, value, placeholder } = this.props;
 
         return (
             <StyledLabel>

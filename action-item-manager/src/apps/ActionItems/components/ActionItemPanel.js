@@ -31,11 +31,11 @@ const IncompleteIcon = styled.div`
 
 const ActionItemDisplay = styled.div`
     float: left;
-`
+`;
 
 const DisplayWrapper = styled.div`
     overflow: hidden;
-`
+`;
 
 const StyledDate = styled.div`
     font-size: 12px;
