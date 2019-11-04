@@ -119,4 +119,7 @@ Admins are able to invite users to the organization using their email. Admins wi
 Invited users will then be able to login with their email and password 'admin'. Users will be able to change their password using the change password functionality described above.
 
 ## Additional Information
-All forms are not being validated. When filling out forms, please fill out all boxes.
+- All forms are not being validated. When filling out forms, please fill out all boxes.
+- All methods involving the backend (server/database) that we replace with hardcoded items as part of Phase 1 are located in
+ **src/model**, and have been indicated as such. These methods are imported into each component's **repository** folder as needed.
+ No other parts of the code contain (mock) server calls.
