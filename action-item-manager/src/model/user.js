@@ -1,5 +1,6 @@
 let numUsers = 5;
 
+// hardcoded users
 const users = [
     {
         id: 0,
@@ -53,6 +54,7 @@ const users = [
     }
 ];
 
+// server/database call 
 export const isUser = ({ email, password }) => {
     let user;
     users.forEach(registeredUser => {
@@ -66,12 +68,21 @@ export const isUser = ({ email, password }) => {
     return user;
 };
 
+// server/database call 
+export const isOnTeam =({ userID, teamID }) => {
+    const user = getByID({ userID: userID })
+    return user.teamIDList.includes(teamID)
+}
+
+// server/database call 
 export const getList = () => users;
 
+// server/database call 
 export const getByID = ({ userID }) => {
     return users.find(user => user.id === userID);
 };
 
+// server/database call 
 export const create = ({ email, firstName, lastName, role }) => {
     const newUser = {
         id: numUsers,
@@ -89,6 +100,7 @@ export const create = ({ email, firstName, lastName, role }) => {
     return newUser;
 };
 
+// server/database call 
 export const remove = ({ userID }) => {
     users.forEach((user, i) => {
         if (user.id === userID) {
@@ -97,6 +109,7 @@ export const remove = ({ userID }) => {
     });
 };
 
+// server/database call 
 export const addToTeam = ({ userID, teamID }) => {
     users.forEach(user => {
         if (user.id === userID) {
@@ -105,6 +118,7 @@ export const addToTeam = ({ userID, teamID }) => {
     });
 };
 
+// server/database call 
 export const removeFromTeam = ({ userID, teamID }) => {
     users.forEach(user => {
         if (user.id === userID) {
@@ -114,6 +128,7 @@ export const removeFromTeam = ({ userID, teamID }) => {
     });
 };
 
+// server/database call 
 export const changePassword = ({ userID, password }) => {
     users.forEach(user => {
         if (user.id === userID) {
@@ -122,6 +137,7 @@ export const changePassword = ({ userID, password }) => {
     });
 };
 
+// server/database call 
 export const changeInfo = ({ userID, firstName, lastName, email }) => {
     users.forEach(user => {
         if (user.id === userID) {

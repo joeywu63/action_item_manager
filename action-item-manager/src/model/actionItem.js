@@ -1,5 +1,6 @@
 import { getCurrentUser } from 'utils/currentUser';
 
+// hardcoded action items
 const actionItems = [
     {
         actionItemID: 1,
@@ -34,6 +35,7 @@ const actionItems = [
 ];
 let actionItemsCounter = 4;
 
+// server/database call 
 export const create = ({ teamID, title, description, dueDate }) => {
     const newActionItem = {
         actionItemID: actionItemsCounter,
@@ -51,6 +53,7 @@ export const create = ({ teamID, title, description, dueDate }) => {
     return newActionItem;
 };
 
+// server/database call 
 export const getByID = ({ id }) => {
     const ai = actionItems.filter(a => a.actionItemID === id);
     try {
@@ -60,6 +63,7 @@ export const getByID = ({ id }) => {
     }
 };
 
+// server/database call 
 export const update = ({ id, newTitle, newDesc, newDueDate }) => {
     const ai = actionItems.filter(a => a.actionItemID === id);
     try {
@@ -71,10 +75,12 @@ export const update = ({ id, newTitle, newDesc, newDueDate }) => {
     }
 };
 
+// server/database call 
 export const getByTeam = ({ teamID }) => {
     return actionItems.filter(actionItem => actionItem.teamID === teamID);
 };
 
+// server/database call 
 export const getByCurrentUser = () => {
     const currentUser = getCurrentUser();
 
@@ -83,6 +89,7 @@ export const getByCurrentUser = () => {
     );
 };
 
+// server/database call 
 export const toggleActionItemComplete = ({
     userID,
     actionItemID,
@@ -100,6 +107,7 @@ export const toggleActionItemComplete = ({
     });
 };
 
+// server/database call 
 export const didComplete = ({ userID, actionItemID }) => {
     let completed = false;
 

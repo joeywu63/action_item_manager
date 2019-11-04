@@ -106,11 +106,13 @@ every team.
 ### Adding and removing teams from the organization
 
 Admins are able to view a list of all teams in the admin page, where they can remove any existing team by clicking **Disband**,
-and create a new team by filling out the form below the **Teams** table and clicking Create Team, with the new team's manager selected through the dropdown menu.
+and create a new team by filling out the form below the **Teams** table and clicking Create Team, with the new team's manager selected through the dropdown menu. If no new manager is selected, the team is created with the currently signed in user as
+the manager.
 
 ### Selecting team managers
-Admins are able to set the manager for any team in the organization using the dropdown menu in the **Team Manager** column.
-The currently set manager for a team is shown as the default value, and is absent from the dropdown list.
+
+Admins are able to set the manager for any team in the organization from the pool of users in the organization using the dropdown menu in the **Team Manager** column. The currently set manager for a team is shown as the default value, and is absent from the dropdown list. If a user is selected as a manager of a team they are not currently a part of, they are added to that team as that
+team's manager, which is reflected across the system (in **Teams**).
 
 ### Inviting and removing users from the organization
 Admins are able to invite users to the organization using their email. Admins will be able to specify their role (User or Admin), and their first name and last name.
