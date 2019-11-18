@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.static(__dirname + '/action-item-manager/build'));
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/action-item-manager/build/index.html'));
 });
 
