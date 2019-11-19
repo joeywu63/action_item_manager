@@ -16,10 +16,12 @@ app.get('/test', (req, res) => {
     const user = new User({
         name: 'test'
     });
-
+    console.log('HEEEEERRREEEEEE');
     user.save().then((result) => {
+        console.log('SUCCESSSSSS');
         res.send(result)
     }, (error) => {
+        console.log('ERRRORRRR');
         res.status(400).send(error)
     });
 });
