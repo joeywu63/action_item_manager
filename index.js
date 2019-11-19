@@ -23,7 +23,7 @@ app.get('/test', (req, res) => {
     }, (error) => {
         console.log('ERRRORRRR');
         res.status(400).send(error)
-    });
+    }).catch(error => console.log(error));
 });
 
 app.get('*', (req, res) => {
