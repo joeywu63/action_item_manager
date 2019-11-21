@@ -1,28 +1,17 @@
 'use strict';
 
-// TODO: cleanup database imports
 const { mongoose } = require('./db/mongoose');
-const { User } = require('./model/user');
-
 
 const express = require('express');
 const path = require('path');
-
 const app = express();
 
+// Load controllers
+require('./controllers/user')(app);
+require('./controllers/team')(app);
+require('./controllers/actionItem')(app);
+
 app.use(express.static(__dirname + '/action-item-manager/build'));
-
-app.get('/test', (req, res) => {
-    const user = new User({
-        name: 'test'
-    });
-
-    user.save().then((result) => {
-        res.send(result)
-    }, (error) => {
-        res.status(400).send(error)
-    });
-});
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/action-item-manager/build/index.html'));
