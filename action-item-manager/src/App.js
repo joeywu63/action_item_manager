@@ -11,7 +11,6 @@ import styled from 'styled-components';
 import AccountInfo from 'apps/AccountInfo/components/AccountInfo';
 import TeamsRouter from 'apps/Teams/components/TeamsRouter';
 import ActionItemsRouter from 'apps/ActionItems/components/ActionItemsRouter';
-import LoginPage from 'apps/LoginPage/components/LoginPage';
 import AdminPage from 'apps/AdminPage/components/Admin';
 
 import PageWrapper from 'common/PageWrapper';
