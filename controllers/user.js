@@ -12,7 +12,7 @@ module.exports = app => {
         User.findByEmailPassword(email, password)
             .then(user => {
                 if (!user) {
-                    res.redirect('/');
+                    res.status(400).redirect('/');
                 } else {
                     req.session.user = user._id;
                     res.redirect('/action-items');
@@ -28,7 +28,7 @@ module.exports = app => {
             if (error) {
                 res.status(500).send(error);
             } else {
-                res.redirect('/');
+                res.redirect('/login');
             }
         });
     });

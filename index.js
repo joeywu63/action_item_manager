@@ -11,32 +11,52 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Load controllers
-require('./controllers/user')(app);
-require('./controllers/team')(app);
-require('./controllers/actionItem')(app);
-
-app.use(express.static(__dirname + '/action-item-manager/build'));
-app.use(session({
-    secret: 'oursecret',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        expires: 60000,
-        httpOnly: true
-    }
-}));
+app.use(
+    session({
+        secret: 'oursecret',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            expires: 60000,
+            httpOnly: true
+        }
+    })
+);
 
 const sessionChecker = (req, res, next) => {
     if (req.session.user) {
         next();
     } else {
-        res.redirect('/');
+        res.redirect('/login');
     }
 };
 
+const loginChecker = (req, res, next) => {
+    if (req.session.user) {
+        res.redirect('/action-items');
+    } else {
+        next();
+    }
+};
+
+// Load controllers
+require('./controllers/user')(app);
+require('./controllers/team')(app);
+require('./controllers/actionItem')(app);
+
+app.get('/', (req, res) => {res.redirect('/login');});
+
+app.use(express.static(__dirname + '/action-item-manager/build'));
+app.use(express.static(__dirname + '/login-page/build'));
+
+app.get('/login', loginChecker, (req, res) => {
+    res.sendFile(path.join(__dirname + '/login-page/build/index.html'));
+});
+
 app.get('*', sessionChecker, (req, res) => {
-    res.sendFile(path.join(__dirname + '/action-item-manager/build/index.html'));
+    res.sendFile(
+        path.join(__dirname + '/action-item-manager/build/index.html')
+    );
 });
 
 // Error codes

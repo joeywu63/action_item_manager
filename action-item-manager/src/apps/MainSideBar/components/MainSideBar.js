@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
+import { logout } from '../repository';
 import RouterButton from 'common/RouterButton';
 
 import { setCurrentUser } from 'utils/currentUser.js';
@@ -60,7 +61,7 @@ class MainSideBar extends React.Component {
                 <RouterButton
                     link="/"
                     title="Logout"
-                    onClick={this.logout}
+                    onClick={logout}
                     isActive={false}
                 />
             </SideBarWrapper>

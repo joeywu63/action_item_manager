@@ -36,16 +36,7 @@ class App extends React.Component {
     };
 
     render() {
-        const { isSignedIn, isSigningUp } = this.state;
-        const currentUser = getCurrentUser(); // we need to get current user also for security reasons
-
-        return isSignedIn && currentUser ? (
-            <MainRouter logout={this.logout} />
-        ) : isSigningUp ? (
-            <div>Sign up</div>
-        ) : (
-            <LoginPage login={this.login} />
-        );
+        return <MainRouter logout={this.logout} />
     }
 }
 
@@ -68,11 +59,6 @@ class MainRouter extends React.Component {
                             <Route
                                 path="/action-items"
                                 component={ActionItemsRouter}
-                            />
-                            <Route
-                                exact
-                                path="/"
-                                render={() => <Redirect to="/action-items" />}
                             />
                         </Switch>
                     </PageWrapper>
