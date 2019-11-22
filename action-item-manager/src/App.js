@@ -29,11 +29,6 @@ const MainWrapper = styled.div`
 class App extends React.Component {
     state = {
         isSignedIn: false,
-        isSigningUp: false
-    };
-
-    login = () => {
-        this.setState({ isSignedIn: true, isSignedUp: false });
     };
 
     logout = () => {

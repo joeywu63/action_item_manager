@@ -2,42 +2,59 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import LoginPanel from 'apps/LoginPage/components/LoginPanel';
+import LoginPanel from './LoginPanel';
+import SignUpPanel from './SignUpPanel';
 
-import { isUser } from '../repository';
-
-import { setCurrentUser } from 'utils/currentUser';
+import { COLOURS } from 'utils/constants';
 
 const PanelWrapper = styled.div`
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
+    min-width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(
+        to bottom right,
+        ${COLOURS.darkPrimary},
+        #bcb8b1,
+        #834a75
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+`;
+
+const LoginRegister = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
 `;
 
 class LoginPage extends React.Component {
-    handleLogin = loginData => {
-        const { login } = this.props;
-
-        const userData = isUser(loginData);
-        if (userData) {
-            setCurrentUser(userData);
-            login();
-        } else {
-            // TODO: Better error message mechanism
-            alert('Wrong credentials. Try again');
-        }
-    };
-
     render() {
         return (
             <PanelWrapper>
-                <LoginPanel onClick={this.handleLogin} />
+                <LoginRegister>
+                    <SignUpPanel />
+                    <LoginPanel />
+                </LoginRegister>
             </PanelWrapper>
         );
     }
 }
 
-LoginPage.propTypes = {
-    login: PropTypes.func.isRequired
-};
+LoginPage.propTypes = {};
 
 export default LoginPage;

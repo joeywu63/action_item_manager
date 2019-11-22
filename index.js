@@ -3,8 +3,13 @@
 const { mongoose } = require('./db/mongoose');
 
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
+const bodyParser = require('body-parser');
+
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Load controllers
 require('./controllers/user')(app);
@@ -12,8 +17,25 @@ require('./controllers/team')(app);
 require('./controllers/actionItem')(app);
 
 app.use(express.static(__dirname + '/action-item-manager/build'));
+app.use(session({
+    secret: 'oursecret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 60000,
+        httpOnly: true
+    }
+}));
 
-app.get('*', (req, res) => {
+const sessionChecker = (req, res, next) => {
+    if (req.session.user) {
+        next();
+    } else {
+        res.redirect('/');
+    }
+};
+
+app.get('*', sessionChecker, (req, res) => {
     res.sendFile(path.join(__dirname + '/action-item-manager/build/index.html'));
 });
 

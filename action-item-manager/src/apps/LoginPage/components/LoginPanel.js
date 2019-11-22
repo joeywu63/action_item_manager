@@ -1,48 +1,31 @@
 import React from 'react';
-import Panel from 'common/Panel';
 import styled from 'styled-components';
+
+import { login } from '../repository';
 
 import { COLOURS } from 'utils/constants';
 
-const LoginWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
+const LoginContainer = styled.div`
     align-items: center;
-    min-width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient(
-        to bottom right,
-        ${COLOURS.darkPrimary},
-        #bcb8b1,
-        #834a75
-    );
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
+    border: 45px solid white;
+    border-left: 65px solid white;
+    border-right: 65px solid white;
+    background: white;
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: ${COLOURS.darkPrimary};
+    align-items: center
+    justify-content: center
+    background-color: white;
 `;
 
-const Login = styled.input`
-    color: ${COLOURS.darkPrimary};
-    background-color: ${COLOURS.lightPrimary};
+const LoginInfo = styled.input`
+    color: black;
+    background-color: #bfc0c0;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
-    width: 300px;
+    width: 250px;
     padding: 10px;
     border: none;
     border-radius: 8px;
@@ -50,7 +33,7 @@ const Login = styled.input`
 `;
 
 const LoginButton = styled.input`
-    width: 320px;
+    width: 200px;
     font-weight: 500;
     text-align: center;
     font-size: 20px;
@@ -58,8 +41,8 @@ const LoginButton = styled.input`
     background-color: #f87080;
     border: none;
     border-radius: 8px;
-    padding: 0.8em;
-    margin-top: 1em;
+    padding: 0.5em;
+    margin-top: 5.5em;
     margin-bottom: 1em;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -79,9 +62,9 @@ const LoginButton = styled.input`
 `;
 
 const Title = styled.h1`
-    font-weight: 700;
-    font-size: 45px;
-    color: ${COLOURS.lightPrimary};
+    font-weight: 500;
+    font-size: 24px;
+    color: ${COLOURS.darkgrey};
     text-align: center;
     line-height: 1.5em;
     margin-bottom: 0.1em;
@@ -89,38 +72,28 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h3`
-    font-weight: 500;
-    color: ${COLOURS.lightSecondary};
+    font-weight: 300;
+    font-size: 18px;
+    color: ${COLOURS.darkgrey};
     text-align: center;
     line-height: 1.5em;
     margin-bottom: 2.4em;
     margin-top: 0.2em;
 `;
 
-const StyledPanel = styled(Panel)`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: ${COLOURS.darkPrimary};
-    border-radius: 6px;
-    width: 600px;
-    box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
-    height: 350px;
-    border: 1px none;
-    margin: 25vh;
-`;
-
 class LoginPanel extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: '',
-            password: ''
-        };
-    }
+    state = {
+        email: '',
+        password: ''
+    };
 
-    handleLogin = () => {
-        this.props.onClick(this.state);
+    handleLogin = e => {
+        e.preventDefault();
+        const { email, password } = this.state;
+
+        login({ email, password })
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
     };
 
     handleChange = event => {
@@ -135,33 +108,25 @@ class LoginPanel extends React.Component {
 
     render() {
         return (
-            <LoginWrapper>
-                <StyledPanel>
-                    <form onSubmit={this.handleLogin}>
-                        <FormContainer>
-                            <Title>Welcome.</Title>
-                            <Subtitle>Please sign in to continue</Subtitle>
-                            <div>
-                                <Login
-                                    type="text"
-                                    name="email"
-                                    placeholder="Username"
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                            <div>
-                                <Login
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </FormContainer>
-                        <LoginButton type="submit" value="LOGIN" />
-                    </form>
-                </StyledPanel>
-            </LoginWrapper>
+            <LoginContainer>
+                <FormContainer onSubmit={this.handleLogin}>
+                    <Title>Welcome.</Title>
+                    <Subtitle>Please sign in to continue</Subtitle>
+                    <LoginInfo
+                        type="text"
+                        name="email"
+                        placeholder="Username"
+                        onChange={this.handleChange}
+                    />
+                    <LoginInfo
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        onChange={this.handleChange}
+                    />
+                    <LoginButton type="submit" value="Sign In" />
+                </FormContainer>
+            </LoginContainer>
         );
     }
 }
