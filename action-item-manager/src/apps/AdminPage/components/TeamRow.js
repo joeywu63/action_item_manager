@@ -15,13 +15,12 @@ class TeamRow extends React.Component {
     async componentDidMount() {
         const { team } = this.props;
 
-        const allUsers = getUsers();
+        const allUsers = await getUsers();
         let regUsers = allUsers
-            .filter(user => user.id !== team.managerID)
             .map(user => {
                 return {
                     ...user,
-                    value: user.id,
+                    value: user._id,
                     label: `${user.firstName} ${user.lastName}`
                 };
             });
@@ -44,14 +43,14 @@ class TeamRow extends React.Component {
         const { otherUsers } = this.state;
 
         const prevManager = await getByID({ userID: team.managerID });
-        prevManager.value = prevManager.id;
+        prevManager.value = prevManager._id;
         prevManager.label = `${prevManager.firstName} ${prevManager.lastName}`;
 
         const i = otherUsers.indexOf(user);
         otherUsers.push(prevManager);
         otherUsers.splice(i, 1);
 
-        setManager({ teamId: team.id, managerId: user.id });
+        await setManager({ teamID: team._id, managerID: user._id });
 
         this.setState({
             manager: `${user.firstName} ${user.lastName}`,
@@ -66,7 +65,6 @@ class TeamRow extends React.Component {
 
         return (
             <tr>
-                <TableData>{team.id}</TableData>
                 <TableData>{team.name}</TableData>
                 <TableData>
                     <Dropdown

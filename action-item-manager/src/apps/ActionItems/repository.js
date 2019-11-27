@@ -1,15 +1,19 @@
 import * as actionItem from 'model/actionItem';
-import * as team from 'model/team';
+import axios from 'axios';
 
 export const getActionItemsForCurrentUser = actionItem.getByCurrentUser;
 
-export const getTeamByID = ({ teamId }) => {
-    return team.getByID({ teamId });
-};
+export const getTeamByID = ({ teamID }) =>
+    axios
+        .get(`/team/${teamID}`)
+        .then(response => response.data.team)
+        .catch(error => error);
 
-export const getSize = ({ teamId }) => {
-    return team.getSize({ teamId });
-};
+export const getSize = ({ teamID }) =>
+    axios
+        .get(`/team/size/${teamID}`)
+        .then(response => response.data.size)
+        .catch(error => error);
 
 export const update = actionItem.update;
 

@@ -44,27 +44,26 @@ class TeamTable extends React.Component {
         selectedUser: null
     };
 
-    handleRemoveTeam = team => {
+    handleRemoveTeam = async teamToRemove => {
         const { teams } = this.state;
 
-        removeTeam({ teamId: team.id });
+        await removeTeam({ teamID: teamToRemove._id });
 
         this.setState({
-            teams: teams
+            teams: teams.filter(team => team._id !== teamToRemove._id)
         });
     };
 
-    handleAddTeam = (teamName, selectedUser) => {
+    handleAddTeam = async (teamName, selectedUser) => {
         const { teams } = this.state;
 
-        createTeam({
-            teamName,
-            managerID: selectedUser.id
+        const newTeam = await createTeam({
+            name: teamName,
+            managerID: selectedUser._id
         });
 
-        this.setState({
-            teams: teams
-        });
+        teams.push(newTeam);
+        this.setState({ teams });
     };
 
     render() {
@@ -74,7 +73,7 @@ class TeamTable extends React.Component {
         teams.forEach(team => {
             rows.push(
                 <TeamRow
-                    key={team.id}
+                    key={team._id}
                     team={team}
                     removeTeam={this.handleRemoveTeam}
                 />
@@ -87,7 +86,6 @@ class TeamTable extends React.Component {
                 <Table>
                     <TableHead>
                         <tr>
-                            <TableHeader>Team ID</TableHeader>
                             <TableHeader>Team Name</TableHeader>
                             <TableHeader>Team Manager</TableHeader>
                             <TableHeader>Disband Team</TableHeader>

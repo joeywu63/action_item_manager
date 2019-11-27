@@ -18,7 +18,7 @@ const StyledButton = styled(Button)`
 class ChangePassword extends React.Component {
     state = {
         password: '',
-        userID: getCurrentUser().id
+        userID: getCurrentUser()._id
     };
 
     handleSubmit = () => {

@@ -34,6 +34,20 @@ module.exports = app => {
         });
     });
 
+    app.get('/user/current', (req, res) => {
+        User.findById(req.session.user)
+            .then(user => {
+                if (!user) {
+                    res.status(404).send();
+                } else {
+                    res.send({ user });
+                }
+            })
+            .catch(error => {
+                res.status(500).send();
+            });
+    });
+
     app.post('/user/create', (req, res) => {
         const { email, firstName, lastName, password } = req.body;
         const user = new User({
@@ -152,7 +166,11 @@ module.exports = app => {
             teamIDList: {$in: [teamID]}
         }).then(
             user => {
-                res.status(200).send();
+                if (!user) {
+                    res.status(400).send();
+                } else {
+                    res.status(200).send();
+                }
             },
             error => {
                 res.status(500).send(error);

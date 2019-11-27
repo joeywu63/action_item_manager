@@ -26,7 +26,7 @@ class UserRow extends React.Component {
                 <TableData>
                     <Button
                         text="Remove"
-                        onClick={() => handleRemoveUser(user.id)}
+                        onClick={() => handleRemoveUser(user._id)}
                     />
                 </TableData>
             </tr>

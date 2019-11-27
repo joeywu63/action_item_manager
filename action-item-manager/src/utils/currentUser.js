@@ -6,8 +6,7 @@ export const setCurrentUser = userData => {
     currentUser = userData;
 };
 
-// export const getIsAdmin = () => currentUser.role === ROLES.admin;
-export const getIsAdmin = () => true;
+export const getIsAdmin = () => currentUser.role === ROLES.admin;
 
 export const getCurrentUser = () => currentUser;
 

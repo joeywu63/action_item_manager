@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import MainSideBar from 'apps/MainSideBar/components/MainSideBar';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import AccountInfo from 'apps/AccountInfo/components/AccountInfo';
 import TeamsRouter from 'apps/Teams/components/TeamsRouter';
@@ -15,7 +16,7 @@ import AdminPage from 'apps/AdminPage/components/Admin';
 
 import PageWrapper from 'common/PageWrapper';
 
-import { getCurrentUser } from 'utils/currentUser';
+import { setCurrentUser } from 'utils/currentUser';
 import { COLOURS } from 'utils/constants';
 
 const MainWrapper = styled.div`
@@ -26,22 +27,30 @@ const MainWrapper = styled.div`
 `;
 
 class App extends React.Component {
+    async componentDidMount() {
+        await this.requestCurrentUser()
+    }
+
     state = {
-        isSignedIn: false,
+        isSignedIn: false
     };
+
+    requestCurrentUser = () =>
+        axios
+            .get('/user/current')
+            .then(response => setCurrentUser(response.data.user))
+            .catch(error => error);
 
     logout = () => {
         this.setState({ isSignedIn: false, isSignedUp: false });
     };
 
     render() {
-        return <MainRouter logout={this.logout} />
+        return <MainRouter logout={this.logout} />;
     }
 }
 
 class MainRouter extends React.Component {
-    componentDidMount() {}
-
     render() {
         return (
             <Router>

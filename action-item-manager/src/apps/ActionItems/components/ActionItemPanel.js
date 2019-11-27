@@ -49,7 +49,7 @@ const ActionItemPanel = ({ actionItem, history }) => {
         state: { actionItem }
     };
     const currentUser = getCurrentUser();
-    const complete = didComplete({ userID: currentUser.id, actionItemID });
+    const complete = didComplete({ userID: currentUser._id, actionItemID });
 
     const renderComplete = () => {
         if (complete) {

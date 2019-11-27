@@ -62,7 +62,7 @@ const IncompleteIcon = styled.div`
 `;
 
 class ActionItem extends React.Component {
-    componentDidMount() {
+    async componentDidMount() {
         const {
             actionItemID,
             title,
@@ -74,10 +74,11 @@ class ActionItem extends React.Component {
         const { currentUser } = this.state;
 
         const complete = didComplete({ userID: currentUser.id, actionItemID });
+        const team = await getTeamByID({ teamID: teamID });
         const canEdit =
-            currentUser.id === getTeamByID({ teamId: teamID }).managerID ||
+            currentUser.id === team.managerID ||
             currentUser.role === ROLES.admin;
-        const teamSize = getSize({ teamId: teamID });
+        const teamSize = await getSize({ teamID });
 
         this.setState({
             title,
@@ -114,7 +115,7 @@ class ActionItem extends React.Component {
         const { complete, currentUser, completedBy } = this.state;
 
         await toggleActionItemComplete({
-            userID: currentUser.id,
+            userID: currentUser._id,
             isComplete: !complete,
             actionItemID
         });

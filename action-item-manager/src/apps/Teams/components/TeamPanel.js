@@ -10,10 +10,10 @@ const TeamName = styled.b`
 `;
 
 const TeamPanel = ({ team, history }) => {
-    const { id, name, managerID } = team;
+    const { _id, name, managerID } = team;
 
     const navigateParams = {
-        pathname: `/teams/${id}`,
+        pathname: `/teams/${_id}`,
         state: { team }
     };
 

@@ -71,7 +71,7 @@ class UserTable extends React.Component {
             <tbody>
                 {users.map(user => (
                     <UserRow
-                        key={user.id}
+                        key={user._id}
                         user={user}
                         handleRemoveUser={this.handleRemoveUser}
                     />

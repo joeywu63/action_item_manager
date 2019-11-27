@@ -26,7 +26,7 @@ class ChangeInfo extends React.Component {
         firstName: '',
         lastName: '',
         email: '',
-        userID: getCurrentUser().id
+        userID: getCurrentUser()._id
     };
 
     handleSubmit = () => {

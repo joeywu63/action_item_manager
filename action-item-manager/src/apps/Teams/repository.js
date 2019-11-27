@@ -1,14 +1,26 @@
 import * as actionItem from 'model/actionItem';
-import * as team from 'model/team';
 import axios from 'axios';
 
-export const getTeams = team.getTeamsByCurrentUser;
+import { getCurrentUser } from 'utils/currentUser';
+
+export const getTeams = () => {
+    const currentUser = getCurrentUser();
+
+    return axios
+        .post('/team/teamsFromList', { teamList: currentUser.teamIDList })
+        .then(response => response.data.teams)
+        .catch(error => error);
+};
 
 export const getTeamActionItems = actionItem.getByTeam;
 
 export const createActionItem = actionItem.create;
 
-export const getTeamUsers = team.getUsers;
+export const getTeamUsers = ({ teamID }) =>
+    axios
+        .get(`/team/users/${teamID}`)
+        .then(response => response.data.users)
+        .catch(error => error);
 
 export const addUserToTeam = ({ userID, teamID }) =>
     axios
