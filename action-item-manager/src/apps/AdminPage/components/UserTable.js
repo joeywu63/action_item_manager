@@ -37,8 +37,8 @@ const Wrapper = styled.div`
 `;
 
 class UserTable extends React.Component {
-    componentDidMount() {
-        const users = getUsers();
+    async componentDidMount() {
+        const users = await getUsers();
 
         this.setState({ users });
     }
@@ -57,10 +57,10 @@ class UserTable extends React.Component {
         this.setState({ users });
     };
 
-    handleRemoveUser = userID => {
+    handleRemoveUser = async userID => {
         const { users } = this.state;
 
-        removeUser({ userID });
+        await removeUser({ userID });
 
         this.setState({ users });
     };

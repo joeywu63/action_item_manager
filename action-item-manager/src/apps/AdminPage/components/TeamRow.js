@@ -12,7 +12,7 @@ const TableData = styled.td`
 `;
 
 class TeamRow extends React.Component {
-    componentDidMount() {
+    async componentDidMount() {
         const { team } = this.props;
 
         const allUsers = getUsers();
@@ -25,7 +25,7 @@ class TeamRow extends React.Component {
                     label: `${user.firstName} ${user.lastName}`
                 };
             });
-        let currManager = getByID({ userID: team.managerID });
+        let currManager = await getByID({ userID: team.managerID });
 
         this.setState({
             manager: `${currManager.firstName} ${currManager.lastName}`,
@@ -39,11 +39,11 @@ class TeamRow extends React.Component {
         otherUsers: []
     };
 
-    handleChange = user => {
+    handleChange = async user => {
         const { team } = this.props;
         const { otherUsers } = this.state;
 
-        const prevManager = getByID({ userID: team.managerID });
+        const prevManager = await getByID({ userID: team.managerID });
         prevManager.value = prevManager.id;
         prevManager.label = `${prevManager.firstName} ${prevManager.lastName}`;
 

@@ -10,8 +10,8 @@ import { getCurrentUser } from 'utils/currentUser';
 import Label from 'common/Label';
 
 class AddTeamForm extends React.Component {
-    componentDidMount() {
-        const allUsers = getUsers().map(user => {
+    async componentDidMount() {
+        const allUsers = (await getUsers()).map(user => {
             return {
                 ...user,
                 value: user.id,
