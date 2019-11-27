@@ -109,14 +109,15 @@ export const toggleActionItemComplete = ({
 
 // server/database get call
 export const didComplete = ({ userID, actionItemID }) => {
-    let completed = false;
-
-    actionItems.forEach(actionItem => {
-        if (actionItem.actionItemID === actionItemID) {
-            const index = actionItem.userIDList.indexOf(userID);
-            completed = index !== -1;
-        }
-    });
-
-    return completed;
+    // let completed = false;
+    //
+    // actionItems.forEach(actionItem => {
+    //     if (actionItem.actionItemID === actionItemID) {
+    //         const index = actionItem.userIDList.indexOf(userID);
+    //         completed = index !== -1;
+    //     }
+    // });
+    //
+    // return completed;
+    return false;
 };

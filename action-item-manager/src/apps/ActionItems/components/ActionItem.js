@@ -64,7 +64,7 @@ const IncompleteIcon = styled.div`
 class ActionItem extends React.Component {
     async componentDidMount() {
         const {
-            actionItemID,
+            _id,
             title,
             description,
             teamID,
@@ -73,7 +73,10 @@ class ActionItem extends React.Component {
         } = this.props.location.state.actionItem;
         const { currentUser } = this.state;
 
-        const complete = didComplete({ userID: currentUser.id, actionItemID });
+        const complete = didComplete({
+            userID: currentUser.id,
+            actionItemID: _id
+        });
         const team = await getTeamByID({ teamID: teamID });
         const canEdit =
             currentUser.id === team.managerID ||
@@ -111,13 +114,13 @@ class ActionItem extends React.Component {
     };
 
     handleMarkAsComplete = async () => {
-        const { actionItemID } = this.props.location.state.actionItem;
+        const { _id } = this.props.location.state.actionItem;
         const { complete, currentUser, completedBy } = this.state;
 
         await toggleActionItemComplete({
             userID: currentUser._id,
             isComplete: !complete,
-            actionItemID
+            actionItemID: _id
         });
 
         if (complete) {
@@ -133,15 +136,17 @@ class ActionItem extends React.Component {
         }
     };
 
-    handleSubmit = async () => {
-        const { actionItemID } = this.props.location.state.actionItem;
+    handleSubmit = async e => {
+        e.preventDefault();
+
+        const { _id } = this.props.location.state.actionItem;
         const { editing, newTitle, newDescription, newDueDate } = this.state;
 
-        update({
-            id: actionItemID,
-            newTitle: newTitle,
-            newDesc: newDescription,
-            newDueDate: newDueDate
+        await update({
+            actionItemID: _id,
+            title: newTitle,
+            description: newDescription,
+            dueDate: newDueDate
         });
         this.setState({
             editing: !editing,

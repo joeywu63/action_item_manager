@@ -28,7 +28,7 @@ class ActionItemList extends React.Component {
 
         return sortedActionItems.map(actionItem => (
             <ActionItemPanel
-                key={actionItem.actionItemID}
+                key={actionItem._id}
                 actionItem={actionItem}
             />
         ));

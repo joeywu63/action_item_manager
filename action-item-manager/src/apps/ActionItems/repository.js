@@ -1,7 +1,16 @@
 import * as actionItem from 'model/actionItem';
 import axios from 'axios';
 
-export const getActionItemsForCurrentUser = actionItem.getByCurrentUser;
+import { getCurrentUser } from 'utils/currentUser';
+
+export const getActionItemsForCurrentUser = () => {
+    const currentUser = getCurrentUser();
+
+    return axios
+        .post('/action-item/current', { teamList: currentUser.teamIDList })
+        .then(response => response.data.actionItems)
+        .catch(error => error);
+};
 
 export const getTeamByID = ({ teamID }) =>
     axios
@@ -15,8 +24,12 @@ export const getSize = ({ teamID }) =>
         .then(response => response.data.size)
         .catch(error => error);
 
-export const update = actionItem.update;
+export const update = ({ actionItemID, title, description, dueDate }) =>
+    axios
+        .patch(`/action-item/${actionItemID}`, { title, description, dueDate })
+        .then(response => response)
+        .catch(error => error);
 
-export const toggleActionItemComplete = actionItem.toggleActionItemComplete;
+export const toggleActionItemComplete = actionItem.toggleActionItemComplete; // TODO: replace
 
-export const didComplete = actionItem.didComplete;
+export const didComplete = actionItem.didComplete; // TODO: replace

@@ -37,8 +37,6 @@ export const getByID = ({ userID }) =>
         .then(response => response.data.user)
         .catch(error => error);
 
-export const createUser = user.create; // TODO: replace
-
 export const removeUser = ({ userID }) => {
     axios.delete(`/user/remove/${userID}`).catch(error => error);
 };

@@ -55,8 +55,15 @@ module.exports = app => {
         const { id } = req.params;
 
         User.find({ teamIDList: { $in: [id] } }).then(
-            users => {
-                res.status(200).send({ users });
+            onTeam => {
+                User.find({ teamIDList: { $nin: [id] } }).then(
+                    offTeam => {
+                        res.status(200).send({ onTeam, offTeam });
+                    },
+                    error => {
+                        res.status(500).send(error);
+                    }
+                );
             },
             error => {
                 res.status(500).send(error);

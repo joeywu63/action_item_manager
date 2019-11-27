@@ -42,14 +42,14 @@ const StyledDate = styled.div`
 `;
 
 const ActionItemPanel = ({ actionItem, history }) => {
-    const { actionItemID, title, dueDate } = actionItem;
+    const { _id, title, dueDate } = actionItem;
 
     const navigateParams = {
-        pathname: `/action-items/${actionItemID}`,
+        pathname: `/action-items/${_id}`,
         state: { actionItem }
     };
     const currentUser = getCurrentUser();
-    const complete = didComplete({ userID: currentUser._id, actionItemID });
+    const complete = didComplete({ userID: currentUser._id, actionItemID: _id });
 
     const renderComplete = () => {
         if (complete) {

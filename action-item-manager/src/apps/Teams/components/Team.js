@@ -27,8 +27,8 @@ const StyledButton = styled(Button)`
 
 class Team extends React.Component {
     async componentDidMount() {
-        const { id } = this.props.location.state.team;
-        const teamActionItems = await getTeamActionItems({ teamID: id });
+        const { _id } = this.props.location.state.team;
+        const teamActionItems = await getTeamActionItems({ teamID: _id });
         this.setState({ loading: false, teamActionItems });
     }
 
@@ -79,7 +79,7 @@ class Team extends React.Component {
     );
 
     render() {
-        const { name, managerID, id } = this.props.location.state.team;
+        const { name, managerID, _id } = this.props.location.state.team;
         const { loading, page } = this.state;
 
         return (
@@ -92,7 +92,7 @@ class Team extends React.Component {
                     <LoadingIndicator />
                 ) : page === ACTIONS.create ? (
                     <CreateActionItem
-                        teamID={id}
+                        teamID={_id}
                         handleGoBack={() =>
                             this.handleSwitchPage(ACTIONS.default)
                         }
@@ -103,7 +103,7 @@ class Team extends React.Component {
                         handleGoBack={() =>
                             this.handleSwitchPage(ACTIONS.default)
                         }
-                        teamID={id}
+                        teamID={_id}
                     />
                 ) : (
                     this.renderTeamActionItems()

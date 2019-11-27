@@ -16,7 +16,7 @@ import AdminPage from 'apps/AdminPage/components/Admin';
 
 import PageWrapper from 'common/PageWrapper';
 
-import { setCurrentUser } from 'utils/currentUser';
+import { setCurrentUser, getCurrentUser } from 'utils/currentUser';
 import { COLOURS } from 'utils/constants';
 
 const MainWrapper = styled.div`
@@ -28,11 +28,12 @@ const MainWrapper = styled.div`
 
 class App extends React.Component {
     async componentDidMount() {
-        await this.requestCurrentUser()
+        await this.requestCurrentUser();
+        this.setState({ currentUser: getCurrentUser() });
     }
 
     state = {
-        isSignedIn: false
+        currentUser: null
     };
 
     requestCurrentUser = () =>
@@ -41,12 +42,10 @@ class App extends React.Component {
             .then(response => setCurrentUser(response.data.user))
             .catch(error => error);
 
-    logout = () => {
-        this.setState({ isSignedIn: false, isSignedUp: false });
-    };
-
     render() {
-        return <MainRouter logout={this.logout} />;
+        const { currentUser } = this.state;
+
+        return currentUser ? <MainRouter /> : <>Loading...</>;
     }
 }
 
@@ -55,7 +54,7 @@ class MainRouter extends React.Component {
         return (
             <Router>
                 <MainWrapper>
-                    <MainSideBar logout={this.props.logout} />
+                    <MainSideBar />
                     <PageWrapper>
                         <Switch>
                             <Route

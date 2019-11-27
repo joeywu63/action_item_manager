@@ -77,15 +77,17 @@ module.exports = app => {
             res.status(404).send();
         }
 
-        User.findByIdAndRemove(id).then(user => {
-            if (!user) {
-                res.status(404).send()
-            } else {
-                res.send(user)
-            }
-        }).catch((error) => {
-            res.status(500).send()
-        })
+        User.findByIdAndRemove(id)
+            .then(user => {
+                if (!user) {
+                    res.status(404).send();
+                } else {
+                    res.send(user);
+                }
+            })
+            .catch(error => {
+                res.status(500).send();
+            });
     });
 
     app.get('/user/:id', (req, res) => {
@@ -119,7 +121,7 @@ module.exports = app => {
         );
     });
 
-    app.patch('/user/update/:id', (req, res) => {
+    app.patch('/user/:id', (req, res) => {
         const { id } = req.params;
         const { firstName, lastName, email } = req.body;
 
@@ -127,10 +129,7 @@ module.exports = app => {
             res.status(404).send();
         }
 
-        User.findByIdAndUpdate(
-            id,
-            { firstName, lastName, email }
-        )
+        User.findByIdAndUpdate(id, { firstName, lastName, email })
             .then(user => {
                 if (!user) {
                     res.status(404).send();
@@ -146,8 +145,6 @@ module.exports = app => {
     app.patch('/user/changePassword/:id', (req, res) => {
         const { id } = req.params;
         const { password } = req.body;
-
-
     });
 
     app.get('/user/isOnTeam', (req, res) => {
@@ -163,7 +160,7 @@ module.exports = app => {
 
         User.find({
             _id: userID,
-            teamIDList: {$in: [teamID]}
+            teamIDList: { $in: [teamID] }
         }).then(
             user => {
                 if (!user) {
@@ -189,10 +186,7 @@ module.exports = app => {
             res.status(404).send();
         }
 
-        User.findByIdAndUpdate(
-            id,
-            { $push: { teamIDList: teamID } }
-        )
+        User.findByIdAndUpdate(userID, { $push: { teamIDList: teamID } })
             .then(user => {
                 if (!user) {
                     res.status(404).send();
@@ -205,7 +199,7 @@ module.exports = app => {
             });
     });
 
-    app.delete('/user/removeFromTeam', (req, res) => {
+    app.post('/user/removeFromTeam', (req, res) => {
         const { userID, teamID } = req.body;
 
         if (!ObjectID.isValid(userID)) {
@@ -216,10 +210,9 @@ module.exports = app => {
             res.status(404).send();
         }
 
-        User.findByIdAndUpdate(
-            id,
-            { $pull: { teamIDList: teamID } }
-        )
+        User.findByIdAndUpdate(userID, {
+            $pull: { teamIDList: { $in: [teamID] } }
+        })
             .then(user => {
                 if (!user) {
                     res.status(404).send();
@@ -231,6 +224,4 @@ module.exports = app => {
                 res.status(400).send();
             });
     });
-
-
 };

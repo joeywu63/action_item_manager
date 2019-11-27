@@ -6,8 +6,6 @@ import { withRouter } from 'react-router-dom';
 import { logout } from '../repository';
 import RouterButton from 'common/RouterButton';
 
-import { setCurrentUser } from 'utils/currentUser.js';
-
 const SideBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -18,14 +16,6 @@ const SideBarWrapper = styled.div`
 
 class MainSideBar extends React.Component {
     state = { activeButton: 'Dashboard' };
-
-    logout = () => {
-        const { logout } = this.props;
-
-        setCurrentUser(null);
-        logout();
-        this.setState({ activeButton: 'Dashboard' });
-    };
 
     handleClick = e => {
         this.setState({ activeButton: e.target.innerText });
@@ -70,7 +60,6 @@ class MainSideBar extends React.Component {
 }
 
 MainSideBar.propTypes = {
-    logout: PropTypes.func.isRequired
 };
 
 export default withRouter(MainSideBar);

@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import AddUserForm from './AddUserForm';
 import UserRow from './UserRow';
 
 import Header from 'common/Header';
 
-import { getUsers, createUser, removeUser } from '../repository';
+import { getUsers, removeUser } from '../repository';
 
 const Table = styled.table`
     min-width:100%;
@@ -45,16 +44,6 @@ class UserTable extends React.Component {
 
     state = {
         users: []
-    };
-
-    handleCreateUser = (email, firstName, lastName, role) => {
-        const { users } = this.state;
-
-        // TODO: This needs to push to the users array once connected to server.
-        // we dont need to right now because the users array is pointing to the array in the model
-        const newUser = createUser({ email, firstName, lastName, role });
-
-        this.setState({ users });
     };
 
     handleRemoveUser = async userID => {
@@ -96,7 +85,6 @@ class UserTable extends React.Component {
                     </TableHead>
                     {this.renderRows()}
                 </Table>
-                <AddUserForm handleCreateUser={this.handleCreateUser} />
             </Wrapper>
         );
     }

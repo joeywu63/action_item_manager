@@ -81,7 +81,7 @@ class ManageTeam extends React.Component {
             return;
         }
 
-        await addUserToTeam({ userID: selectedUser.id, teamID });
+        await addUserToTeam({ userID: selectedUser._id, teamID });
 
         const index = offTeam.indexOf(selectedUser);
         offTeam.splice(index, 1);
@@ -94,7 +94,7 @@ class ManageTeam extends React.Component {
         const { teamID } = this.props;
         const { offTeam, onTeam } = this.state;
 
-        removeUserFromTeam({ userID: user.id, teamID });
+        await removeUserFromTeam({ userID: user._id, teamID });
 
         const index = onTeam.indexOf(user);
         onTeam.splice(index, 1);
