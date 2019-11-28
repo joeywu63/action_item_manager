@@ -4,6 +4,7 @@ app.use(express.static(__dirname + '/action-item-manager/build'));
 
 const { ObjectID } = require('mongodb');
 const { ActionItem } = require('../model/actionItem');
+const { User } = require('../model/user');
 
 module.exports = (app, authenticate) => {
     app.post('/action-item/create', authenticate, (req, res) => {
@@ -104,6 +105,33 @@ module.exports = (app, authenticate) => {
                 res.status(500).send(error);
             }
         );
+    });
+
+    app.get('/action-item/usersCompleted/:id', authenticate, (req, res) => {
+        const { id } = req.params;
+
+        if (!ObjectID.isValid(id)) {
+            res.status(404).send();
+        }
+
+        ActionItem.findById(id)
+            .then(actionItem => {
+                if (!actionItem) {
+                    res.status(404).send();
+                } else {
+                    User.find({ _id: { $in: actionItem.userIDList } }).then(
+                        users => {
+                            res.status(200).send({ users });
+                        },
+                        error => {
+                            res.status(500).send(error);
+                        }
+                    );
+                }
+            })
+            .catch(error => {
+                res.status(500).send();
+            });
     });
 
     app.post('/action-item/current', authenticate, (req, res) => {

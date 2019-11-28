@@ -36,6 +36,12 @@ export const deleteActionItem = ({ actionItemID }) =>
         .then(response => response)
         .catch(error => error);
 
+export const getUsersCompleted = ({ actionItemID }) =>
+    axios
+        .get(`/action-item/usersCompleted/${actionItemID}`)
+        .then(response => response.data.users)
+        .catch(error => error);
+
 export const toggleActionItemComplete = actionItem.toggleActionItemComplete; // TODO: replace
 
 export const didComplete = actionItem.didComplete; // TODO: replace

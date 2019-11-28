@@ -12,7 +12,8 @@ import {
     didComplete,
     getSize,
     getTeamByID,
-    update
+    update,
+    getUsersCompleted
 } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
 
@@ -37,6 +38,7 @@ const Status = styled.div`
     display: inline-block;
     border: 1px solid black;
     border-radius: 4px;
+    cursor: pointer;
 `;
 
 const CompletedIcon = styled.div`
@@ -61,6 +63,10 @@ const IncompleteIcon = styled.div`
     margin-right: 50px;
 `;
 
+const UserRow = styled.div`
+    padding-top: 5px;
+`;
+
 class ActionItem extends React.Component {
     async componentDidMount() {
         const {
@@ -83,6 +89,8 @@ class ActionItem extends React.Component {
             currentUser.role === ROLES.admin;
         const teamSize = await getSize({ teamID });
 
+        const usersCompleted = await getUsersCompleted({ actionItemID: _id });
+
         this.setState({
             title,
             description,
@@ -94,7 +102,8 @@ class ActionItem extends React.Component {
             canEdit,
             editing: false,
             teamSize: teamSize,
-            completedBy: userIDList.length
+            completedBy: userIDList.length,
+            usersCompleted
         });
     }
 
@@ -110,7 +119,9 @@ class ActionItem extends React.Component {
         canEdit: false,
         editing: false,
         teamSize: 0,
-        completedBy: 0
+        completedBy: 0,
+        viewingUsers: false,
+        usersCompleted: []
     };
 
     handleMarkAsComplete = async () => {
@@ -194,11 +205,27 @@ class ActionItem extends React.Component {
 
         if (canEdit === true) {
             return (
-                <Status>
+                <Status onClick={() => this.setState({ viewingUsers: true })}>
                     Completed by {completedBy}/{teamSize} members
                 </Status>
             );
         }
+    };
+
+    renderUsersCompleted = () => {
+        const { usersCompleted } = this.state;
+
+        return (
+            <div>
+                {usersCompleted.map(user => (
+                    <UserRow>{`${user.firstName} ${user.lastName}`}</UserRow>
+                ))}
+                <StyledButton
+                    text="Back"
+                    onClick={() => this.setState({ viewingUsers: false })}
+                />
+            </div>
+        );
     };
 
     renderEditForm = () => {
@@ -268,11 +295,17 @@ class ActionItem extends React.Component {
     }
 
     render() {
-        const { editing } = this.state;
+        const { editing, viewingUsers } = this.state;
 
         return (
             <>
-                <div>{editing ? this.renderEditForm() : this.renderBody()}</div>
+                <div>
+                    {editing
+                        ? this.renderEditForm()
+                        : viewingUsers
+                        ? this.renderUsersCompleted()
+                        : this.renderBody()}
+                </div>
             </>
         );
     }
