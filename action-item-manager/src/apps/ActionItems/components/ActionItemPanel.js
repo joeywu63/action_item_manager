@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Panel from 'common/Panel';
-import { didComplete, getTeamByID } from '../repository';
+import Button from 'common/Button';
+
+import { didComplete, getTeamByID, deleteActionItem } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
 
 const CompletedIcon = styled.div`
@@ -29,6 +31,11 @@ const IncompleteIcon = styled.div`
     float: left;
 `;
 
+const ActionItemWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
 const ActionItemDisplay = styled.div`
     float: left;
 `;
@@ -47,6 +54,10 @@ const StyledDate = styled.div`
     font-size: 12px;
 `;
 
+const StyledButton = styled(Button)`
+    padding-right: 20px;
+`;
+
 class ActionItemPanel extends React.Component {
     async componentDidMount() {
         const { displayTeamName, actionItem } = this.props;
@@ -59,6 +70,16 @@ class ActionItemPanel extends React.Component {
 
     state = {
         team: null
+    };
+
+    handleDelete = async e => {
+        e.stopPropagation();
+
+        const { handleDelete, actionItem } = this.props;
+        const { _id } = actionItem;
+
+        await deleteActionItem({ actionItemID: _id });
+        handleDelete();
     };
 
     renderComplete = () => {
@@ -84,7 +105,7 @@ class ActionItemPanel extends React.Component {
         );
     };
     render() {
-        const { actionItem, history } = this.props;
+        const { actionItem, history, isManager } = this.props;
         const { _id, title, dueDate } = actionItem;
         const { team } = this.state;
 
@@ -95,14 +116,19 @@ class ActionItemPanel extends React.Component {
 
         return (
             <Panel onClick={() => history.push(navigateParams)}>
-                <DisplayWrapper>
-                    {this.renderComplete()}
-                    <ActionItemDisplay>
-                        <b>{title}</b>
-                        <StyledDate>Due Date: {dueDate}</StyledDate>
-                    </ActionItemDisplay>
-                    {team && this.renderTeamName()}
-                </DisplayWrapper>
+                <ActionItemWrapper>
+                    <DisplayWrapper>
+                        {this.renderComplete()}
+                        <ActionItemDisplay>
+                            <b>{title}</b>
+                            <StyledDate>Due Date: {dueDate}</StyledDate>
+                        </ActionItemDisplay>
+                        {team && this.renderTeamName()}
+                    </DisplayWrapper>
+                    {isManager && (
+                        <Button text="Delete" onClick={this.handleDelete} />
+                    )}
+                </ActionItemWrapper>
             </Panel>
         );
     }
@@ -110,11 +136,15 @@ class ActionItemPanel extends React.Component {
 
 ActionItemPanel.propTypes = {
     actionItem: PropTypes.object.isRequired,
-    displayTeamName: PropTypes.bool
+    displayTeamName: PropTypes.bool,
+    handleDelete: PropTypes.func,
+    isManager: PropTypes.bool
 };
 
 ActionItemPanel.defaultProps = {
-    displayTeamName: false
+    displayTeamName: false,
+    handleDelete: () => {},
+    isManager: false
 };
 
 export default withRouter(ActionItemPanel);

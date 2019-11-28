@@ -69,6 +69,26 @@ module.exports = (app, authenticate) => {
             });
     });
 
+    app.delete('/action-item/:id', authenticate, (req, res) => {
+        const { id } = req.params;
+
+        if (!ObjectID.isValid(id)) {
+            res.status(404).send();
+        }
+
+        ActionItem.findByIdAndRemove(id)
+            .then(actionItem => {
+                if (!actionItem) {
+                    res.status(404).send();
+                } else {
+                    res.send({ actionItem });
+                }
+            })
+            .catch(error => {
+                res.status(500).send();
+            });
+    });
+
     app.get('/action-item/team/:id', authenticate, (req, res) => {
         const { id } = req.params;
 

@@ -30,6 +30,12 @@ export const update = ({ actionItemID, title, description, dueDate }) =>
         .then(response => response)
         .catch(error => error);
 
+export const deleteActionItem = ({ actionItemID }) =>
+    axios
+        .delete(`/action-item/${actionItemID}`)
+        .then(response => response)
+        .catch(error => error);
+
 export const toggleActionItemComplete = actionItem.toggleActionItemComplete; // TODO: replace
 
 export const didComplete = actionItem.didComplete; // TODO: replace

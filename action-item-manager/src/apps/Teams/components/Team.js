@@ -48,8 +48,15 @@ class Team extends React.Component {
         this.setState({ teamActionItems });
     };
 
+    handleDeleteActionItem = actionItemID => {
+        const { teamActionItems } = this.state;
+        const newActionItems = teamActionItems.filter(actionItem => actionItem._id !== actionItemID);
+        this.setState({ teamActionItems: newActionItems });
+    };
+
     renderTeamActionItems = () => {
         const { teamActionItems } = this.state;
+        const { managerID } = this.props.location.state.team;
 
         const sortedActionItems = teamActionItems.sort((a, b) => {
             a = new Date(a.dueDate);
@@ -61,6 +68,8 @@ class Team extends React.Component {
             <ActionItemPanel
                 key={actionItem.actionItemID}
                 actionItem={actionItem}
+                handleDelete={() => this.handleDeleteActionItem(actionItem._id)}
+                isManager={canManageTeam(managerID)}
             />
         ));
     };

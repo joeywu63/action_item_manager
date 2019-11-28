@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf378fab-77ca-47a8-82c7-c8069829e0aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItemList.js" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItemList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItemPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItemPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/action-item-manager/src/apps/Teams/components/Team.js" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/src/apps/Teams/components/Team.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/actionItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/actionItem.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,29 +36,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/action-item-manager/src/apps/Teams/components/Team.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItemPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="82" column="29" lean-forward="true" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="447">
+              <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -64,38 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/actionItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="91" column="45" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/team.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="153" column="41" selection-start-line="153" selection-start-column="41" selection-end-line="153" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3045">
-              <caret line="218" column="24" selection-start-line="218" selection-start-column="24" selection-end-line="218" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/nov25_resource_authentication/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="120" column="48" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="48" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="337">
+              <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -103,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/repository.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+            <state relative-caret-position="399">
+              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -120,10 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getCurrentUser(</find>
-      <find>RouterButton</find>
-      <find>session</find>
-      <find>res.sendFile(path.join(__dirname + '/action-item-manager/build/index.html'));</find>
       <find>sendFile</find>
       <find>LoginPage</find>
       <find>import axios</find>
@@ -150,6 +109,10 @@
       <find>handleCreateUser</find>
       <find>Manage Team</find>
       <find>/action-item/current</find>
+      <find>axios.delete</find>
+      <find>&lt;ActionItemPan</find>
+      <find>findByIdAndRE</find>
+      <find>manager</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/action-item-manager/src</dir>
@@ -191,8 +154,6 @@
         <option value="$PROJECT_DIR$/action-item-manager/src/apps/AccountInfo/components/ChangeInfo.js" />
         <option value="$PROJECT_DIR$/action-item-manager/src/apps/AccountInfo/components/ChangePassword.js" />
         <option value="$PROJECT_DIR$/action-item-manager/src/model/actionItem.js" />
-        <option value="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/repository.js" />
-        <option value="$PROJECT_DIR$/action-item-manager/src/apps/Teams/components/Team.js" />
         <option value="$PROJECT_DIR$/model/actionItem.js" />
         <option value="$PROJECT_DIR$/action-item-manager/src/apps/MainSideBar/components/MainSideBar.js" />
         <option value="$PROJECT_DIR$/action-item-manager/src/apps/AdminPage/components/UserTable.js" />
@@ -203,10 +164,12 @@
         <option value="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItem.js" />
         <option value="$PROJECT_DIR$/controllers/user.js" />
         <option value="$PROJECT_DIR$/controllers/team.js" />
-        <option value="$PROJECT_DIR$/controllers/actionItem.js" />
         <option value="$PROJECT_DIR$/action-item-manager/src/App.js" />
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItemList.js" />
+        <option value="$PROJECT_DIR$/controllers/actionItem.js" />
+        <option value="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/repository.js" />
+        <option value="$PROJECT_DIR$/action-item-manager/src/apps/Teams/components/Team.js" />
         <option value="$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItemPanel.js" />
       </list>
     </option>
@@ -272,7 +235,7 @@
               <item name="action-item-manager" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="AdminPage" type="462c0819:PsiDirectoryNode" />
+              <item name="Teams" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="team10" type="b2602c69:ProjectViewProjectNode" />
@@ -280,7 +243,7 @@
               <item name="action-item-manager" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="AdminPage" type="462c0819:PsiDirectoryNode" />
+              <item name="Teams" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -354,12 +317,12 @@
       <workItem from="1574478014100" duration="16000" />
       <workItem from="1574478598965" duration="1473000" />
       <workItem from="1574700536398" duration="31180000" />
-      <workItem from="1574902843153" duration="4930000" />
+      <workItem from="1574902843153" duration="6483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71501000" />
+    <option name="totallyTimeSpent" value="73054000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -377,7 +340,7 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.16350365" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.13138686" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -610,13 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/action-item-manager/src/apps/Teams/components/Team.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="87" column="26" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/action-item-manager/src/utils/currentUser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -683,31 +639,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/actionItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="91" column="45" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
           <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/team.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="153" column="41" selection-start-line="153" selection-start-column="41" selection-end-line="153" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/repository.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -718,10 +653,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/team.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="153" column="41" selection-start-line="153" selection-start-column="41" selection-end-line="153" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/actionItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="86" column="29" selection-start-line="86" selection-start-column="29" selection-end-line="86" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/repository.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action-item-manager/src/apps/Teams/components/Team.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/action-item-manager/src/apps/ActionItems/components/ActionItemPanel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="82" column="29" lean-forward="true" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+        <state relative-caret-position="447">
+          <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
         </state>
       </provider>
     </entry>
