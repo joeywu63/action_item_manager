@@ -5,8 +5,8 @@ app.use(express.static(__dirname + '/action-item-manager/build'));
 const { ObjectID } = require('mongodb');
 const { ActionItem } = require('../model/actionItem');
 
-module.exports = app => {
-    app.post('/action-item/create', (req, res) => {
+module.exports = (app, authenticate) => {
+    app.post('/action-item/create', authenticate, (req, res) => {
         const { teamID, title, description, dueDate } = req.body;
 
         const actionItem = new ActionItem({
@@ -28,7 +28,7 @@ module.exports = app => {
         );
     });
 
-    app.get('/action-item/:id', (req, res) => {
+    app.get('/action-item/:id', authenticate, (req, res) => {
         const { id } = req.params;
 
         if (!ObjectID.isValid(id)) {
@@ -48,7 +48,7 @@ module.exports = app => {
             });
     });
 
-    app.patch('/action-item/:id', (req, res) => {
+    app.patch('/action-item/:id', authenticate, (req, res) => {
         const { id } = req.params;
         const { title, description, dueDate } = req.body;
 
@@ -69,7 +69,7 @@ module.exports = app => {
             });
     });
 
-    app.get('/action-item/team/:id', (req, res) => {
+    app.get('/action-item/team/:id', authenticate, (req, res) => {
         const { id } = req.params;
 
         if (!ObjectID.isValid(id)) {
@@ -86,7 +86,7 @@ module.exports = app => {
         );
     });
 
-    app.post('/action-item/current', (req, res) => {
+    app.post('/action-item/current', authenticate, (req, res) => {
         const { teamList } = req.body;
 
         ActionItem.find({ teamID: { $in: teamList } }).then(
@@ -99,5 +99,5 @@ module.exports = app => {
         );
     });
 
-    app.post('/action-item/complete/:id', (req, res) => {});
+    app.post('/action-item/complete/:id', authenticate, (req, res) => {});
 };

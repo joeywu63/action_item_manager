@@ -2,8 +2,7 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Redirect
+    Route
 } from 'react-router-dom';
 import MainSideBar from 'apps/MainSideBar/components/MainSideBar';
 import styled from 'styled-components';
@@ -18,6 +17,16 @@ import PageWrapper from 'common/PageWrapper';
 
 import { setCurrentUser, getCurrentUser } from 'utils/currentUser';
 import { COLOURS } from 'utils/constants';
+
+axios.interceptors.response.use(function (response) {
+    return response;
+}, function (error) {
+    if (401 === error.response.status) {
+        window.location = '/login';
+    } else {
+        return Promise.reject(error);
+    }
+});
 
 const MainWrapper = styled.div`
     display: flex;

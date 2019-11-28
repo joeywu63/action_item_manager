@@ -6,8 +6,8 @@ const { ObjectID } = require('mongodb');
 const { Team } = require('../model/team');
 const { User } = require('../model/user');
 
-module.exports = app => {
-    app.get('/team', (req, res) => {
+module.exports = (app, authenticate) => {
+    app.get('/team', authenticate, (req, res) => {
         Team.find().then(
             teams => {
                 res.send({ teams });
@@ -18,7 +18,7 @@ module.exports = app => {
         );
     });
 
-    app.get('/team/:id', (req, res) => {
+    app.get('/team/:id', authenticate, (req, res) => {
         const { id } = req.params;
 
         if (!ObjectID.isValid(id)) {
@@ -38,7 +38,7 @@ module.exports = app => {
             });
     });
 
-    app.get('/team/size/:id', (req, res) => {
+    app.get('/team/size/:id', authenticate, (req, res) => {
         const { id } = req.params;
 
         User.find({ teamIDList: { $in: [id] } }).then(
@@ -51,7 +51,7 @@ module.exports = app => {
         );
     });
 
-    app.get('/team/users/:id', (req, res) => {
+    app.get('/team/users/:id', authenticate, (req, res) => {
         const { id } = req.params;
 
         User.find({ teamIDList: { $in: [id] } }).then(
@@ -71,7 +71,7 @@ module.exports = app => {
         );
     });
 
-    app.post('/team/teamsFromList', (req, res) => {
+    app.post('/team/teamsFromList', authenticate, (req, res) => {
         const { teamList } = req.body;
 
         Team.find({ _id: { $in: teamList } }).then(
@@ -84,7 +84,7 @@ module.exports = app => {
         );
     });
 
-    app.patch('/team/setManager/:id', (req, res) => {
+    app.patch('/team/setManager/:id', authenticate, (req, res) => {
         const { id } = req.params;
         const { managerID } = req.body;
 
@@ -136,7 +136,7 @@ module.exports = app => {
             });
     });
 
-    app.post('/team/create', (req, res) => {
+    app.post('/team/create', authenticate, (req, res) => {
         const { name, managerID } = req.body;
 
         const team = new Team({ name, managerID });
@@ -151,7 +151,7 @@ module.exports = app => {
         );
     });
 
-    app.delete('/team/:id', (req, res) => {
+    app.delete('/team/:id', authenticate, (req, res) => {
         const { id } = req.params;
 
         if (!ObjectID.isValid(id)) {

@@ -5,7 +5,7 @@ app.use(express.static(__dirname + '/action-item-manager/build'));
 const { ObjectID } = require('mongodb');
 const { User } = require('../model/user');
 
-module.exports = app => {
+module.exports = (app, authenticate) => {
     app.post('/user/login', (req, res) => {
         const email = req.body.email;
         const password = req.body.password;
@@ -34,7 +34,7 @@ module.exports = app => {
         });
     });
 
-    app.get('/user/current', (req, res) => {
+    app.get('/user/current', authenticate, (req, res) => {
         User.findById(req.session.user)
             .then(user => {
                 if (!user) {
@@ -48,7 +48,7 @@ module.exports = app => {
             });
     });
 
-    app.post('/user/create', (req, res) => {
+    app.post('/user/create', authenticate, (req, res) => {
         const { email, firstName, lastName, password } = req.body;
         const user = new User({
             email,
@@ -70,7 +70,7 @@ module.exports = app => {
         );
     });
 
-    app.delete('/user/remove/:id', (req, res) => {
+    app.delete('/user/remove/:id', authenticate, (req, res) => {
         const { id } = req.params;
 
         if (!ObjectID.isValid(id)) {
@@ -90,7 +90,7 @@ module.exports = app => {
             });
     });
 
-    app.get('/user/:id', (req, res) => {
+    app.get('/user/:id', authenticate, (req, res) => {
         const { id } = req.params;
 
         if (!ObjectID.isValid(id)) {
@@ -110,7 +110,7 @@ module.exports = app => {
             });
     });
 
-    app.get('/user', (req, res) => {
+    app.get('/user', authenticate, (req, res) => {
         User.find().then(
             users => {
                 res.send({ users });
@@ -121,7 +121,7 @@ module.exports = app => {
         );
     });
 
-    app.patch('/user/:id', (req, res) => {
+    app.patch('/user/:id', authenticate, (req, res) => {
         const { id } = req.params;
         const { firstName, lastName, email } = req.body;
 
@@ -142,12 +142,12 @@ module.exports = app => {
             });
     });
 
-    app.patch('/user/changePassword/:id', (req, res) => {
+    app.patch('/user/changePassword/:id', authenticate, (req, res) => {
         const { id } = req.params;
         const { password } = req.body;
     });
 
-    app.get('/user/isOnTeam', (req, res) => {
+    app.get('/user/isOnTeam', authenticate, (req, res) => {
         const { userID, teamID } = req.body;
 
         if (!ObjectID.isValid(userID)) {
@@ -175,7 +175,7 @@ module.exports = app => {
         );
     });
 
-    app.post('/user/addToTeam', (req, res) => {
+    app.post('/user/addToTeam', authenticate, (req, res) => {
         const { userID, teamID } = req.body;
 
         if (!ObjectID.isValid(userID)) {
@@ -199,7 +199,7 @@ module.exports = app => {
             });
     });
 
-    app.post('/user/removeFromTeam', (req, res) => {
+    app.post('/user/removeFromTeam', authenticate, (req, res) => {
         const { userID, teamID } = req.body;
 
         if (!ObjectID.isValid(userID)) {
