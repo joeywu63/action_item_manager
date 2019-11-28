@@ -30,6 +30,7 @@ class ActionItemList extends React.Component {
             <ActionItemPanel
                 key={actionItem._id}
                 actionItem={actionItem}
+                displayTeamName={true}
             />
         ));
     };
