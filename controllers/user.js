@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const app = express();
 app.use(express.static(__dirname + '/action-item-manager/build'));
 
@@ -144,7 +145,30 @@ module.exports = (app, authenticate) => {
 
     app.patch('/user/changePassword/:id', authenticate, (req, res) => {
         const { id } = req.params;
-        const { password } = req.body;
+        let { password } = req.body;
+
+        if (!ObjectID.isValid(id)) {
+            res.status(404).send();
+        }
+
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(password, salt, (err, hash) => {
+                password = hash;
+                User.findByIdAndUpdate(id, { password })
+                    .then(user => {
+                        if (!user) {
+                            res.status(404).send();
+                        } else {
+                            res.status(200).send();
+                        }
+                    })
+                    .catch(error => {
+                        res.status(400).send();
+                    });
+            });
+        });
+
+        
     });
 
     app.get('/user/isOnTeam', authenticate, (req, res) => {
