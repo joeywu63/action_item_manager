@@ -48,7 +48,7 @@ module.exports = (app, authenticate) => {
             });
     });
 
-    app.post('/user/create', authenticate, (req, res) => {
+    app.post('/user/create', (req, res) => {
         const { email, firstName, lastName, password } = req.body;
         const user = new User({
             email,
