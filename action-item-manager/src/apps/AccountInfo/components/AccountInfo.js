@@ -28,12 +28,17 @@ const ProfileCategories = styled.text`
 class AccountInfo extends React.Component {
     state = {
         currentUser: getCurrentUser(),
-        page: ACCTPAGES.default
+        page: ACCTPAGES.default,
     };
 
     handleSwitchPage = page => {
         this.setState({ page });
     };
+
+    updateStateInfo = ( {firstName, lastName, email} ) => {
+        const { currentUser } = this.state; 
+        this.setState({currentUser: {...currentUser, firstName, lastName, email}});
+    }
 
     renderAccountInfo = () => {
         const { firstName, lastName, email, role } = this.state.currentUser;
@@ -78,7 +83,8 @@ class AccountInfo extends React.Component {
                 ) : page === ACCTPAGES.changepassword ? (
                     <ChangePassword handleSwitchPage={this.handleSwitchPage} />
                 ) : page === ACCTPAGES.changeinfo ? (
-                    <ChangeInfo
+                    <ChangeInfo 
+                        updateStateInfo={this.updateStateInfo}
                         handleSwitchPage={this.handleSwitchPage}
                         currentUser={currentUser}
                     />
