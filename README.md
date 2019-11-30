@@ -83,13 +83,19 @@ title/description/due date will then be reflected across the system.
 
 Team managers are able to see an additional piece of information for action items belonging to their team. On
 an action item page, there is a box displaying **Completed by x/y members**, where x is the number of team members
-who have marked this item as complete, and y is the size of the team. 
+who have marked this item as complete, and y is the size of the team. This label is also clickable. Managers can click
+onto the label to see more details on the users that have completed the action item.
 
 ### Creating new action items
 
 Team managers are able to create new action items for their teams. They can set the title, description and due date on 
 creation. To create a new Action Item, navigate to **Teams > Team Name > Create Action Item**, fill out the information and assign 
 it to the team. The new action item will default to Incomplete and can be found in the **Action Items** tab.
+
+### Deleting action items
+
+Team managers are able to delete existing action items. When viewing action items for a specific team, there is a 
+delete button allowing managers to remove action items from the system.
 
 ### Adding and removing members from the team
 
@@ -118,8 +124,127 @@ team's manager, which is reflected across the system (in **Teams**).
 Admins are able to invite users to the organization using their email. Admins will be able to specify their role (User or Admin), and their first name and last name.
 Invited users will then be able to login with their email and password 'admin'. Users will be able to change their password using the change password functionality described above.
 
+## Routes
+
+### General
+**/login**
+- type: GET
+- description: Serves the login-page react app
+
+**/***
+- type: GET
+- description: Serves the action-item-manager react app
+
+### User
+**/user/login**
+- type: POST
+- description: Allows user to login
+
+**/user/logout**
+- type: GET
+- description: Allows user to logout and destroys user session
+
+**/user/current**
+- type: GET
+- description: Gets the user information tied to the current user session
+
+**/user/create**
+- type: POST
+- description: Creates a new user
+
+**/user/remove/:id**
+- type: DELETE
+- description: Removes a user from the system given a valid id
+
+**/user/:id**
+- type: GET
+- description: Gets a users information based on a valid user id
+
+**/user/:id**
+- type: POST
+- description: Updates a users information based on a valid user id
+
+**/user/changePassword/:id**
+- type: PATCH
+- description: Updates a users password given a vaid user id
+
+**/user/isOnTeam**
+- type: GET
+- description: Checks if the user is on a team given a valid user id and team id
+
+**/user/addToTeam**
+- type: POST
+- description: Add a user to a team
+
+**/user/removeFromTeam**
+- type: POST
+- description: Removes a user from a team
+
+### Team
+**/team**
+- type: GET
+- description: Get list of all teams in the system
+
+**/team/:id**
+- type: GET
+- description: Get information about a team given a valid team id
+
+**/team/size/:id**
+- type: GET
+- description: Get the size of a team given a valid team id
+
+**/team/users/:id**
+- type: GET
+- description: Get list of users on a team given a valid team id
+
+**/team/teamsFromList**
+- type: POST
+- description: Get information about teams given a list of team ids
+
+**/team/setManager/:id**
+- type: PATCH
+- description: Set the manager for a team given a valid user id and team id
+
+**/team/create**
+- type: POST
+- description: Create a new team in the system
+
+**/team/:id**
+- type: DELETE
+- description: Remove a team from the system given a valid team id
+
+### ActionItem
+**/action-item/create**
+- type: POST
+- description: Create a new action item in the system
+
+**action-item/:id**
+- type: GET
+- description: Get information about an action item given a valid action item id
+
+**/action-item/:id**
+- type: PATCH
+- description: Update information about an action item given a valid action item id
+
+**/action-item/:id**
+- type: DELETE
+- description: Remove an action item from the system given a valid action item id
+
+**/action-item/team/:id**
+- type: GET
+- description: Get list of action items for a team given a valid team id
+
+**/action-item/usersCompleted/:id**
+- type: GET
+- description: Get information about the users who have completed an action item given a valid action item id
+
+**/action-item/current**
+- type: POST
+- description: Get list of action items for the current user
+
+**/action-item/complete/:id**
+- type: POST
+- description: Mark an action item as complete for a user
+
 ## Additional Information
 - All forms are not being validated. When filling out forms, please fill out all boxes.
-- All methods involving the backend (server/database) that we replace with hardcoded items as part of Phase 1 are located in
- **src/model**, and have been indicated as such. These methods are imported into each component's **repository** folder as needed.
- No other parts of the code contain (mock) server calls.
