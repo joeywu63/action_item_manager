@@ -32,8 +32,10 @@ class ChangeInfo extends React.Component {
     handleSubmit = () => {
         const { firstName, lastName, email, userID } = this.state;
         const { handleSwitchPage } = this.props;
+        const { updateStateInfo } = this.props;
 
         submitInfo({ userID, firstName, lastName, email });
+        updateStateInfo( { firstName, lastName, email } );
         handleSwitchPage(ACCTPAGES.default);
     };
 
@@ -91,6 +93,7 @@ class ChangeInfo extends React.Component {
 
 ChangeInfo.propTypes = {
     handleSwitchPage: PropTypes.func.isRequired,
+    updateStateInfo: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired
 };
 
