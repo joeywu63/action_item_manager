@@ -40,7 +40,7 @@ const UsersWrapper = styled.div`
 
 class ManageTeam extends React.Component {
     async componentDidMount() {
-        const { teamID } = this.props;
+        const { teamID, managerID } = this.props;
 
         let { onTeam, offTeam } = await getTeamUsers({ teamID });
 
@@ -62,7 +62,8 @@ class ManageTeam extends React.Component {
         this.setState({
             offTeam,
             onTeam,
-            loading: false
+            loading: false,
+            managerID
         });
     }
 
@@ -70,7 +71,8 @@ class ManageTeam extends React.Component {
         loading: true,
         selectedUser: null,
         offTeam: [],
-        onTeam: []
+        onTeam: [],
+        managerID: null
     };
 
     handleAddUser = async () => {
@@ -107,13 +109,13 @@ class ManageTeam extends React.Component {
     };
 
     renderUsers = () => {
-        const { onTeam } = this.state;
-
+        const { onTeam, managerID } = this.state;
         return onTeam.map(user => (
             <UserPanel
-                key={user.id}
+                key={user._id}
                 user={user}
                 handleRemoveUser={() => this.handleRemoveUser(user)}
+                isNotManager={user._id !== managerID}
             />
         ));
     };

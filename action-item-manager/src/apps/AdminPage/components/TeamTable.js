@@ -59,7 +59,7 @@ class TeamTable extends React.Component {
 
         const newTeam = await createTeam({
             name: teamName,
-            managerID: selectedUser._id
+            managerID: selectedUser._id,
         });
 
         teams.push(newTeam);

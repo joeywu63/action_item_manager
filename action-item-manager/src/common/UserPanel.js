@@ -19,16 +19,21 @@ const Text = styled.h4`
 
 const SideButton = styled(Button)`
     border-radius: 4px;
+    visibility: ${props => (props.shouldRender ? 'visible' : 'hidden')};
 `;
 
 class UserPanel extends React.Component {
     render() {
-        const { user, handleRemoveUser } = this.props;
+        const { user, handleRemoveUser, isNotManager } = this.props;
 
         return (
             <PanelWrapper>
                 <Text>{`${user.firstName} ${user.lastName}`} </Text>
-                <SideButton text="remove" onClick={handleRemoveUser} />
+                <SideButton
+                    text="remove"
+                    onClick={handleRemoveUser}
+                    shouldRender={isNotManager}
+                />
             </PanelWrapper>
         );
     }

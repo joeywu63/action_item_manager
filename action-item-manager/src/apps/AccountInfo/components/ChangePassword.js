@@ -21,9 +21,14 @@ class ChangePassword extends React.Component {
         userID: getCurrentUser()._id
     };
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
         const { userID, password } = this.state;
         const { handleSwitchPage } = this.props;
+        if (password.length === 0) {
+            e.preventDefault();
+            alert('Password cannot be empty. Please try again.');
+            return;
+        }
 
         submitPassword({ userID, password });
         handleSwitchPage(ACCTPAGES.default);
