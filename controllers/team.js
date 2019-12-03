@@ -6,6 +6,8 @@ const { ObjectID } = require("mongodb");
 const { Team } = require("../model/team");
 const { User } = require("../model/user");
 
+const { mongoose } = require('../db/mongoose');
+
 module.exports = (app, authenticate) => {
   app.get("/team", authenticate, (req, res) => {
     Team.find().then(
@@ -41,7 +43,7 @@ module.exports = (app, authenticate) => {
   app.get("/team/size/:id", authenticate, (req, res) => {
     const { id } = req.params;
 
-    User.find({ teamIDList: { $in: [id] } }).then(
+    User.find({ teamIDList: { $in: [mongoose.Types.ObjectId(id)] } }).then(
       users => {
         res.status(200).send({ length: users.length });
       },
@@ -54,9 +56,9 @@ module.exports = (app, authenticate) => {
   app.get("/team/users/:id", authenticate, (req, res) => {
     const { id } = req.params;
 
-    User.find({ teamIDList: { $in: [id] } }).then(
+    User.find({ teamIDList: { $in: [mongoose.Types.ObjectId(id)] } }).then(
       onTeam => {
-        User.find({ teamIDList: { $nin: [id] } }).then(
+        User.find({ teamIDList: { $nin: [mongoose.Types.ObjectId(id)] } }).then(
           offTeam => {
             res.status(200).send({ onTeam, offTeam });
           },
