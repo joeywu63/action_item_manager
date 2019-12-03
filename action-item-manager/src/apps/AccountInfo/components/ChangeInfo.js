@@ -73,7 +73,7 @@ class ChangeInfo extends React.Component {
                     </Label>
                     <Label label="">
                         <Input
-                            label="Email:"
+                            label="Username:"
                             type="text"
                             name="email"
                             value={email}

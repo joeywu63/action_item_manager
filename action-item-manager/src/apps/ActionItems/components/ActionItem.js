@@ -16,6 +16,7 @@ import {
     getUsersCompleted
 } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
+import TextArea from "common/TextArea";
 
 const StyledButton = styled(Button)`
     margin-top: 10px;
@@ -245,15 +246,12 @@ class ActionItem extends React.Component {
                             value={newTitle}
                             handleChange={this.handleChange}
                         />
-
-                        <Input
+                        <TextArea
                             label="Description"
-                            name="newDescription"
-                            type="text"
-                            value={newDescription}
                             handleChange={this.handleChange}
+                            name="newDescription"
+                            value={newDescription}
                         />
-
                         <Input
                             label="Due Date"
                             name="newDueDate"
