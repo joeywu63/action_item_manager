@@ -1,10 +1,13 @@
-import * as user from 'model/user';
+import { addTeam } from 'utils/currentUser';
 import axios from 'axios';
 
 export const createTeam = ({ name, managerID }) =>
     axios
         .post('/team/create', { name, managerID })
-        .then(response => response.data.team)
+        .then(response => {
+            addTeam(response.data.team._id);
+            return response.data.team;
+        })
         .catch(error => error);
 
 export const removeTeam = ({ teamID }) =>
