@@ -30,6 +30,7 @@ class ChangeInfo extends React.Component {
     };
 
     handleSubmit = e => {
+        e.preventDefault();
         const { firstName, lastName, email, userID } = this.state;
         const { handleSwitchPage } = this.props;
         const { updateStateInfo } = this.props;
@@ -39,7 +40,6 @@ class ChangeInfo extends React.Component {
             lastName.length === 0 ||
             email.length === 0
         ) {
-            e.preventDefault();
             alert(
                 'One of first name, last name or email is empty. Please try again.'
             );
