@@ -11,6 +11,7 @@ const PanelWrapper = styled.div`
     border: 1px solid ${COLOURS.darkPrimary};
     border-radius: 8px;
     justify-content: space-between;
+    align-items: center;
 `;
 
 const Text = styled.h4`

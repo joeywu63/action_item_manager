@@ -82,7 +82,7 @@ class UserTable extends React.Component {
                         <tr>
                             <TableHeader>First Name</TableHeader>
                             <TableHeader>Last Name</TableHeader>
-                            <TableHeader>Email</TableHeader>
+                            <TableHeader>Username</TableHeader>
                             <TableHeader>Role</TableHeader>
                             <TableHeader>Remove User</TableHeader>
                         </tr>

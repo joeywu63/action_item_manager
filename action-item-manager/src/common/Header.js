@@ -7,6 +7,8 @@ import { COLOURS } from 'utils/constants';
 const StyledBold = styled.b`
     font-size: ${props => `${props.size}px`}
     color: ${COLOURS.darkPrimary};
+    margin-bottom: 40px;
+    font-weight: 500;
 `;
 
 const Header = ({ title, size }) => {
