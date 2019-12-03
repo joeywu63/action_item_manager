@@ -52,5 +52,5 @@ export const toggleActionItemComplete = ({ userID, actionItemID, isComplete }) =
 export const didComplete = ({ actionItemID, userID }) =>
     axios
         .get(`/action-item/usersCompleted/${actionItemID}/${userID}`)
-        .then(response => response)
+        .then(response => response.data)
         .catch(error => error);
