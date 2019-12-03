@@ -14,7 +14,7 @@ const PanelWrapper = styled.div`
 `;
 
 const Text = styled.h4`
-    margin-left: 15px;
+    margin-left: 18px;
 `;
 
 const SideButton = styled(Button)`

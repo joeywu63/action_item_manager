@@ -23,6 +23,7 @@ const StyledButton = styled(Button)`
 
 const ProfileCategories = styled.text`
     font-weight: bold;
+    font-size: 20px;
 `;
 
 class AccountInfo extends React.Component {
