@@ -157,6 +157,11 @@ class ActionItem extends React.Component {
         const { _id } = this.props.location.state.actionItem;
         const { editing, newTitle, newDescription, newDueDate } = this.state;
 
+        if (newTitle.length === 0 || newDescription.length === 0) {
+            alert('One of title or description is empty. Please try again');
+            return;
+        }
+
         await update({
             actionItemID: _id,
             title: newTitle,
