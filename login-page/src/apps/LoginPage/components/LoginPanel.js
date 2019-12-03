@@ -34,16 +34,15 @@ const LoginInfo = styled.input`
 
 const LoginButton = styled.input`
     width: 200px;
+    height: 50px;   
     font-weight: 500;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     color: ${COLOURS.darkSecondary};
     background-color: #f87080;
     border: none;
     border-radius: 8px;
-    padding: 0.5em;
-    margin-top: 5.5em;
-    margin-bottom: 1em;
+    margin-top: 123px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     :hover {
