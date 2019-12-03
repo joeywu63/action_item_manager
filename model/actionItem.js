@@ -7,7 +7,7 @@ const ActionItemSchema = mongoose.Schema({
     teamID: ObjectID,
     dueDate: String,
     dateCreated: String,
-    userIDList: Array
+    userIDList: Array, 
 });
 
 const ActionItem = mongoose.model('ActionItem', ActionItemSchema);

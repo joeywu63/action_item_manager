@@ -42,6 +42,11 @@ export const getUsersCompleted = ({ actionItemID }) =>
         .then(response => response.data.users)
         .catch(error => error);
 
-export const toggleActionItemComplete = actionItem.toggleActionItemComplete; // TODO: replace
+export const toggleActionItemComplete = ({ userID, actionItemID, isComplete }) => {
+    axios
+        .post(`/action-item/complete/${actionItemID}`, { userID, isComplete })
+        .then(response => response)
+        .catch(error => error);
+}
 
 export const didComplete = actionItem.didComplete; // TODO: replace
