@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { COLOURS } from 'utils/constants';
 
 import Dropdown from 'common/Dropdown';
 import Input from 'common/Input';
@@ -8,6 +10,11 @@ import SubmitButton from 'common/SubmitButton';
 import { getUsers } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
 import Label from 'common/Label';
+
+const CreateTeam = styled.div`
+    margin-top: 50px;
+    margin-bottom: 50px;
+`;
 
 class AddTeamForm extends React.Component {
     async componentDidMount() {
@@ -55,24 +62,27 @@ class AddTeamForm extends React.Component {
         const { users, selectedUser, teamName } = this.state;
 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <Input
-                    label="Name"
-                    type="text"
-                    value={teamName}
-                    name="teamName"
-                    handleChange={this.handleChange}
-                />
-                <Label label="Manager">
-                    <Dropdown
-                        placeholder="Select Team Manager"
-                        value={selectedUser}
-                        onChange={this.handleUserChange}
-                        options={users}
+            <CreateTeam>
+                <h2>Create A New Team</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <Input
+                        label="Name"
+                        type="text"
+                        value={teamName}
+                        name="teamName"
+                        handleChange={this.handleChange}
                     />
-                </Label>
-                <SubmitButton value="Create Team" />
-            </form>
+                    <Label label="Manager">
+                        <Dropdown
+                            placeholder="Select Team Manager"
+                            value={selectedUser}
+                            onChange={this.handleUserChange}
+                            options={users}
+                        />
+                    </Label>
+                    <SubmitButton value="Create Team" />
+                </form>
+            </CreateTeam>
         );
     }
 }
