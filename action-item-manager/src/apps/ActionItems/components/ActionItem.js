@@ -125,7 +125,7 @@ class ActionItem extends React.Component {
 
     handleMarkAsComplete = async () => {
         const { _id } = this.props.location.state.actionItem;
-        const { complete, currentUser, completedBy } = this.state;
+        const { complete, currentUser, completedBy, usersCompleted } = this.state;
 
         await toggleActionItemComplete({
             userID: currentUser._id,
@@ -134,14 +134,18 @@ class ActionItem extends React.Component {
         });
 
         if (complete) {
+            const newUsersCompleted = usersCompleted.filter(user => user._id !== currentUser._id);
             this.setState({
                 complete: !complete,
-                completedBy: completedBy - 1
+                completedBy: completedBy - 1,
+                usersCompleted: newUsersCompleted
             });
         } else {
+            usersCompleted.push(currentUser);
             this.setState({
                 complete: !complete,
-                completedBy: completedBy + 1
+                completedBy: completedBy + 1,
+                usersCompleted
             });
         }
     };
