@@ -17,7 +17,7 @@ const StyledTextArea = styled.textarea`
     border-radius: 5px;
     border-color: ${COLOURS.darkPrimary};
     width: 398px;
-    height: 17px;
+    height: 100px;
     resize: none;
 `;
 
