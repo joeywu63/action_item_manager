@@ -4,6 +4,7 @@ const app = express();
 app.use(express.static(__dirname + '/action-item-manager/build'));
 
 const { ObjectID } = require('mongodb');
+const { mongoose } = require('../db/mongoose');
 const { User } = require('../model/user');
 
 module.exports = (app, authenticate) => {
@@ -184,7 +185,7 @@ module.exports = (app, authenticate) => {
 
         User.find({
             _id: userID,
-            teamIDList: { $in: [teamID] }
+            teamIDList: { $in: [mongoose.Types.ObjectId(teamID)] }
         }).then(
             user => {
                 if (!user) {
@@ -210,7 +211,7 @@ module.exports = (app, authenticate) => {
             res.status(404).send();
         }
 
-        User.findByIdAndUpdate(userID, { $push: { teamIDList: teamID } })
+        User.findByIdAndUpdate(userID, { $push: { teamIDList: mongoose.Types.ObjectId(teamID) }})
             .then(user => {
                 if (!user) {
                     res.status(404).send();
@@ -235,7 +236,7 @@ module.exports = (app, authenticate) => {
         }
 
         User.findByIdAndUpdate(userID, {
-            $pull: { teamIDList: { $in: [teamID] } }
+            $pull: { teamIDList: { $in: [mongoose.Types.ObjectId(teamID)] } }
         })
             .then(user => {
                 if (!user) {
