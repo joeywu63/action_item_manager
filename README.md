@@ -3,16 +3,51 @@
 
 ## How to run the app
 
-This project was written using React. To run the app, in the action-item-manager directory, run:
+### Deployed version
+Visit the [site](https://pacific-atoll-01415.herokuapp.com/) deployed on Heroku.
 
-### `npm install`
+### Set up on local machine
 
-to install all required modules and libraries, then, run:
+This project was written using React. To run the app locally, from the root directory, run:
 
 ### `cd action-item-manager`
+### `npm install`
+### `npm run build`
+
+to navigate to the action-item-manager directory, install the required packages and build the app, next, run:
+
+### `cd ../login-page`
+### `npm install`
+### `npm run build`
+
+to do the same for the login page, then, run:
+
+### `cd ..`
 ### `npm start`
 
-to launch the app on [http://localhost:3000](http://localhost:3000) in your browser.
+to navigate to the root directory and start the server on [localhost:3001](localhost:3001)
+
+You will also have to initialize a mongo database locally.
+
+## Changes made for phase 2
+
+### Action items
+- Now specifies the team which action items are assigned to
+- Can be deleted by team managers from the action item viewed from the Teams tab
+- Admins/team managers can view the names of team members who have completed an item by clicking
+'Completed by x/y members' on the detailed action item view
+
+### Teams
+- Now organized under teams managed by the user and teams the user is part of as a regular member
+- Managers can no longer remove themselves from the team in Team view
+
+### Admin functionality
+- Admins can no longer remove admins (including themselves)
+- Disbanding a team now deletes all action items associated with that team
+
+### Miscellaneous
+- Forms are now validated (can no longer create a team without a name or no set manager)
+- Signup validation (password must be longer than 4 characters, other fields must be nonempty)
 
 ## Brief overview
 
@@ -238,13 +273,15 @@ Invited users will then be able to login with their email and password 'admin'. 
 - type: GET
 - description: Get information about the users who have completed an action item given a valid action item id
 
+**/action-item/usersCompleted/:id/:user_id**
+- type: GET
+- description: Get whether the user with user_id has completed action item with id
+
 **/action-item/current**
 - type: POST
 - description: Get list of action items for the current user
 
 **/action-item/complete/:id**
 - type: POST
-- description: Mark an action item as complete for a user
+- description: Toggle the status of an action item from complete to incomplete, or vice versa
 
-## Additional Information
-- All forms are not being validated. When filling out forms, please fill out all boxes.
