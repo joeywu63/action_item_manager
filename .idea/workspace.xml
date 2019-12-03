@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf378fab-77ca-47a8-82c7-c8069829e0aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/action-item-manager/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/action-item-manager/src/apps/AccountInfo/components/AccountInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/src/apps/AccountInfo/components/AccountInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/action-item-manager/src/apps/AccountInfo/components/ChangeInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/src/apps/AccountInfo/components/ChangeInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/action-item-manager/src/apps/AccountInfo/repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/src/apps/AccountInfo/repository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/action-item-manager/src/common/TextArea.js" beforeDir="false" afterPath="$PROJECT_DIR$/action-item-manager/src/common/TextArea.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login-page/src/apps/LoginPage/components/SignUpPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/login-page/src/apps/LoginPage/components/SignUpPanel.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,11 +19,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login-page/src/apps/LoginPage/components/SignUpPanel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="312">
               <caret line="176" column="48" lean-forward="true" selection-start-line="176" selection-start-column="48" selection-end-line="176" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/action-item-manager/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -113,7 +121,7 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/action-item-manager" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -167,6 +175,7 @@
         <option value="$PROJECT_DIR$/action-item-manager/src/apps/AdminPage/repository.js" />
         <option value="$PROJECT_DIR$/action-item-manager/src/common/TextArea.js" />
         <option value="$PROJECT_DIR$/login-page/src/apps/LoginPage/components/SignUpPanel.js" />
+        <option value="$PROJECT_DIR$/action-item-manager/.gitignore" />
       </list>
     </option>
   </component>
@@ -272,12 +281,12 @@
       <workItem from="1575073722342" duration="518000" />
       <workItem from="1575076409162" duration="2553000" />
       <workItem from="1575139784473" duration="694000" />
-      <workItem from="1575336988259" duration="2654000" />
+      <workItem from="1575336988259" duration="2869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82584000" />
+    <option name="totallyTimeSpent" value="82799000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
@@ -310,13 +319,6 @@
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/action-item-manager/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login-page/src/utils/constants.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -663,8 +665,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login-page/src/apps/LoginPage/components/SignUpPanel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="312">
           <caret line="176" column="48" lean-forward="true" selection-start-line="176" selection-start-column="48" selection-end-line="176" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action-item-manager/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
         </state>
       </provider>
     </entry>
