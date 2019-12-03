@@ -38,7 +38,7 @@ const Wrapper = styled.div`
 class UserTable extends React.Component {
     async componentDidMount() {
         const users = await getUsers();
-        const admins = users.filter(u => u.role === 1)
+        const admins = users.filter(u => u.role === 1);
 
         this.setState({ users, admins });
     }
@@ -53,7 +53,8 @@ class UserTable extends React.Component {
 
         await removeUser({ userID });
 
-        this.setState({ users });
+        const newUsers = users.filter(user => user._id !== userID);
+        this.setState({ users: newUsers });
     };
 
     renderRows = () => {
