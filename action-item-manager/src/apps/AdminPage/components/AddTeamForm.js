@@ -14,7 +14,7 @@ class AddTeamForm extends React.Component {
         const allUsers = (await getUsers()).map(user => {
             return {
                 ...user,
-                value: user.id,
+                value: user._id,
                 label: `${user.firstName} ${user.lastName}`
             };
         });
