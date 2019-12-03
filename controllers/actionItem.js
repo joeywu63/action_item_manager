@@ -181,4 +181,32 @@ module.exports = (app, authenticate) => {
         res.status(500).send();
       });
   });
+
+  app.get(
+    "/action-item/usersCompleted/:id/:user_id",
+    authenticate,
+    (req, res) => {
+      const { id, user_id } = req.params;
+
+      if (!ObjectID.isValid(id) || !ObjectID.isValid(user_id)) {
+        res.status(404).send();
+      }
+
+      ActionItem.findById(id)
+        .then(actionItem => {
+          if (!actionItem) {
+            res.status(404).send();
+          } else {
+            try {
+              res.status(200).send(actionItem.userIDList.includes(user_id));
+            } catch (error) {
+              res.status(500).send(error);
+            }
+          }
+        })
+        .catch(error => {
+          res.status(500).send();
+        });
+    }
+  );
 };
