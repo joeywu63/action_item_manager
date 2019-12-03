@@ -5,6 +5,7 @@ app.use(express.static(__dirname + "/action-item-manager/build"));
 const { ObjectID } = require("mongodb");
 const { Team } = require("../model/team");
 const { User } = require("../model/user");
+const { ActionItem } = require("../model/actionItem");
 
 const { mongoose } = require('../db/mongoose');
 
@@ -105,13 +106,13 @@ module.exports = (app, authenticate) => {
           // Check if user is on the team
           User.find({
             _id: managerID,
-            teamIDList: { $in: [id] }
+            teamIDList: { $in: [mongoose.Types.ObjectId(id)] }
           }).then(
             user => {
               if (user.length === 0) {
                 // Add team to user
                 User.findByIdAndUpdate(managerID, {
-                  $push: { teamIDList: id }
+                  $push: { teamIDList: mongoose.Types.ObjectId(id) }
                 })
                   .then(user => {
                     if (!user) {
@@ -146,7 +147,7 @@ module.exports = (app, authenticate) => {
     team.save().then(
       team => {
         User.findByIdAndUpdate(managerID, {
-          $push: { teamIDList: team._id }
+          $push: { teamIDList: mongoose.Types.ObjectId(team._id) }
         })
           .then(result => res.send({ team }))
           .catch(err => res.status(400).send(err));
@@ -169,6 +170,7 @@ module.exports = (app, authenticate) => {
         if (!team) {
           res.status(404).send();
         } else {
+          ActionItem.find({ teamID: id }).remove();
           res.send({ team });
         }
       })
