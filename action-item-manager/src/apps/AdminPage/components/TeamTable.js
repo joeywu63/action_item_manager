@@ -7,6 +7,7 @@ import AddTeamForm from './AddTeamForm';
 import Header from 'common/Header';
 
 import { getAllTeams, createTeam, removeTeam } from '../repository';
+import { getCurrentUser, addTeam, removeTeamFromCurrentUser } from 'utils/currentUser';
 
 const Table = styled.table`
     min-width:100%;
@@ -48,6 +49,7 @@ class TeamTable extends React.Component {
         const { teams } = this.state;
 
         await removeTeam({ teamID: teamToRemove._id });
+        removeTeamFromCurrentUser(teamToRemove._id);
 
         this.setState({
             teams: teams.filter(team => team._id !== teamToRemove._id)
@@ -61,6 +63,10 @@ class TeamTable extends React.Component {
             name: teamName,
             managerID: selectedUser._id,
         });
+
+        if (getCurrentUser()._id === selectedUser._id) {
+            addTeam(newTeam._id);
+        }
 
         teams.push(newTeam);
         this.setState({ teams });

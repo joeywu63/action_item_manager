@@ -170,7 +170,11 @@ module.exports = (app, authenticate) => {
         if (!team) {
           res.status(404).send();
         } else {
-          ActionItem.find({ teamID: id }).remove();
+          ActionItem.deleteMany({ teamID: mongoose.Types.ObjectId(id) }, function (err) {
+            if (err) {
+              res.status(500).send();
+            }
+          });
           res.send({ team });
         }
       })
