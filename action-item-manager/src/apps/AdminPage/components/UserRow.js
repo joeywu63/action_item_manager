@@ -14,8 +14,16 @@ const TableData = styled.td`
 `;
 
 class UserRow extends React.Component {
+    renderRemove() {
+        const { isAdmin, user, handleRemoveUser } = this.props;
+        return isAdmin ? (
+            <></>
+        ) : (
+            <Button text="Remove" onClick={() => handleRemoveUser(user._id)} />
+        );
+    }
     render() {
-        const { user, handleRemoveUser } = this.props;
+        const { user } = this.props;
 
         return (
             <tr>
@@ -23,12 +31,7 @@ class UserRow extends React.Component {
                 <TableData>{user.lastName}</TableData>
                 <TableData>{user.email}</TableData>
                 <TableData>{ROLES_STRING[user.role]}</TableData>
-                <TableData>
-                    <Button
-                        text="Remove"
-                        onClick={() => handleRemoveUser(user._id)}
-                    />
-                </TableData>
+                <TableData>{this.renderRemove()}</TableData>
             </tr>
         );
     }
