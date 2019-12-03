@@ -44,4 +44,8 @@ export const getUsersCompleted = ({ actionItemID }) =>
 
 export const toggleActionItemComplete = actionItem.toggleActionItemComplete; // TODO: replace
 
-export const didComplete = actionItem.didComplete; // TODO: replace
+export const didComplete = ({ actionItemID, userID }) =>
+    axios
+        .get(`/action-item/usersCompleted/${actionItemID}/${userID}`)
+        .then(response => response)
+        .catch(error => error);
