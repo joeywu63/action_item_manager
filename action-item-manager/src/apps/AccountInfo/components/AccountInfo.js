@@ -23,6 +23,7 @@ const StyledButton = styled(Button)`
 
 const ProfileCategories = styled.text`
     font-weight: bold;
+    font-size: 20px;
 `;
 
 class AccountInfo extends React.Component {
@@ -38,7 +39,7 @@ class AccountInfo extends React.Component {
     updateStateInfo = ( {firstName, lastName, email} ) => {
         const { currentUser } = this.state; 
         this.setState({currentUser: {...currentUser, firstName, lastName, email}});
-    }
+    };
 
     renderAccountInfo = () => {
         const { firstName, lastName, email, role } = this.state.currentUser;
@@ -54,7 +55,7 @@ class AccountInfo extends React.Component {
                     <ProfileCategories>Last Name:</ProfileCategories> {lastName}
                 </ProfileLine>
                 <ProfileLine>
-                    <ProfileCategories>Email:</ProfileCategories> {email}
+                    <ProfileCategories>Username:</ProfileCategories> {email}
                 </ProfileLine>
                 <ProfileLine>
                     <ProfileCategories>Role:</ProfileCategories>{' '}

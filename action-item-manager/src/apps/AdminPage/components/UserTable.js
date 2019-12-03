@@ -38,12 +38,14 @@ const Wrapper = styled.div`
 class UserTable extends React.Component {
     async componentDidMount() {
         const users = await getUsers();
+        const admins = users.filter(u => u.role === 1);
 
-        this.setState({ users });
+        this.setState({ users, admins });
     }
 
     state = {
-        users: []
+        users: [],
+        admins: []
     };
 
     handleRemoveUser = async userID => {
@@ -51,11 +53,12 @@ class UserTable extends React.Component {
 
         await removeUser({ userID });
 
-        this.setState({ users });
+        const newUsers = users.filter(user => user._id !== userID);
+        this.setState({ users: newUsers });
     };
 
     renderRows = () => {
-        const { users } = this.state;
+        const { users, admins } = this.state;
         return (
             <tbody>
                 {users.map(user => (
@@ -63,6 +66,7 @@ class UserTable extends React.Component {
                         key={user._id}
                         user={user}
                         handleRemoveUser={this.handleRemoveUser}
+                        isAdmin={admins.includes(user)}
                     />
                 ))}
             </tbody>
@@ -78,7 +82,7 @@ class UserTable extends React.Component {
                         <tr>
                             <TableHeader>First Name</TableHeader>
                             <TableHeader>Last Name</TableHeader>
-                            <TableHeader>Email</TableHeader>
+                            <TableHeader>Username</TableHeader>
                             <TableHeader>Role</TableHeader>
                             <TableHeader>Remove User</TableHeader>
                         </tr>

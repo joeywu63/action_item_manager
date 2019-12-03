@@ -16,6 +16,7 @@ import {
     getUsersCompleted
 } from '../repository';
 import { getCurrentUser } from 'utils/currentUser';
+import TextArea from "common/TextArea";
 
 const StyledButton = styled(Button)`
     margin-top: 10px;
@@ -125,7 +126,7 @@ class ActionItem extends React.Component {
 
     handleMarkAsComplete = async () => {
         const { _id } = this.props.location.state.actionItem;
-        const { complete, currentUser, completedBy } = this.state;
+        const { complete, currentUser, completedBy, usersCompleted } = this.state;
 
         await toggleActionItemComplete({
             userID: currentUser._id,
@@ -134,14 +135,18 @@ class ActionItem extends React.Component {
         });
 
         if (complete) {
+            const newUsersCompleted = usersCompleted.filter(user => user._id !== currentUser._id);
             this.setState({
                 complete: !complete,
-                completedBy: completedBy - 1
+                completedBy: completedBy - 1,
+                usersCompleted: newUsersCompleted
             });
         } else {
+            usersCompleted.push(currentUser);
             this.setState({
                 complete: !complete,
-                completedBy: completedBy + 1
+                completedBy: completedBy + 1,
+                usersCompleted
             });
         }
     };
@@ -246,15 +251,12 @@ class ActionItem extends React.Component {
                             value={newTitle}
                             handleChange={this.handleChange}
                         />
-
-                        <Input
+                        <TextArea
                             label="Description"
-                            name="newDescription"
-                            type="text"
-                            value={newDescription}
                             handleChange={this.handleChange}
+                            name="newDescription"
+                            value={newDescription}
                         />
-
                         <Input
                             label="Due Date"
                             name="newDueDate"

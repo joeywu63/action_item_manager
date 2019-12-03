@@ -21,7 +21,7 @@ export const getTeamByID = ({ teamID }) =>
 export const getSize = ({ teamID }) =>
     axios
         .get(`/team/size/${teamID}`)
-        .then(response => response.data.size)
+        .then(response => response.data.length)
         .catch(error => error);
 
 export const update = ({ actionItemID, title, description, dueDate }) =>

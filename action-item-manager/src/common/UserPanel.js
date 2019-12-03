@@ -11,10 +11,11 @@ const PanelWrapper = styled.div`
     border: 1px solid ${COLOURS.darkPrimary};
     border-radius: 8px;
     justify-content: space-between;
+    align-items: center;
 `;
 
 const Text = styled.h4`
-    margin-left: 15px;
+    margin-left: 18px;
 `;
 
 const SideButton = styled(Button)`

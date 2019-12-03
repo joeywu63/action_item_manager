@@ -9,6 +9,7 @@ const StyledButton = styled.button`
     color: ${COLOURS.lightPrimary};
     border-color: ${COLOURS.darkPrimary};
     padding: 4px 10px;
+    max-height: 35px;
     :hover {
         cursor: pointer;
         background: ${COLOURS.darkSecondary};

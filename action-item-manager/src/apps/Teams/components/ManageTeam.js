@@ -18,13 +18,14 @@ const DropdownWrapper = styled.div`
 
 const BackButton = styled(Button)`
     margin-top: 80px;
-    height: 50px;
-    width: 150px;
+    height: 35px;
+    width: 100px;
     margin-left: 160px;
 `;
 
 const AddText = styled.strong`
     padding-right: 40px;
+    font-size: 20px;
 `;
 
 const AddButton = styled(Button)`

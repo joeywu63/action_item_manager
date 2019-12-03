@@ -9,6 +9,7 @@ import { COLOURS } from 'utils/constants';
 const SignUpContainer = styled.div`
     border: 45px solid ${COLOURS.darkSecondary};
     align-items: center;
+    background-color: ${COLOURS.darkSecondary};
 `;
 
 const FormContainer = styled.form`
@@ -16,7 +17,6 @@ const FormContainer = styled.form`
     flex-direction: column;
     align-content: center;
     min-height: 350px;
-    background-color: ${COLOURS.darkSecondary};
 `;
 
 const SignUpInfo = styled.input`
@@ -32,16 +32,14 @@ const SignUpInfo = styled.input`
 
 const SignUpButton = styled.input`
     width: 200px;
+    height: 50px;
     font-weight: 500;
     text-align: center;
     font-size: 16px;
     color: ${COLOURS.darkSecondary};
-    background-color: ${COLOURS.background};
+    background-color: #f87080;
     border: none;
     border-radius: 8px;
-    padding: 0.8em;
-    margin-top: 1em;
-    margin-bottom: 1.6em;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     :hover {

@@ -34,24 +34,23 @@ const IncompleteIcon = styled.div`
 const ActionItemWrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center
 `;
 
-const ActionItemDisplay = styled.div`
-    float: left;
-`;
-
-const DisplayWrapper = styled.div`
-    overflow: hidden;
+const Top = styled.div`
     display: flex;
+    flex-direction: row;
     align-items: center;
 `;
 
-const StyledTeamName = styled.div`
-    padding-left: 20px;
+const DisplayWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
 const StyledDate = styled.div`
-    font-size: 12px;
+    font-size: 16px;
+    margin-right: 20px;
 `;
 
 const StyledButton = styled(Button)`
@@ -98,14 +97,6 @@ class ActionItemPanel extends React.Component {
         }
     };
 
-    renderTeamName = () => {
-        const { team } = this.state;
-        return (
-            <StyledTeamName>
-                <b>{team.name}</b>
-            </StyledTeamName>
-        );
-    };
     render() {
         const { actionItem, history, isManager } = this.props;
         const { _id, title, dueDate } = actionItem;
@@ -120,12 +111,12 @@ class ActionItemPanel extends React.Component {
             <Panel onClick={() => history.push(navigateParams)}>
                 <ActionItemWrapper>
                     <DisplayWrapper>
-                        {this.renderComplete()}
-                        <ActionItemDisplay>
-                            <b>{title}</b>
+                        <Top>
+                            {this.renderComplete()}
                             <StyledDate>Due Date: {dueDate}</StyledDate>
-                        </ActionItemDisplay>
-                        {team && this.renderTeamName()}
+                            {team && <b>{team.name}</b>}
+                        </Top>
+                        <h1>{title}</h1>
                     </DisplayWrapper>
                     {isManager && (
                         <Button text="Delete" onClick={this.handleDelete} />

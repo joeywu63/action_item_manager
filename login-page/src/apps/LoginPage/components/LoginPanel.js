@@ -33,32 +33,31 @@ const LoginInfo = styled.input`
 `;
 
 const LoginButton = styled.input`
-  width: 200px;
-  font-weight: 500;
-  text-align: center;
-  font-size: 20px;
-  color: ${COLOURS.darkSecondary};
-  background-color: #f87080;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5em;
-  margin-top: 5.5em;
-  margin-bottom: 1em;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  :hover {
-    background-color: ${COLOURS.lightSecondary};
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
-    transform: translateY(-5px);
-    position: relative;
-    z-index: 1;
-  }
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    width: 200px;
+    height: 50px;   
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
+    color: ${COLOURS.darkSecondary};
+    background-color: #f87080;
+    border: none;
+    border-radius: 8px;
+    margin-top: 123px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    :hover {
+        background-color: ${COLOURS.lightSecondary};
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+        transform: translateY(-5px);
+        position: relative;
+        z-index: 1;
+    }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 `;
 
 const Title = styled.h1`
