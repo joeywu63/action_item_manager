@@ -54,6 +54,10 @@ class AddTeamForm extends React.Component {
 
         const { handleAddTeam } = this.props;
         const { teamName, selectedUser } = this.state;
+        if (teamName.length === 0) {
+            alert('You have not entered a team name. Please try again.');
+            return;
+        }
 
         handleAddTeam(teamName, selectedUser);
     };

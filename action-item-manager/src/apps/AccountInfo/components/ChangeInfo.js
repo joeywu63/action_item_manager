@@ -29,13 +29,25 @@ class ChangeInfo extends React.Component {
         userID: getCurrentUser()._id
     };
 
-    handleSubmit = () => {
+    handleSubmit = e => {
+        e.preventDefault();
         const { firstName, lastName, email, userID } = this.state;
         const { handleSwitchPage } = this.props;
         const { updateStateInfo } = this.props;
 
+        if (
+            firstName.length === 0 ||
+            lastName.length === 0 ||
+            email.length === 0
+        ) {
+            alert(
+                'One of first name, last name or email is empty. Please try again.'
+            );
+            return;
+        }
+
         submitInfo({ userID, firstName, lastName, email });
-        updateStateInfo( { firstName, lastName, email } );
+        updateStateInfo({ firstName, lastName, email });
         handleSwitchPage(ACCTPAGES.default);
     };
 

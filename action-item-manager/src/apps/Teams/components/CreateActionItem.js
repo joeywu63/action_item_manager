@@ -32,6 +32,11 @@ class CreateActionItem extends React.Component {
         const { handleGoBack, handleCreateActionItem, teamID } = this.props;
         const { title, description, dueDate } = this.state;
 
+        if (title.length === 0 || description.length === 0) {
+            alert('One of title or description is empty. Please try again.');
+            return;
+        }
+
         const newActionItem = await createActionItem({
             teamID,
             title,

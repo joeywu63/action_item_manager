@@ -113,6 +113,7 @@ class Team extends React.Component {
                             this.handleSwitchPage(ACTIONS.default)
                         }
                         teamID={_id}
+                        managerID={managerID}
                     />
                 ) : (
                     this.renderTeamActionItems()
