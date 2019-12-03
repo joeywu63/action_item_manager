@@ -61,7 +61,13 @@ const StyledButton = styled(Button)`
 class ActionItemPanel extends React.Component {
     async componentDidMount() {
         const { displayTeamName, actionItem } = this.props;
-        const { teamID } = actionItem;
+        const { teamID, _id } = actionItem;
+        const currentUser = getCurrentUser();
+        const complete = await didComplete({
+            userID: currentUser._id,
+            actionItemID: _id
+        });
+        this.setState({ complete });
         if (displayTeamName) {
             const team = await getTeamByID({ teamID });
             this.setState({ team });
@@ -69,7 +75,8 @@ class ActionItemPanel extends React.Component {
     }
 
     state = {
-        team: null
+        team: null,
+        complete: null
     };
 
     handleDelete = async e => {
@@ -83,12 +90,7 @@ class ActionItemPanel extends React.Component {
     };
 
     renderComplete = () => {
-        const { _id } = this.props.actionItem;
-        const currentUser = getCurrentUser();
-        const complete = didComplete({
-            userID: currentUser._id,
-            actionItemID: _id
-        });
+        const { complete } = this.state;
         if (complete) {
             return <CompletedIcon> Completed </CompletedIcon>;
         } else {

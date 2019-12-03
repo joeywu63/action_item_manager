@@ -78,9 +78,8 @@ class ActionItem extends React.Component {
             userIDList
         } = this.props.location.state.actionItem;
         const { currentUser } = this.state;
-
-        const complete = didComplete({
-            userID: currentUser.id,
+        const complete = await didComplete({
+            userID: currentUser._id,
             actionItemID: _id
         });
         const team = await getTeamByID({ teamID: teamID });
